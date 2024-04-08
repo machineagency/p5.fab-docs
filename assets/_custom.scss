@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+ }
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-Light.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-LightItalic.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: url('fonts/SpaceGrotesk-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "IBMPlexMono";
+    src: url("fonts/IBMPlexMono-Regular.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+h2, h3 {
+    text-decoration: underline;
+    text-decoration-color: #FF6700;
+    text-decoration-thickness: 3px;
+}
+.fab {
+    font-family: 'IBMPlexMono', sans-serif;
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.123.7"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Welcome to the p5.fab Docs! What is p5.fab? # p5.fab is a Javscript library to control digital fabrication machines. It&rsquo;s made for creative coders and makers across skill levels to make physical things using code. At it&rsquo;s core, p5.fab lets you write Javascript code to control machines; it also supports interactive control of machines during execution and documentation of material output. You can use p5.fab to:
+make generative artifacts; explore and tune machine settings; quickly iterate on designs without reverting to CAD/CAM software; learn about how your machine works; experiment with new materials; develop interactive fabrication workflows; and whatever else you can think of!">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="p5.fab documentation main page" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/" />
+
+<title>p5.fab documentation main page | p5.fab</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/">
+<link rel="stylesheet" href="/book.min.407d69d0a45364c0178383056043dffb34da6b2423d90861313ca049cea737e1.css" integrity="sha256-QH1p0KRTZMAXg4MFYEPf&#43;zTaayQj2QhhMTygSc6nN&#43;E=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.eeaa966ebb07254112e88bc296fa2695b6d397d00e2bb086b57630ab479c6450.js" integrity="sha256-7qqWbrsHJUES6IvClvomlbbTl9AOK7CGtXYwq0ecZFA=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml" title="p5.fab" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>p5.fab</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/quickstart/" class="">Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/machine-compatibility/" class="">Machine Compatibility</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/" class="">Resources</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/dfab-intro/" class="">A Gentle Introduction to Digital Fabrication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/cc-intro/" class="">A Gentle Introduction to Creative Coding with p5.js</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/p5fab-primer/" class="">p5.fab Primer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/tutorials/cube-tutorial/" class="">Cube Tutorial</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/tutorials/non-planar-tutorial/" class="">Non-Planar Printing Tutorial</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/tutorials/line-vase-tutorial/" class="">Line Vase Tutorial</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/" class="">Reference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>p5.fab documentation main page</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-span-classfabp5fabspan">What is <span class="fab">p5.fab</span>?</a></li>
+    <li><a href="#required-materials">Required Materials</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1>Welcome to the <span class="fab">p5.fab</span> Docs!</h1>
+<img src="./images/teaser.jpg" width="75%">
+<h2 id="what-is-span-classfabp5fabspan">
+  What is <span class="fab">p5.fab</span>?
+  <a class="anchor" href="#what-is-span-classfabp5fabspan">#</a>
+</h2>
+<p><span class="fab">p5.fab</span> is a Javscript library to control digital fabrication machines. It&rsquo;s made for creative coders and makers across skill levels to make physical things using code. At it&rsquo;s core, <span class="fab">p5.fab</span> lets you write Javascript code to control machines; it also supports interactive control of machines during execution and documentation of material output. You can use <span class="fab">p5.fab</span> to:</p>
+<ul>
+<li>make generative artifacts;</li>
+<li>explore and tune machine settings;</li>
+<li>quickly iterate on designs without reverting to CAD/CAM software;</li>
+<li>learn about how your machine works;</li>
+<li>experiment with new materials;</li>
+<li>develop interactive fabrication workflows;</li>
+<li>and whatever else you can think of!</li>
+</ul>
+<p><span class='fab'>p5.fab</span> is developed as a library for <a href="https://p5js.org/">p5.js</a>. This site provides resources to use <span class='fab'>p5.fab</span>, including a gentle introduction to both creative coding and digital fabrication.</p>
+<h2 id="required-materials">
+  Required Materials
+  <a class="anchor" href="#required-materials">#</a>
+</h2>
+<p>While you <em>can</em> get started with <span class='fab'>p5.fab</span> without a machine, it is designed to be used to explore material behaviour. Currently, the library supports 3D printers running Marlin firmware and has been tested on the following machines: Ender3 v2, Prusa i3-mk3, Potterbot 9, and FLSUN Q9. Development for other machines including CNCs and plotters are ongoing. If this doesn&rsquo;t mean much to you&ndash;or you want more information&ndash;see the <a href="docs/machine-compatibility"> machine compatibility page</a>.</p>
+<h2 id="getting-started">
+  Getting Started
+  <a class="anchor" href="#getting-started">#</a>
+</h2>
+<ul>
+<li>To set up <span class='fab'>p5.fab</span> in a matter of minutes, check out <a href="docs/quickstart">Quickstart Guide</a> to learn how to use the <a href="https://machineagency.github.io/p5.fab/editor/index.html">online editor</a>.</li>
+<li>Head to the <a href="docs/resources">resources</a> section for more in-depth guides to <span class='fab'>p5.fab</span> including examples and introductions to creative coding and digital fabrication.</li>
+<li>A list of  <span class='fab'>p5.fab</span> functions can be found in the <a href="docs/reference">reference</a>.</li>
+<li>The source code can be found on <a href="https://github.com/machineagency/p5.fab">github</a>; feel free to ask questions and make suggestions/contributions there!</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-span-classfabp5fabspan">What is <span class="fab">p5.fab</span>?</a></li>
+    <li><a href="#required-materials">Required Materials</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

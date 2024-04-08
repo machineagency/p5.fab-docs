@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Resources on p5.fab</title>
+    <link>http://localhost:1313/docs/resources/</link>
+    <description>Recent content in Resources on p5.fab</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/resources/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Gentle Introduction to Digital Fabrication</title>
+      <link>http://localhost:1313/docs/resources/guides/dfab-intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/guides/dfab-intro/</guid>
+      <description>A Gentle Introduction to Digital Fabrication # This page provides a brief introduction to some key concepts in digital fabrication. It is by no means exhaustive, but provides helpful background information for newcomers to digital fabrication machines. If you’re already familiar with computer-controlled machines but want to learn a bit about creative coding, check out the creative coding intro, or if you want to learn how to make things with p5.</description>
+    </item>
+    <item>
+      <title>A Gentle Introduction to Creative Coding with p5.js</title>
+      <link>http://localhost:1313/docs/resources/guides/cc-intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/guides/cc-intro/</guid>
+      <description>A Gentle Introduction to Creative Coding with p5.js # This page provides a brief introduction to some key concepts for creative coding with p5.js. It is by no means exhaustive, but provides helpful background information for newcomers to dicreative code. If you’re already familiar with computer-controlled machines but want to learn a bit about digital fabrication, check out the digital fabrication intro, or if you want to learn how to make things with p5.</description>
+    </item>
+    <item>
+      <title>p5.fab Primer</title>
+      <link>http://localhost:1313/docs/resources/guides/p5fab-primer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/guides/p5fab-primer/</guid>
+      <description>p5.fab Primer # This page provides an introduction to using p5.fab. If you’re new to digital fabrication and/or creative code and want some more context for the information presented here, check out the digital fabrication and creative coding introductions.&#xA;Anatomy of a p5.fab Sketch # p5.fab adds to the default setup() and draw() functions a fabDraw() function. fabDraw() is run once, immediately after setup and before the first draw loop, and is where any code which generates toolpath should go!</description>
+    </item>
+    <item>
+      <title>Cube Tutorial</title>
+      <link>http://localhost:1313/docs/resources/tutorials/cube-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/tutorials/cube-tutorial/</guid>
+      <description>Printing a Cube # Stay tuned! For now, check out the cube example on the online editor.</description>
+    </item>
+    <item>
+      <title>Non-Planar Printing Tutorial</title>
+      <link>http://localhost:1313/docs/resources/tutorials/non-planar-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/tutorials/non-planar-tutorial/</guid>
+      <description>Line Vase Tutorial # Stay tuned! For now, check out the non-planar vase example on the online editor.</description>
+    </item>
+    <item>
+      <title>Line Vase Tutorial</title>
+      <link>http://localhost:1313/docs/resources/tutorials/line-vase-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/tutorials/line-vase-tutorial/</guid>
+      <description>Line Vase Tutorial # Stay tuned! For now, check out the line vase example on the online editor.</description>
+    </item>
+  </channel>
+</rss>

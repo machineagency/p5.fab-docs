@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="p5.fab Primer # This page provides an introduction to using p5.fab. If you’re new to digital fabrication and/or creative code and want some more context for the information presented here, check out the digital fabrication and creative coding introductions.
+Anatomy of a p5.fab Sketch # p5.fab adds to the default setup() and draw() functions a fabDraw() function. fabDraw() is run once, immediately after setup and before the first draw loop, and is where any code which generates toolpath should go!">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="p5.fab Primer" />
+<meta property="og:description" content="p5.fab Primer # This page provides an introduction to using p5.fab. If you’re new to digital fabrication and/or creative code and want some more context for the information presented here, check out the digital fabrication and creative coding introductions.
+Anatomy of a p5.fab Sketch # p5.fab adds to the default setup() and draw() functions a fabDraw() function. fabDraw() is run once, immediately after setup and before the first draw loop, and is where any code which generates toolpath should go!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/docs/resources/guides/p5fab-primer/" /><meta property="article:section" content="docs" />
+
+
+
+<title>p5.fab Primer | p5.fab</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/resources/guides/p5fab-primer/">
+<link rel="stylesheet" href="/book.min.407d69d0a45364c0178383056043dffb34da6b2423d90861313ca049cea737e1.css" integrity="sha256-QH1p0KRTZMAXg4MFYEPf&#43;zTaayQj2QhhMTygSc6nN&#43;E=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.eeaa966ebb07254112e88bc296fa2695b6d397d00e2bb086b57630ab479c6450.js" integrity="sha256-7qqWbrsHJUES6IvClvomlbbTl9AOK7CGtXYwq0ecZFA=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>p5.fab</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/quickstart/" class="">Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/machine-compatibility/" class="">Machine Compatibility</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/" class="">Resources</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/dfab-intro/" class="">A Gentle Introduction to Digital Fabrication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/cc-intro/" class="">A Gentle Introduction to Creative Coding with p5.js</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/p5fab-primer/" class="active">p5.fab Primer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/tutorials/cube-tutorial/" class="">Cube Tutorial</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/tutorials/non-planar-tutorial/" class="">Non-Planar Printing Tutorial</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/tutorials/line-vase-tutorial/" class="">Line Vase Tutorial</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/" class="">Reference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>p5.fab Primer</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#span-classfabp5fabspan-primer"><span class="fab">p5.fab</span> Primer</a>
+      <ul>
+        <li><a href="#anatomy-of-a-span-classfabp5fabspan-sketch">Anatomy of a <span class="fab">p5.fab</span> Sketch</a></li>
+        <li><a href="#moving-grooving-and-extruding">Moving, Grooving, and Extruding</a></li>
+        <li><a href="#next-steps">Next Steps</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="span-classfabp5fabspan-primer">
+  <span class="fab">p5.fab</span> Primer
+  <a class="anchor" href="#span-classfabp5fabspan-primer">#</a>
+</h2>
+<p>This page provides an introduction to using <span class="fab">p5.fab</span>. If you’re new to digital fabrication and/or creative code and want some more context for the information presented here, check out the <a href="../dfab-intro">digital fabrication</a> and <a href="../cc-intro">creative coding</a> introductions.</p>
+<h3 id="anatomy-of-a-span-classfabp5fabspan-sketch">
+  Anatomy of a <span class="fab">p5.fab</span> Sketch
+  <a class="anchor" href="#anatomy-of-a-span-classfabp5fabspan-sketch">#</a>
+</h3>
+<p><span class="fab">p5.fab</span> adds to the default <code>setup()</code> and <code>draw()</code> functions a <code>fabDraw()</code> function. <code>fabDraw()</code> is run once, immediately after setup and before the first draw loop, and is where any code which generates toolpath should go! A typical sketch will look something like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a90d91">let</span> <span style="color:#000">fab</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">setup</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">createCanvas</span>(<span style="color:#000">windowWidth</span>, <span style="color:#000">windowHeight</span>, <span style="color:#000">WEBGL</span>); <span style="color:#177500">// we need to use WEBGL mode to draw 3D things
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span> <span style="color:#000">=</span> <span style="color:#000">createFab</span>(); <span style="color:#177500">// fab represents our machine
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">fabDraw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// fabDraw will be run immediately after the setup function!
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// Machine control commands will go here
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">draw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">background</span>(<span style="color:#1c01ce">255</span>); <span style="color:#177500">// a solid white background
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">render</span>();
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p>In this example sketch, we declare a <code>fab</code> variable and use <code>createFab</code> to instantiate a fab object. By default, this will use default values for a Creality Ender3 3D printer. In <code>createCanvas</code>, we use WEBGL mode to support 3D shapes; then in <code>draw()</code>, we use the built-in <code>fab.render()</code> to show a simple visualization of our toolpaths. Since our <code>fabDraw()</code> loop is empty, this sketch would show and empty work envelope for now.</p>
+<h3 id="moving-grooving-and-extruding">
+  Moving, Grooving, and Extruding
+  <a class="anchor" href="#moving-grooving-and-extruding">#</a>
+</h3>
+<p>Let&rsquo;s send some toolpath commands for 3D printing! Most of the time, we&rsquo;ll want to send a few starting commands:</p>
+<p><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">fabDraw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Set the machine up for printing
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">setAbsolutePosition</span>(); <span style="color:#177500">// set all axes (x/y/z/extruder) to absolute
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">setERelative</span>(); <span style="color:#177500">// put extruder in relative mode, independent of other axes
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">autoHome</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">setTemps</span>(<span style="color:#1c01ce">205</span>, <span style="color:#1c01ce">60</span>); <span style="color:#177500">// (nozzle, bed) °C - you should use a temperature best suited for your material
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>}</span></span></code></pre></div>
+The first two commands will explicitly set the machine into absolute positioning mode, and use relative mode for the extrusion axis. This is worth doing in case your machine ended in a different mode in whatever you were last doing. Then, we&rsquo;ll home the machine and wait for the nozzle and bed to heat up to the specified temperatures.</p>
+<p>Now we&rsquo;re ready to send some movement commands! Let&rsquo;s move to the point (100, 100, 0.2) on the bed; we choose 0.2 for the height because this is approximately a good starting height to lay filament down on the bed<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>:</p>
+<p><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">fabDraw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Set the machine up for printing
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">setAbsolutePosition</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">setERelative</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">autoHome</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">setTemps</span>(<span style="color:#1c01ce">205</span>, <span style="color:#1c01ce">60</span>);
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Now move around!
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">move</span>(<span style="color:#1c01ce">100</span>, <span style="color:#1c01ce">100</span>, <span style="color:#1c01ce">0.2</span>); <span style="color:#177500">// (x, y, z)
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>}</span></span></code></pre></div>
+If you were to send this code to your machine, you should see the printer (1) autohome, (2) get up to temperature, and then (c) move to the (x, y, z) point (100, 100, 1). All movement commands will use a default speed of 20 mm/sec.  If we want to move to the center of the bed, we can also access the machine&rsquo;s <code>maxX</code> and <code>maxY</code> properties:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">fabDraw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Set the machine up for printing
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">setAbsolutePosition</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">setERelative</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">autoHome</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">setTemps</span>(<span style="color:#1c01ce">205</span>, <span style="color:#1c01ce">60</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Now move around!
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">let</span> <span style="color:#000">center</span> <span style="color:#000">=</span> <span style="color:#000">createVector</span>(<span style="color:#000">fab</span>.<span style="color:#000">maxX</span><span style="color:#000">/</span><span style="color:#1c01ce">2</span>, <span style="color:#000">fab</span>.<span style="color:#000">maxY</span><span style="color:#000">/</span><span style="color:#1c01ce">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">move</span>(<span style="color:#000">center</span>.<span style="color:#000">x</span>, <span style="color:#000">center</span>.<span style="color:#000">y</span>, <span style="color:#1c01ce">0.2</span>); <span style="color:#177500">// (x, y, z)
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>}</span></span></code></pre></div>
+<p>where <code>createVector</code> is <a href="https://p5js.org/reference/#/p5/createVector">a handy p5.js function</a>.While moving, we might find that a bit of filament oozes out of the nozzle. This is because filament might melt and fall out of the hot nozzle. To prevent this, we can instead use a <code>moveRetract()</code> command which will pull the filament away from the nozzle. We can also try moving a bit faster:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">fabDraw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Set the machine up for printing
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">setAbsolutePosition</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">setERelative</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">autoHome</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">setTemps</span>(<span style="color:#1c01ce">205</span>, <span style="color:#1c01ce">60</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Now move around!
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">let</span> <span style="color:#000">center</span> <span style="color:#000">=</span> <span style="color:#000">createVector</span>(<span style="color:#000">fab</span>.<span style="color:#000">maxX</span><span style="color:#000">/</span><span style="color:#1c01ce">2</span>, <span style="color:#000">fab</span>.<span style="color:#000">maxY</span><span style="color:#000">/</span><span style="color:#1c01ce">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">moveRetract</span>(<span style="color:#000">center</span>.<span style="color:#000">x</span>, <span style="color:#000">center</span>.<span style="color:#000">y</span>, <span style="color:#1c01ce">0.2</span>, <span style="color:#1c01ce">30</span>); <span style="color:#177500">// (x, y, z, speed in mm/s)
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>}</span></span></code></pre></div>
+<p><code>moveRetract</code> will pull the filament away from the nozzle before moving, and then restore the position (or &lsquo;prime&rsquo;) once it arrives at its destination. By contrast, <code>moveExtrude</code> will lay down filament along the specified path. By default, it will calculate the amount of filament needed based on the distance and the nozzle &amp; filament diameter:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">fabDraw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Set the machine up for printing
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">setAbsolutePosition</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">setERelative</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">autoHome</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">setTemps</span>(<span style="color:#1c01ce">205</span>, <span style="color:#1c01ce">60</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Now move around!
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">let</span> <span style="color:#000">center</span> <span style="color:#000">=</span> <span style="color:#000">createVector</span>(<span style="color:#000">fab</span>.<span style="color:#000">maxX</span><span style="color:#000">/</span><span style="color:#1c01ce">2</span>, <span style="color:#000">fab</span>.<span style="color:#000">maxY</span><span style="color:#000">/</span><span style="color:#1c01ce">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">moveRetract</span>(<span style="color:#000">center</span>.<span style="color:#000">x</span>, <span style="color:#000">center</span>.<span style="color:#000">y</span>, <span style="color:#1c01ce">1</span>, <span style="color:#1c01ce">30</span>); <span style="color:#177500">// (x, y, z, speed in mm/s)
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">fab</span>.<span style="color:#000">moveExtrude</span>(<span style="color:#000">center</span>.<span style="color:#000">x</span> <span style="color:#000">+</span> <span style="color:#1c01ce">100</span>, <span style="color:#000">center</span>.<span style="color:#000">y</span>, <span style="color:#1c01ce">1</span>, <span style="color:#1c01ce">30</span>); <span style="color:#177500">// (x, y, z, speed in mm/s)
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fab</span>.<span style="color:#000">presentPart</span>();
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p>Now, we should have a 100mm line of filament printed on the bed! The <code>presentPart()</code> command will push the bed plate out and the hotend up so that it&rsquo;s easy to grab the printed part when complete.</p>
+<h3 id="next-steps">
+  Next Steps
+  <a class="anchor" href="#next-steps">#</a>
+</h3>
+<p>We&rsquo;re ready to 3D print an object now! Jump to the <a href="../../tutorials/cube-tutorial">printing a cube</a> tutorial for some more details on 3D printing with <span class="fab">p5.fab</span>.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>In practice, you&rsquo;ll have to find a start height that works well for you based on your bed leveling, filament &amp; nozzle diameter, etc. Typically, a height of 0 is too close to the bed (filament can&rsquo;t get out of the nozzle), and too large a value means the filament won&rsquo;t stick to the bed.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#span-classfabp5fabspan-primer"><span class="fab">p5.fab</span> Primer</a>
+      <ul>
+        <li><a href="#anatomy-of-a-span-classfabp5fabspan-sketch">Anatomy of a <span class="fab">p5.fab</span> Sketch</a></li>
+        <li><a href="#moving-grooving-and-extruding">Moving, Grooving, and Extruding</a></li>
+        <li><a href="#next-steps">Next Steps</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

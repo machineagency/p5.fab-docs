@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Resources # Here you&rsquo;ll find some resources for using p5.fab, including guides which introduce key concepts, tutorials which put these concepts into practice, and examples to motivate more uses!
+The resources here are growing; if there&rsquo;s something you&rsquo;d like to see added or contribute, reach out on github!
+Guides # A Gentle Introduction to Digital Fabrication # A (very!) brief overview of some key digital fabrication concepts, including: G-Code, coordinate systems, machines, and their firmware.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Resources" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/docs/guides/" />
+
+<title>Resources | p5.fab</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/guides/">
+<link rel="stylesheet" href="/book.min.ab37fbb54a81dd231ed03be6b8c7c310de847082d5c5202366e97c46b1695a02.css" integrity="sha256-qzf7tUqB3SMe0DvmuMfDEN6EcILVxSAjZul8RrFpWgI=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.626ad2d646cea1155324681e26b570bb705ad7f28e87198025f740b5f7d58ae8.js" integrity="sha256-YmrS1kbOoRVTJGgeJrVwu3Ba1/KOhxmAJfdAtffViug=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/guides/index.xml" title="p5.fab" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>p5.fab</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/quickstart/" class="">Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/machine-compatibility/" class="">Machine Compatibility</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/" class="active">Resources</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Resources</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-gentle-introduction-to-digital-fabricationguidesdfab-intro"><a href="guides/dfab-intro">A Gentle Introduction to Digital Fabrication</a></a></li>
+    <li><a href="#a-gentle-introduction-to-creative-codeguidescc-intro"><a href="guides/cc-intro">A Gentle Introduction to Creative Code</a></a></li>
+    <li><a href="#span-classfabp5fabspan-primerguidesp5fab-primer"><a href="guides/p5fab-primer"><span class="fab">p5.fab</span> Primer</a></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#printing-a-cubetutorialscube-tutorial"><a href="tutorials/cube-tutorial">Printing a cube</a></a></li>
+    <li><a href="#non-planar-3d-printingtutorialsnon-planar"><a href="tutorials/non-planar">Non-Planar 3D Printing</a></a></li>
+    <li><a href="#line-vase-3d-printtutorialsline-vase"><a href="tutorials/line-vase">Line Vase 3D Print</a></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sequencing--interactivitysequencing-and-interactivity"><a href="sequencing-and-interactivity">sequencing &amp; interactivity</a></a></li>
+    <li><a href="#extending-hydraextending-hydraextending-hydra"><a href="extending-hydra/extending-hydra">extending hydra</a></a></li>
+    <li><a href="#guidesguides"><a href="guides">guides</a></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="resources">
+  Resources
+  <a class="anchor" href="#resources">#</a>
+</h1>
+<p>Here you&rsquo;ll find some resources for using <span class=fab>p5.fab</span>, including <a href="./#guides">guides</a> which introduce key concepts, <a href="./#tutorials">tutorials</a> which put these concepts into practice, and <a href="./#examples">examples</a> to motivate more uses!</p>
+<p>The resources here are growing; if there&rsquo;s something you&rsquo;d like to see added or contribute, reach out on <a href="https://github.com/machineagency/p5.fab">github</a>!</p>
+<h1 id="guides">
+  Guides
+  <a class="anchor" href="#guides">#</a>
+</h1>
+<h2 id="a-gentle-introduction-to-digital-fabricationguidesdfab-intro">
+  <a href="guides/dfab-intro">A Gentle Introduction to Digital Fabrication</a>
+  <a class="anchor" href="#a-gentle-introduction-to-digital-fabricationguidesdfab-intro">#</a>
+</h2>
+<p>A (very!) brief overview of some key digital fabrication concepts, including: G-Code, coordinate systems, machines, and their firmware. Intended for anyone new to using machines like 3D printers.</p>
+<h2 id="a-gentle-introduction-to-creative-codeguidescc-intro">
+  <a href="guides/cc-intro">A Gentle Introduction to Creative Code</a>
+  <a class="anchor" href="#a-gentle-introduction-to-creative-codeguidescc-intro">#</a>
+</h2>
+<p>A (very!) brief overview of some key creative coding concepts, including: how to sketch with p5.js. Intended for anyone new to creative coding.</p>
+<h2 id="span-classfabp5fabspan-primerguidesp5fab-primer">
+  <a href="guides/p5fab-primer"><span class="fab">p5.fab</span> Primer</a>
+  <a class="anchor" href="#span-classfabp5fabspan-primerguidesp5fab-primer">#</a>
+</h2>
+<p>An overview of the <span class="fab">p5.fab</span> library!</p>
+<h1 id="tutorials">
+  Tutorials
+  <a class="anchor" href="#tutorials">#</a>
+</h1>
+<h2 id="printing-a-cubetutorialscube-tutorial">
+  <a href="tutorials/cube-tutorial">Printing a cube</a>
+  <a class="anchor" href="#printing-a-cubetutorialscube-tutorial">#</a>
+</h2>
+<p>A first 3D printed object with <span class="fab">p5.fab</span>!</p>
+<h2 id="non-planar-3d-printingtutorialsnon-planar">
+  <a href="tutorials/non-planar">Non-Planar 3D Printing</a>
+  <a class="anchor" href="#non-planar-3d-printingtutorialsnon-planar">#</a>
+</h2>
+<p>Putting the &lsquo;3D&rsquo; in 3D printing.</p>
+<h2 id="line-vase-3d-printtutorialsline-vase">
+  <a href="tutorials/line-vase">Line Vase 3D Print</a>
+  <a class="anchor" href="#line-vase-3d-printtutorialsline-vase">#</a>
+</h2>
+<p>Tuning printing parameters to create delicate structures.</p>
+<h1 id="examples">
+  Examples
+  <a class="anchor" href="#examples">#</a>
+</h1>
+<h2 id="sequencing--interactivitysequencing-and-interactivity">
+  <a href="sequencing-and-interactivity">sequencing &amp; interactivity</a>
+  <a class="anchor" href="#sequencing--interactivitysequencing-and-interactivity">#</a>
+</h2>
+<p>making dynamic and interactive sketches using <a href="sequencing-and-interactivity/#sequencing-using-arrays">arrays</a>, <a href="sequencing-and-interactivity/#custom-functions">custom functions</a>, <a href="sequencing-and-interactivity/audio">audio reactivity</a>, <a href="sequencing-and-interactivity/mouse">mouse input</a>, and <a href="sequencing-and-interactivity/midi">MIDI controllers</a>.</p>
+<!-- ## [synth configuration]()
+how to change the [speed](), [bpm](), and [resolution]() of a hydra instance, as well as write custom glsl functions -->
+<h2 id="extending-hydraextending-hydraextending-hydra">
+  <a href="extending-hydra/extending-hydra">extending hydra</a>
+  <a class="anchor" href="#extending-hydraextending-hydraextending-hydra">#</a>
+</h2>
+<p>using hydra with other javascript libraries such as P5.js, Tone.js, strudel. Writing <a href="extending-hydra/glsl">custom GLSL functions</a>, and <a href="extending-hydra/hydra-in-a-webpage">using hydra in your own webpage</a>.</p>
+<h2 id="guidesguides">
+  <a href="guides">guides</a>
+  <a class="anchor" href="#guidesguides">#</a>
+</h2>
+<p>deeper dives into hydra topics written by members of the community.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-gentle-introduction-to-digital-fabricationguidesdfab-intro"><a href="guides/dfab-intro">A Gentle Introduction to Digital Fabrication</a></a></li>
+    <li><a href="#a-gentle-introduction-to-creative-codeguidescc-intro"><a href="guides/cc-intro">A Gentle Introduction to Creative Code</a></a></li>
+    <li><a href="#span-classfabp5fabspan-primerguidesp5fab-primer"><a href="guides/p5fab-primer"><span class="fab">p5.fab</span> Primer</a></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#printing-a-cubetutorialscube-tutorial"><a href="tutorials/cube-tutorial">Printing a cube</a></a></li>
+    <li><a href="#non-planar-3d-printingtutorialsnon-planar"><a href="tutorials/non-planar">Non-Planar 3D Printing</a></a></li>
+    <li><a href="#line-vase-3d-printtutorialsline-vase"><a href="tutorials/line-vase">Line Vase 3D Print</a></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sequencing--interactivitysequencing-and-interactivity"><a href="sequencing-and-interactivity">sequencing &amp; interactivity</a></a></li>
+    <li><a href="#extending-hydraextending-hydraextending-hydra"><a href="extending-hydra/extending-hydra">extending hydra</a></a></li>
+    <li><a href="#guidesguides"><a href="guides">guides</a></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

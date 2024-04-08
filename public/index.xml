@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>p5.fab documentation main page on p5.fab</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in p5.fab documentation main page on p5.fab</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Gentle Introduction to Digital Fabrication</title>
+      <link>http://localhost:1313/docs/resources/guides/dfab-intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/guides/dfab-intro/</guid>
+      <description>A Gentle Introduction to Digital Fabrication # This page provides a brief introduction to some key concepts in digital fabrication. It is by no means exhaustive, but provides helpful background information for newcomers to digital fabrication machines. If you’re already familiar with computer-controlled machines but want to learn a bit about creative coding, check out the creative coding intro, or if you want to learn how to make things with p5.</description>
+    </item>
+    <item>
+      <title>Quickstart</title>
+      <link>http://localhost:1313/docs/quickstart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/quickstart/</guid>
+      <description>p5.fab Quickstart # Here are a couple of ways to get started with p5.fab.&#xA;Online Editor # Using Chrome1, open the online editor. Design your artifact! You can start from one of the examples; try changing some of the values in the sketch to see what happens to the resulting object. Physically connect your computer to your fabrication machine2 with a USB cable and click &amp;lsquo;Connect&amp;rsquo;. Start making! Press &amp;lsquo;Print&amp;rsquo; to start streaming commands to your machine.</description>
+    </item>
+    <item>
+      <title>A Gentle Introduction to Creative Coding with p5.js</title>
+      <link>http://localhost:1313/docs/resources/guides/cc-intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/guides/cc-intro/</guid>
+      <description>A Gentle Introduction to Creative Coding with p5.js # This page provides a brief introduction to some key concepts for creative coding with p5.js. It is by no means exhaustive, but provides helpful background information for newcomers to dicreative code. If you’re already familiar with computer-controlled machines but want to learn a bit about digital fabrication, check out the digital fabrication intro, or if you want to learn how to make things with p5.</description>
+    </item>
+    <item>
+      <title>Machine Compatibility</title>
+      <link>http://localhost:1313/docs/machine-compatibility/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/machine-compatibility/</guid>
+      <description>Machine Compatibility # p5.fab is intended to be used with physical machines! In general, it should work with any machine running Marlin firmware. This is the firmware that many companies (e.g. Creality, Prusa, Ultimaker) use, as well as various custom/open-source machines. For more background on machine firmwares, check out the digital fabrication intro. We&amp;rsquo;ve tested p5.fab on the following machines:&#xA;Machine Info Creality Ender3 3D Printer Prusa i3-mk3 3D Printer FLSUN Q9 Delta 3D Printer Potterbot 9 Ceramic 3D Printer Jubilee Toolchanging Machine While most of these are 3D printers, we are working on extending control to Plotters (like the AxiDraw) and CNC machines (like the Othermill).</description>
+    </item>
+    <item>
+      <title>p5.fab Primer</title>
+      <link>http://localhost:1313/docs/resources/guides/p5fab-primer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/guides/p5fab-primer/</guid>
+      <description>p5.fab Primer # This page provides an introduction to using p5.fab. If you’re new to digital fabrication and/or creative code and want some more context for the information presented here, check out the digital fabrication and creative coding introductions.&#xA;Anatomy of a p5.fab Sketch # p5.fab adds to the default setup() and draw() functions a fabDraw() function. fabDraw() is run once, immediately after setup and before the first draw loop, and is where any code which generates toolpath should go!</description>
+    </item>
+    <item>
+      <title>Cube Tutorial</title>
+      <link>http://localhost:1313/docs/resources/tutorials/cube-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/tutorials/cube-tutorial/</guid>
+      <description>Printing a Cube # Stay tuned! For now, check out the cube example on the online editor.</description>
+    </item>
+    <item>
+      <title>Non-Planar Printing Tutorial</title>
+      <link>http://localhost:1313/docs/resources/tutorials/non-planar-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/tutorials/non-planar-tutorial/</guid>
+      <description>Line Vase Tutorial # Stay tuned! For now, check out the non-planar vase example on the online editor.</description>
+    </item>
+    <item>
+      <title>Line Vase Tutorial</title>
+      <link>http://localhost:1313/docs/resources/tutorials/line-vase-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/tutorials/line-vase-tutorial/</guid>
+      <description>Line Vase Tutorial # Stay tuned! For now, check out the line vase example on the online editor.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/docs/reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/</guid>
+      <description>Reference # Full reference incoming&amp;hellip;</description>
+    </item>
+  </channel>
+</rss>

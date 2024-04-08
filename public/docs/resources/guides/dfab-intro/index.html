@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A Gentle Introduction to Digital Fabrication # This page provides a brief introduction to some key concepts in digital fabrication. It is by no means exhaustive, but provides helpful background information for newcomers to digital fabrication machines. If you’re already familiar with computer-controlled machines but want to learn a bit about creative coding, check out the creative coding intro, or if you want to learn how to make things with p5.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="A Gentle Introduction to Digital Fabrication" />
+<meta property="og:description" content="A Gentle Introduction to Digital Fabrication # This page provides a brief introduction to some key concepts in digital fabrication. It is by no means exhaustive, but provides helpful background information for newcomers to digital fabrication machines. If you’re already familiar with computer-controlled machines but want to learn a bit about creative coding, check out the creative coding intro, or if you want to learn how to make things with p5." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/docs/resources/guides/dfab-intro/" /><meta property="article:section" content="docs" />
+
+
+
+<title>A Gentle Introduction to Digital Fabrication | p5.fab</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/resources/guides/dfab-intro/">
+<link rel="stylesheet" href="/book.min.407d69d0a45364c0178383056043dffb34da6b2423d90861313ca049cea737e1.css" integrity="sha256-QH1p0KRTZMAXg4MFYEPf&#43;zTaayQj2QhhMTygSc6nN&#43;E=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.eeaa966ebb07254112e88bc296fa2695b6d397d00e2bb086b57630ab479c6450.js" integrity="sha256-7qqWbrsHJUES6IvClvomlbbTl9AOK7CGtXYwq0ecZFA=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>p5.fab</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/quickstart/" class="">Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/machine-compatibility/" class="">Machine Compatibility</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/" class="">Resources</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/dfab-intro/" class="active">A Gentle Introduction to Digital Fabrication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/cc-intro/" class="">A Gentle Introduction to Creative Coding with p5.js</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/p5fab-primer/" class="">p5.fab Primer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/tutorials/cube-tutorial/" class="">Cube Tutorial</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/tutorials/non-planar-tutorial/" class="">Non-Planar Printing Tutorial</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/tutorials/line-vase-tutorial/" class="">Line Vase Tutorial</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/" class="">Reference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>A Gentle Introduction to Digital Fabrication</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-gentle-introduction-to-digital-fabrication">A Gentle Introduction to Digital Fabrication</a>
+      <ul>
+        <li><a href="#the-abcs-of-cad-cam--cnc">The ABCs of CAD, CAM, &amp; CNC</a></li>
+        <li><a href="#g-code">G-Code</a></li>
+        <li><a href="#coordinate-systems">Coordinate Systems</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="a-gentle-introduction-to-digital-fabrication">
+  A Gentle Introduction to Digital Fabrication
+  <a class="anchor" href="#a-gentle-introduction-to-digital-fabrication">#</a>
+</h2>
+<p>This page provides a brief introduction to some key concepts in digital fabrication. It is by no means exhaustive, but provides helpful background information for newcomers to digital fabrication machines. If you’re already familiar with computer-controlled machines but want to learn a bit about creative coding, check out the <a href="../cc-intro">creative coding intro</a>, or if you want to learn how to make things with <span class="fab">p5.fab</span>, jump ahead to the <a href="../p5fab-primer">primer</a>.</p>
+<!-- ### Historical Context -->
+<!-- Maybe I'll add this later -->
+<h3 id="the-abcs-of-cad-cam--cnc">
+  The ABCs of CAD, CAM, &amp; CNC
+  <a class="anchor" href="#the-abcs-of-cad-cam--cnc">#</a>
+</h3>
+<p>Digital fabrication is the process of using computer-controlled machines to create physical objects. This process might be additive (e.g. 3D printing), subtractive (e.g. milling, laser cutting), or something else entirely (e.g. using a liquid handling robot for science experiments). Typically, we would follow the following steps to make an object:</p>
+<ol>
+<li><strong>Design a model.</strong> Using computer-aided design (CAD) software, we first need to design the object we want to make. There are lots of different CAD softwares; popular options include Rhino, Fusion360, FreeCAD, and TinkerCAD. There are also websites where makers can share premade models, like <a href="https://www.thingiverse.com/">Thingiverse</a> for 3D printing.</li>
+<li><strong>Choose fabrication settings.</strong> Computer-aided manufacturing (CAM) software is used to plan the machines toolpaths&ndash;or the path the machine will take as it moves through space&ndash;based on the model. For 3D printing, this is called the &lsquo;slicer&rsquo; since the model is divided into a series of flat, 2D contours which are stacked vertically. In the CAM software, we can choose a bunch of different settings depending on the machine we&rsquo;re using. For a 3D printer we can set how fast the machine should move and at what temperature should be set to melt the plastic; for a laser cutter, we can set the power of the laser.</li>
+<li><strong>Run the machine.</strong> The CAM software will generate instructions for the computer-numeric control (CNC) machine.</li>
+</ol>
+<p>This process is incredibly powerful for a lot of use cases! There are a some drawbacks, though, which motivate the design of <span class="fab">p5.fab</span>. It&rsquo;s hard to experiment creatively with different settings, since existing software assumes you want to precicely replicate the same thing many times. If you want to change a model, you need to return back to your CAD software and start again. And it requires owning and learning CAD software. <span class="fab">p5.fab</span> tries to offer an alternate entry point into digital fabrication by way of creative coding, integrating toolpath design and machine execution into a single environment.</p>
+<h3 id="g-code">
+  G-Code
+  <a class="anchor" href="#g-code">#</a>
+</h3>
+<p>G-Code (or ‘geometry code’) is the standard language used by CNC machines<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. We can use G-Code to move the machine around! By default, the machine will use millimeter for its units. To move to the (x, y, z) position (100mm, 50mm, 200mm) using G-Code, we can use the command:</p>
+<p><code>G1 X100 Y50 Z200 ; move the the position (100, 50, 200)</code></p>
+<p>where G1 is the command for a ‘linear move’. Everything after the semicolon is a comment and is ignored by the machine. We could also set a speed to move at using an <code>F</code> parameter:</p>
+<pre tabindex="0"><code>G1 X100 Y50 Z200 F6000 ; move the the position (100, 50, 200)
+                       ; at a speed of 6000 mm/min`
+</code></pre><p>The <code>F</code> parameter sets the feedrate, or speed, to move. Of course, these settings are subject to the physical realities. If your machine is only 300mm tall, then sending a <code>G1 Z500</code> will only move to a height of 300. Similarly, the machine might not be able to move as fast as you tell it to. G-Code is used in tandem with M-Codes (or ‘miscellaneous codes’) which control non-movement related functions. For example, the command <code>M203</code> will set the maximum speed which each axis can move.</p>
+<p>Different machines might use slightly different sets (or &lsquo;flavors&rsquo;) of GCode. This depends on the control board which the machine uses (which turns G-Code commands into machine movements) and the firmware which the control board uses. <span class="fab">p5.fab</span> works with any machine running <a href="https://marlinfw.org">Marlin firmware</a>. This is the firmware that many companies (e.g. Creality, Prusa, Ultimaker) use on their machines, as well as various custom/open-source machines. For a complete list of G and M Codes supported on Marline, check out the <a href="https://marlinfw.org/meta/gcode/">G-Code Dictionary</a>.</p>
+<p>Already, you might see how tedious it would be to plan movements using GCode directly. <span class="fab">p5.fab</span> lets you use Javascript code to build up many commands.</p>
+<h3 id="coordinate-systems">
+  Coordinate Systems
+  <a class="anchor" href="#coordinate-systems">#</a>
+</h3>
+<p>To send the machine to a position to move to, the machine has to know where it is. This is accomplished by ‘homing’ the machine when you first power it on. Most machines have 3 dimensional axes (X, Y, &amp; Z). Other machines might have more; a 3D printer also has an extruder, or E axis which tracks how much filament is being extruded.</p>
+<p>Our G-Code movement commands can be interpreted as absolute or relative moves by the machine. In absolute positioning mode, the machine will move relative to the origin. In relative positioning mode, the machine will move relative to its last position. We can change our positioning mode using G-Codes: <code>G90</code> to use absolute positions and <code>G91</code> for relative. For example, say we start at the origin (0,0,0). Consider the following move commands:</p>
+<pre tabindex="0"><code>; to start, we are at the origin (0,0,0)
+G90              ; use absolute positioning
+G1 X100 Y50 Z200 ; move to the absolute position (100, 50, 200)
+G91              ; use relative positioning
+G1 X100          ; move 100mm in X relative to the last position
+</code></pre><p>In this example, the machine will end up at the position (200, 50, 200). Note that all subsequent commands will be in relative mode unless we explicitly return to absolute mode with a <code>G90</code> command.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>There are others, too! These are often machine-specific. For example, the popular AxiDraw pen plotter uses the <a href="https://evil-mad.github.io/EggBot/ebb.html">EBB</a> command set, or the ShopBot CNC machines uses <a href="https://www.shopbottools.com/ShopBotDocs/files/ComRef.pdf">SBP</a> codes.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-gentle-introduction-to-digital-fabrication">A Gentle Introduction to Digital Fabrication</a>
+      <ul>
+        <li><a href="#the-abcs-of-cad-cam--cnc">The ABCs of CAD, CAM, &amp; CNC</a></li>
+        <li><a href="#g-code">G-Code</a></li>
+        <li><a href="#coordinate-systems">Coordinate Systems</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

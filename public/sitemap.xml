@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/docs/resources/guides/dfab-intro/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/quickstart/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/resources/guides/cc-intro/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/machine-compatibility/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/resources/guides/p5fab-primer/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/resources/tutorials/cube-tutorial/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/resources/tutorials/non-planar-tutorial/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/resources/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/resources/tutorials/line-vase-tutorial/</loc>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-03-04T15:58:36-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+  </url>
+</urlset>

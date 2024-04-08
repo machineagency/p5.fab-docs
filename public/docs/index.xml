@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on p5.fab</title>
+    <link>http://localhost:1313/docs/</link>
+    <description>Recent content in Docs on p5.fab</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quickstart</title>
+      <link>http://localhost:1313/docs/quickstart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/quickstart/</guid>
+      <description>p5.fab Quickstart # Here are a couple of ways to get started with p5.fab.&#xA;Online Editor # Using Chrome1, open the online editor. Design your artifact! You can start from one of the examples; try changing some of the values in the sketch to see what happens to the resulting object. Physically connect your computer to your fabrication machine2 with a USB cable and click &amp;lsquo;Connect&amp;rsquo;. Start making! Press &amp;lsquo;Print&amp;rsquo; to start streaming commands to your machine.</description>
+    </item>
+    <item>
+      <title>Machine Compatibility</title>
+      <link>http://localhost:1313/docs/machine-compatibility/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/machine-compatibility/</guid>
+      <description>Machine Compatibility # p5.fab is intended to be used with physical machines! In general, it should work with any machine running Marlin firmware. This is the firmware that many companies (e.g. Creality, Prusa, Ultimaker) use, as well as various custom/open-source machines. For more background on machine firmwares, check out the digital fabrication intro. We&amp;rsquo;ve tested p5.fab on the following machines:&#xA;Machine Info Creality Ender3 3D Printer Prusa i3-mk3 3D Printer FLSUN Q9 Delta 3D Printer Potterbot 9 Ceramic 3D Printer Jubilee Toolchanging Machine While most of these are 3D printers, we are working on extending control to Plotters (like the AxiDraw) and CNC machines (like the Othermill).</description>
+    </item>
+  </channel>
+</rss>

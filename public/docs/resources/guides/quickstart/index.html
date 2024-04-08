@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="p5.fab Quickstart # Here are a couple of ways to get started with p5.fab.
+Online Editor # Using Chrome1, open the online editor. Design your artifact! You can start from one of the examples; try changing some of the values in the sketch to see what happens to the resulting object. Physically connect your computer to your fabrication machine2 with a USB cable and click &lsquo;Connect&rsquo;. Start making! Press &lsquo;Print&rsquo; to start streaming commands to your machine.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Quickstart" />
+<meta property="og:description" content="p5.fab Quickstart # Here are a couple of ways to get started with p5.fab.
+Online Editor # Using Chrome1, open the online editor. Design your artifact! You can start from one of the examples; try changing some of the values in the sketch to see what happens to the resulting object. Physically connect your computer to your fabrication machine2 with a USB cable and click &lsquo;Connect&rsquo;. Start making! Press &lsquo;Print&rsquo; to start streaming commands to your machine." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/docs/resources/guides/quickstart/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Quickstart | p5.fab</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/resources/guides/quickstart/">
+<link rel="stylesheet" href="/book.min.ab37fbb54a81dd231ed03be6b8c7c310de847082d5c5202366e97c46b1695a02.css" integrity="sha256-qzf7tUqB3SMe0DvmuMfDEN6EcILVxSAjZul8RrFpWgI=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.bd590898889ff3787158edc69eb643f548e2453147e6935aacdfe8ca50966697.js" integrity="sha256-vVkImIif83hxWO3GnrZD9UjiRTFH5pNarN/oylCWZpc=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>p5.fab</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/quickstart/" class="">Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/machine-compatibility/" class="">Machine Compatibility</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/" class="">Resources</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/cc-intro/" class="">Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/dfab-intro/" class="">Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/guides/quickstart/" class="active">Quickstart</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Quickstart</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#span-classfabp5fabspan-quickstart"><span class="fab">p5.fab</span> Quickstart</a>
+      <ul>
+        <li><a href="#online-editor">Online Editor</a></li>
+        <li><a href="#alternative-option-local-installation">Alternative Option: Local Installation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="span-classfabp5fabspan-quickstart">
+  <span class="fab">p5.fab</span> Quickstart
+  <a class="anchor" href="#span-classfabp5fabspan-quickstart">#</a>
+</h2>
+<p>Here are a couple of ways to get started with <span class="fab">p5.fab</span>.</p>
+<h3 id="online-editor">
+  Online Editor
+  <a class="anchor" href="#online-editor">#</a>
+</h3>
+<ol>
+<li>Using Chrome<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, open the <a href="https://machineagency.github.io/p5.fab/editor/index.html">online editor</a>.</li>
+<li>Design your artifact! You can start from one of the examples; try changing some of the values in the sketch to see what happens to the resulting object.</li>
+<li>Physically connect your computer to your fabrication machine<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> with a USB cable and click &lsquo;Connect&rsquo;.</li>
+<li>Start making! Press &lsquo;Print&rsquo; to start streaming commands to your machine. Be sure to keep an eye out for anything that goes wrong; there&rsquo;s no guarantee that your code will &lsquo;work&rsquo; in any conventional sense, but that&rsquo;s part of the fun!</li>
+</ol>
+<h3 id="alternative-option-local-installation">
+  Alternative Option: Local Installation
+  <a class="anchor" href="#alternative-option-local-installation">#</a>
+</h3>
+<p>If you&rsquo;d like to use your preferred code editor while using <span class='fab'>p5.fab</span>:</p>
+<ol>
+<li>
+<p>Download the <a href="https://github.com/machineagency/p5.fab/blob/main/lib/p5.fab.js">p5.fab.js library file</a> and add the path to the <code>&lt;head&gt;</code> tag of your <code>index.html</code> file:</p>
+<p><code>&lt;script src=&quot;p5.fab.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>You should also add it&rsquo;s dependencies, the p5.js library and the webserial communication:</p>
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/p5-webserial@0.1.1/build/p5.webserial.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>Run a local server; this is required for communicating between the machine and your computer. See <a href="https://github.com/processing/p5.js/wiki/Local-server">this guide</a> for details on how to do this!</p>
+</li>
+<li>
+<p>Open your sketch in Chrome<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> and start making!</p>
+</li>
+</ol>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>We use serial communication to communicate with the machine; Chrome is the only browser which supports <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API">WebSerial</a>, which let&rsquo;s us get up and running even quicker!&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Check out the <a href="docs/machine-compatibility.md">Machine Compatability Page</a> for more information on what machines are currently supported.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#span-classfabp5fabspan-quickstart"><span class="fab">p5.fab</span> Quickstart</a>
+      <ul>
+        <li><a href="#online-editor">Online Editor</a></li>
+        <li><a href="#alternative-option-local-installation">Alternative Option: Local Installation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
