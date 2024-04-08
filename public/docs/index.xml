@@ -21,5 +21,12 @@
       <guid>http://localhost:1313/docs/machine-compatibility/</guid>
       <description>Machine Compatibility # p5.fab is intended to be used with physical machines! In general, it should work with any machine running Marlin firmware. This is the firmware that many companies (e.g. Creality, Prusa, Ultimaker) use, as well as various custom/open-source machines. For more background on machine firmwares, check out the digital fabrication intro. We&amp;rsquo;ve tested p5.fab on the following machines:&#xA;Machine Info Creality Ender3 3D Printer Prusa i3-mk3 3D Printer FLSUN Q9 Delta 3D Printer Potterbot 9 Ceramic 3D Printer Jubilee Toolchanging Machine While most of these are 3D printers, we are working on extending control to Plotters (like the AxiDraw) and CNC machines (like the Othermill).</description>
     </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/docs/reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/</guid>
+      <description>Reference # Full reference incoming&amp;hellip;</description>
+    </item>
   </channel>
 </rss>

@@ -5,7 +5,7 @@ draft = false
 +++
 
 <h1>Welcome to the <span class="fab">p5.fab</span> Docs!</h1>
-<img src="./images/teaser.jpg" width="75%">
+<img src="./images/teaser.jpg" width="100%">
 
 
 ## What is <span class="fab">p5.fab</span>?
