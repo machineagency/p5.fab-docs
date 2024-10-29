@@ -25,7 +25,7 @@ Parameters # config: a json object specifying requisite machine information auto
 <link rel="canonical" href="http://localhost:1313/docs/reference/">
 <link rel="stylesheet" href="/book.min.407d69d0a45364c0178383056043dffb34da6b2423d90861313ca049cea737e1.css" integrity="sha256-QH1p0KRTZMAXg4MFYEPf&#43;zTaayQj2QhhMTygSc6nN&#43;E=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.13115b1c563b615482806aa6fff9aa2366b06f9c34789e34bcccda444b8c7825.js" integrity="sha256-ExFbHFY7YVSCgGqm//mqI2awb5w0eJ40vMzaREuMeCU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b726de4a7cd71eac112295f5b0dda153259418c24b72f8010adbac418098455f.js" integrity="sha256-tybeSnzXHqwRIpX1sN2hUyWUGMJLcvgBCtusQYCYRV8=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -320,30 +320,30 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#move">move</a>
       <ul>
         <li><a href="#syntax-10">Syntax</a></li>
+        <li><a href="#parameters-10">Parameters</a></li>
       </ul>
     </li>
     <li><a href="#movex">moveX</a>
       <ul>
         <li><a href="#syntax-11">Syntax</a></li>
-        <li><a href="#parameters-10">Parameters</a></li>
+        <li><a href="#parameters-11">Parameters</a></li>
       </ul>
     </li>
     <li><a href="#movey">moveY</a>
       <ul>
         <li><a href="#syntax-12">Syntax</a></li>
-        <li><a href="#parameters-11">Parameters</a></li>
+        <li><a href="#parameters-12">Parameters</a></li>
       </ul>
     </li>
     <li><a href="#movez">moveZ</a>
       <ul>
         <li><a href="#syntax-13">Syntax</a></li>
-        <li><a href="#parameters-12">Parameters</a></li>
+        <li><a href="#parameters-13">Parameters</a></li>
       </ul>
     </li>
     <li><a href="#movee">moveE</a>
       <ul>
         <li><a href="#syntax-14">Syntax</a></li>
-        <li><a href="#parameters-13">Parameters</a></li>
         <li><a href="#parameters-14">Parameters</a></li>
       </ul>
     </li>
@@ -399,6 +399,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>config: a json object specifying requisite machine information</li>
 </ul>
+<hr>
 <h2 id="autohome">
   autoHome
   <a class="anchor" href="#autohome">#</a>
@@ -414,6 +415,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#parameters-1">#</a>
 </h3>
 <p>None</p>
+<hr>
 <h2 id="setnozzlet">
   setNozzleT
   <a class="anchor" href="#setnozzlet">#</a>
@@ -433,6 +435,7 @@ https://github.com/alex-shpak/hugo-book
 <li>temperature: Number, the temperature to heat the nozzle to in degrees Celcius</li>
 <li>wait: Boolean, optional parameter to wait for the target temperature to be reached before proceeding. True by default.</li>
 </ul>
+<hr>
 <h2 id="setbedt">
   setBedT
   <a class="anchor" href="#setbedt">#</a>
@@ -452,6 +455,7 @@ https://github.com/alex-shpak/hugo-book
 <li>temperature: Number, the temperature to heat the bed to in degrees Celcius</li>
 <li>wait: Boolean, optional parameter to wait for the target temperature to be reached before proceeding. True by default.</li>
 </ul>
+<hr>
 <h2 id="settemps">
   setTemps
   <a class="anchor" href="#settemps">#</a>
@@ -472,6 +476,7 @@ https://github.com/alex-shpak/hugo-book
 <li>bedTemperature: Number, the temperature to heat the bed to in degrees Celcius</li>
 <li>wait: Boolean, optional parameter to wait for the target temperature to be reached before proceeding. True by default.</li>
 </ul>
+<hr>
 <h2 id="moveto">
   moveTo
   <a class="anchor" href="#moveto">#</a>
@@ -492,6 +497,7 @@ https://github.com/alex-shpak/hugo-book
 <li>z: Number, the z position to move to (in current units, mm by default)</li>
 <li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
 </ul>
+<hr>
 <h2 id="movetox">
   moveToX
   <a class="anchor" href="#movetox">#</a>
@@ -510,6 +516,7 @@ https://github.com/alex-shpak/hugo-book
 <li>x: Number, the x position to move to (in current units, mm by default)</li>
 <li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
 </ul>
+<hr>
 <h2 id="movetoy">
   moveToY
   <a class="anchor" href="#movetoy">#</a>
@@ -528,6 +535,7 @@ https://github.com/alex-shpak/hugo-book
 <li>y: Number, the y position to move to (in current units, mm by default)</li>
 <li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
 </ul>
+<hr>
 <h2 id="movetoz">
   moveToZ
   <a class="anchor" href="#movetoz">#</a>
@@ -546,6 +554,7 @@ https://github.com/alex-shpak/hugo-book
 <li>z: Number, the z position to move to (in current units, mm by default)</li>
 <li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
 </ul>
+<hr>
 <h2 id="movetoe">
   moveToE
   <a class="anchor" href="#movetoe">#</a>
@@ -564,6 +573,7 @@ https://github.com/alex-shpak/hugo-book
 <li>e: Number, the e position to move to (in current units, mm by default)</li>
 <li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
 </ul>
+<hr>
 <h2 id="move">
   move
   <a class="anchor" href="#move">#</a>
@@ -574,6 +584,17 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#syntax-10">#</a>
 </h3>
 <p><code>fab.move(dx, dy, dz, [velocity])</code></p>
+<h3 id="parameters-10">
+  Parameters
+  <a class="anchor" href="#parameters-10">#</a>
+</h3>
+<ul>
+<li>dx: Number, the relative x distance to move (in current units, mm by default)</li>
+<li>dy: Number, the relative y distance to move (in current units, mm by default)</li>
+<li>dz: Number, the relative z distance to move (in current units, mm by default)</li>
+<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
+</ul>
+<hr>
 <h2 id="movex">
   moveX
   <a class="anchor" href="#movex">#</a>
@@ -584,13 +605,20 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#syntax-11">#</a>
 </h3>
 <p><code>fab.moveX(dx, [velocity])</code></p>
-<h3 id="parameters-10">
+<h3 id="parameters-11">
   Parameters
-  <a class="anchor" href="#parameters-10">#</a>
+  <a class="anchor" href="#parameters-11">#</a>
 </h3>
 <ul>
-<li>dx: Number, the relative x distance to move (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
+<li>
+<p>dx: Number, the relative x distance to move (in current units, mm by default)</p>
+</li>
+<li>
+<p>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</p>
+</li>
+<li>
+<p>dx: Number, the relative x distance to move (in current units, mm by default)</p>
+</li>
 </ul>
 <h2 id="movey">
   moveY
@@ -602,14 +630,15 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#syntax-12">#</a>
 </h3>
 <p><code>fab.moveY(dy, [velocity])</code></p>
-<h3 id="parameters-11">
+<h3 id="parameters-12">
   Parameters
-  <a class="anchor" href="#parameters-11">#</a>
+  <a class="anchor" href="#parameters-12">#</a>
 </h3>
 <ul>
 <li>dy: Number, the relative y distance to move (in current units, mm by default)</li>
 <li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
 </ul>
+<hr>
 <h2 id="movez">
   moveZ
   <a class="anchor" href="#movez">#</a>
@@ -620,14 +649,15 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#syntax-13">#</a>
 </h3>
 <p><code>fab.moveZ(dz, [velocity])</code></p>
-<h3 id="parameters-12">
+<h3 id="parameters-13">
   Parameters
-  <a class="anchor" href="#parameters-12">#</a>
+  <a class="anchor" href="#parameters-13">#</a>
 </h3>
 <ul>
 <li>dz: Number, the relative z distance to move (in current units, mm by default)</li>
 <li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
 </ul>
+<hr>
 <h2 id="movee">
   moveE
   <a class="anchor" href="#movee">#</a>
@@ -638,24 +668,15 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#syntax-14">#</a>
 </h3>
 <p><code>fab.moveE(de, [velocity])</code></p>
-<h3 id="parameters-13">
-  Parameters
-  <a class="anchor" href="#parameters-13">#</a>
-</h3>
-<ul>
-<li>de: Number, the relative e distance to move (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
 <h3 id="parameters-14">
   Parameters
   <a class="anchor" href="#parameters-14">#</a>
 </h3>
 <ul>
-<li>dx: Number, the relative x distance to move(in current units, mm by default)</li>
-<li>dy: Number, the relative y position to move (in current units, mm by default)</li>
-<li>dz: Number, the relative z position to move (in current units, mm by default)</li>
-<li>x: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
+<li>de: Number, the relative e distance to move (in current units, mm by default)</li>
+<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
 </ul>
+<hr>
 <h2 id="travelto">
   travelTo
   <a class="anchor" href="#travelto">#</a>
@@ -677,6 +698,7 @@ https://github.com/alex-shpak/hugo-book
 <li>z: Number, the z position to move to (in current units, mm by default)</li>
 <li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
 </ul>
+<hr>
 <h2 id="moveextrude">
   moveExtrude
   <a class="anchor" href="#moveextrude">#</a>
@@ -699,6 +721,7 @@ https://github.com/alex-shpak/hugo-book
 <li>extrusion:  Number, optional. Interpreted as either (a) the total amount of filament to be deposited over the move, or (b) a multiplication value to modify default caluclations, depending on value of <code>[multiplication]</code> parameter</li>
 <li>multiplication: Boolean, optional. If true, <code>extrusion</code> value is used as a multiplication modifier to default extrusion calculation. If fase, <code>extrusion</code> value is used a total amount of filament to deposit in mm. False by default.</li>
 </ul>
+<hr>
 </article>
  
       
@@ -803,30 +826,30 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#move">move</a>
       <ul>
         <li><a href="#syntax-10">Syntax</a></li>
+        <li><a href="#parameters-10">Parameters</a></li>
       </ul>
     </li>
     <li><a href="#movex">moveX</a>
       <ul>
         <li><a href="#syntax-11">Syntax</a></li>
-        <li><a href="#parameters-10">Parameters</a></li>
+        <li><a href="#parameters-11">Parameters</a></li>
       </ul>
     </li>
     <li><a href="#movey">moveY</a>
       <ul>
         <li><a href="#syntax-12">Syntax</a></li>
-        <li><a href="#parameters-11">Parameters</a></li>
+        <li><a href="#parameters-12">Parameters</a></li>
       </ul>
     </li>
     <li><a href="#movez">moveZ</a>
       <ul>
         <li><a href="#syntax-13">Syntax</a></li>
-        <li><a href="#parameters-12">Parameters</a></li>
+        <li><a href="#parameters-13">Parameters</a></li>
       </ul>
     </li>
     <li><a href="#movee">moveE</a>
       <ul>
         <li><a href="#syntax-14">Syntax</a></li>
-        <li><a href="#parameters-13">Parameters</a></li>
         <li><a href="#parameters-14">Parameters</a></li>
       </ul>
     </li>

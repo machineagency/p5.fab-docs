@@ -69,7 +69,7 @@
       <link>http://localhost:1313/docs/reference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/reference/</guid>
-      <description>Reference # Full reference incoming&amp;hellip;</description>
+      <description>Reference # Fab # A class to describe a fabrication machine.&#xA;A fab object represents a 3D printer. It is comprised of the following information:&#xA;workEnvelope: maximum X, Y, and Z dimensions of the machine nozzleDiameter: Diameter of the nozzle in mm filamentDiameter: Diameter of filament in mm name: a human readable string to identify this machine Syntax # fab([config])&#xA;Parameters # config: a json object specifying requisite machine information autoHome # Autohome the machine (with a G28 command) and zero the extruder position (with a G92 E0 command).</description>
     </item>
   </channel>
 </rss>
