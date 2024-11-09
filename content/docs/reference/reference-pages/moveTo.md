@@ -1,5 +1,5 @@
 ---
-title: "Move To"
+title: "MoveTo"
 bookHidden: true
 ---
 
