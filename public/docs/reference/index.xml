@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>p5.fab</title>
+    <link>http://localhost:1313/docs/reference/</link>
+    <description>Recent content on p5.fab</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/reference/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Autohome</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/autohome/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/autohome/</guid>
+      <description>autoHome() Autohome the machine (with a G28 command) and zero the extruder position (with a G92 E0 command). Syntax # fab.autoHome() Parameters # None</description>
+    </item>
+    <item>
+      <title>Fab</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/fab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/fab/</guid>
+      <description> Fab # A class to describe a fabrication machine.&#xA;A fab object represents a 3D printer. It is comprised of the following information:&#xA;workEnvelope: maximum X, Y, and Z dimensions of the machine nozzleDiameter: Diameter of the nozzle in mm filamentDiameter: Diameter of filament in mm name: a human readable string to identify this machine Syntax # fab([config])&#xA;Parameters # config: a json object specifying requisite machine information </description>
+    </item>
+    <item>
+      <title>Move</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/move/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/move/</guid>
+      <description>move() Move relative to the current position without extruding material. Syntax # fab.move(dx, dy, dz, [velocity]) Parameters # dx Number, the relative x distance to move (in current units, mm by default) dy Number, the relative y distance to move (in current units, mm by default) dz Number, the relative z distance to move (in current units, mm by default) velocity v: Number, optional, the speed to move at (in current units/sec, inherited or 25 mm/sec by default) </description>
+    </item>
+    <item>
+      <title>Move Extrude</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/moveextrude/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/moveextrude/</guid>
+      <description>moveExtrude() Move directly to an absolute (x,y,z) position while extruding material. Default extrusion amounts are calculated if not specified. Syntax # fab.moveExtrude(x, y, z, [velocity], [extrusion], [multiplication]) Parameters # x Number, the x position to move to (in current units, mm by default) y Number, the y position to move to (in current units, mm by default) z Number, the z position to move to (in current units, mm by default) v v: Number, optional.</description>
+    </item>
+    <item>
+      <title>Move To</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/moveto/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/moveto/</guid>
+      <description>moveTo() Move directly to an absolute (x,y,z) position without extruding material. Syntax # fab.moveTo(x, y, z, [velocity]) Parameters # x Number, the x position to move to (in current units, mm by default) y y: Number, the y position to move to (in current units, mm by default) z Number, the z position to move to (in current units, mm by default) v v: Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) </description>
+    </item>
+    <item>
+      <title>Move To E</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/movetoe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/movetoe/</guid>
+      <description>moveToE() Move directly to an absolute E position. Syntax # fab.moveToE(e, [velocity]) Parameters # e e: Number, the e position to move to (in current units, mm by default) v v: Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) - e: Number, the e position to move to (in current units, mm by default) - v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</description>
+    </item>
+    <item>
+      <title>Move To X</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/movetox/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/movetox/</guid>
+      <description>moveToX() Move directly to an absolute X position without extruding material. Syntax # fab.moveToX(x, [velocity]) Parameters # x Number, the x position to move to (in current units, mm by default) v v: Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) </description>
+    </item>
+    <item>
+      <title>Move To X</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/movex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/movex/</guid>
+      <description>moveX() Move in X relative to the current position without extruding material. Syntax # fab.moveX(dx, [velocity]) Parameters # dx Number, the relative x distance to move (in current units, mm by default) v v: Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) </description>
+    </item>
+    <item>
+      <title>Move To Y</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/movetoy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/movetoy/</guid>
+      <description>moveToY() Move directly to an absolute Y position without extruding material. Syntax # fab.moveToY(y, [velocity]) Parameters # y Number, the y position to move to (in current units, mm by default) v v: Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) </description>
+    </item>
+    <item>
+      <title>Move Y</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/movey/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/movey/</guid>
+      <description>moveY() Move in Y relative to the current position without extruding material. Syntax # fab.moveY(dy, [velocity]) Parameters # dy Number, the relative y distance to move (in current units, mm by default) v v: Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) </description>
+    </item>
+    <item>
+      <title>moveE</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/movee/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/movee/</guid>
+      <description>moveE() Move in E relative to the current position. Syntax # fab.moveE(de, [velocity]) Parameters # de Number, the relative e distance to move (in current units, mm by default) v Number, optional, the speed to move at (in current units/sec, inherited or 25 mm/sec by default) </description>
+    </item>
+    <item>
+      <title>MoveToZ</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/movetoz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/movetoz/</guid>
+      <description>moveToZ() Move directly to an absolute Z position without extruding material. Syntax # fab.moveToZ(z, [velocity]) Parameters # z Number, the z position to move to (in current units, mm by default) v v: Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) </description>
+    </item>
+    <item>
+      <title>MoveZ</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/movez/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/movez/</guid>
+      <description>moveZ() Move in Z relative to the current position without extruding material. Syntax # fab.moveZ(dz, [velocity]) Parameters # dz Number, the relative z distance to move (in current units, mm by default) v v: Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) </description>
+    </item>
+    <item>
+      <title>Set Absolute Position</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/setabsoluteposition/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/setabsoluteposition/</guid>
+      <description>setAbsolutePosition() Set coordinates to absolute positioning, relative to the origin of the machine (using a G90 command). Note that G90 behaviour differs depending on firmware. For example, Marlin will set the extruder to absolute position as well, whereas Duet does not. To set absolute/relative position of dimensional and extruder positions independently, see setAbsolutePositionXYZ(), setRelativePositionXYZ(), setEAbsolute(), &amp;amp; setERelative().&#xA;Syntax # fab.setAbsolutePosition() Parameters # None</description>
+    </item>
+    <item>
+      <title>Set Absolute Position XYZ</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/setabsolutepositionxyz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/setabsolutepositionxyz/</guid>
+      <description>setAbsolutePositionXYZ() Set X/Y/Z axes to absolute position, relative to the origin of the machine, without changing the extruder positioning mode. Syntax # fab.setAbsolutePositionXYZ() Parameters # None</description>
+    </item>
+    <item>
+      <title>Set Bed Temp</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/setbedt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/setbedt/</guid>
+      <description>setBedT() Set the printer&#39;s bed temperature. By default, this command will wait for the nozzle temperature to reach the target temperature. Most firmware won&amp;rsquo;t wait for temperatures less than 40C since they will never be reached due to ambient temperature.&#xA;Syntax # fab.setBedT(temperature, [wait]) Parameters # temperature Number, the temperature to heat the bed to in degrees Celcius wait Boolean, optional, parameter to wait for the target temperature to be reached before proceeding.</description>
+    </item>
+    <item>
+      <title>Set E Absolute</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/seteabsolute/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/seteabsolute/</guid>
+      <description>setEAbsolute() Set extruder axis to use absolute position, relative to the origin, without changing the dimensional axes positioning mode. Syntax # fab.setEAbsolute() Parameters # None</description>
+    </item>
+    <item>
+      <title>Set E Relative</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/seterelative/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/seterelative/</guid>
+      <description>setERelative() Set extruder axis to use relative position without changing the dimensional axes positioning mode. Syntax # fab.setERelative() Parameters # None</description>
+    </item>
+    <item>
+      <title>Set Nozzle Temp</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/setnozzlet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/setnozzlet/</guid>
+      <description>setNozzleT() Set the printer&#39;s nozzle temperature. By default, this command will wait for the nozzle temperature to reach the target temperature. Most firmware won&amp;rsquo;t wait for temperatures less than 40C since they will never be reached due to ambient temperature.&#xA;Syntax # fab.setNozzleT(temperature, [wait]) Parameters # temperature Number, the temperature to heat the nozzle to in degrees Celcius wait Boolean, optional, parameter to wait for the target temperature to be reached before proceeding.</description>
+    </item>
+    <item>
+      <title>Set Temps</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/settemps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/settemps/</guid>
+      <description>setTemps() Set the printer nozzle and bed temperature at the same time. By default, this command will wait for the temperatures to reach the target temperature. This command is faster than setting the nozzle and bed temperatures independently, as both will heat simultaneously. Most firmware won&amp;rsquo;t wait for temperatures less than 40C since they will never be reached due to ambient temperature.&#xA;Syntax # fab.setTemps(nozzleTemperature, bedTemperature, [wait]) Parameters # nozzleTemperature Number, the temperature to heat the nozzle to in degrees Celcius bedTemperature Number, the temperature to heat the bed to in degrees Celcius wait Boolean, optional parameter to wait for the target temperature to be reached before proceeding.</description>
+    </item>
+    <item>
+      <title>Travel To</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/travelto/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/travelto/</guid>
+      <description>travelTo() Travel directly to an absolute (x,y,z) position with a z-hop (popping the nozzle away from the bed before moving, and restoring z position upon arrival), without extruding material. The hop distance is set in the current working units, and is 2mm by default. Edit this value in the printer configuration.&#xA;Syntax # fab.travelTo(x, y, z, [velocity]) Parameters # x Number, the x position to move to (in current units, mm by default) y y: Number, the y position to move to (in current units, mm by default) z Number, the z position to move to (in current units, mm by default) v v: Number, optional.</description>
+    </item>
+  </channel>
+</rss>

@@ -60,6 +60,63 @@ h2, h3 {
     text-decoration-color: #FF6700;
     text-decoration-thickness: 3px;
 }
+
 .fab {
-    font-family: 'IBMPlexMono', sans-serif;
+    font-family: 'IBMPlexMono', monospace;
 }
+
+.ref-header {
+    font-family: 'IBMPlexMono', monospace;
+    color: black;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+.ref-item {
+    font-family: 'IBMPlexMono', monospace;
+    color: black;
+    font-size: 1em;
+}
+.ref-info {
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-size: 0.9em;
+}
+
+// Overwrite some of the Hugo Book theme styles
+.markdown a {
+    color:black;
+}
+
+.markdown a:visited{
+    color:black;
+}
+
+.markdown a:hover {
+    background-color: #FF6700;
+}
+
+td {
+    width: 30%;
+    vertical-align: top;
+}
+
+.markdown table tr td {
+    padding: 1rem 4rem 4rem 0rem;
+    border: none;
+}
+
+.markdown table tr:nth-child(2n) {
+    background: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 0.75rem 0;
+  }
+
+.grid-item {
+    height: auto;
+}
+

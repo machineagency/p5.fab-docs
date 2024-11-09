@@ -3,29 +3,31 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Reference # Fab # A class to describe a fabrication machine.
-A fab object represents a 3D printer. It is comprised of the following information:
-workEnvelope: maximum X, Y, and Z dimensions of the machine nozzleDiameter: Diameter of the nozzle in mm filamentDiameter: Diameter of filament in mm name: a human readable string to identify this machine Syntax # fab([config])
-Parameters # config: a json object specifying requisite machine information autoHome # Autohome the machine (with a G28 command) and zero the extruder position (with a G92 E0 command).">
+<meta name="description" content="Reference # Fab # Path Commands # moveTo()
+Move to a point. moveToX()
+Move to an X position. moveToY()
+Move to a Y position. moveToZ()
+Move to a Z position. moveToE()
+Move to a E position. move()
+Move relative to current position in x, y, and z. moveX()
+Move relative to current position in X. moveY()
+Move relative to current position in Y. moveZ()
+Move relative to current position in Z.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="Reference # Fab # A class to describe a fabrication machine.
-A fab object represents a 3D printer. It is comprised of the following information:
-workEnvelope: maximum X, Y, and Z dimensions of the machine nozzleDiameter: Diameter of the nozzle in mm filamentDiameter: Diameter of filament in mm name: a human readable string to identify this machine Syntax # fab([config])
-Parameters # config: a json object specifying requisite machine information autoHome # Autohome the machine (with a G28 command) and zero the extruder position (with a G92 E0 command)." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/docs/reference/" /><meta property="article:section" content="docs" />
-
-
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/docs/reference/" />
 
 <title>Reference | p5.fab</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="canonical" href="http://localhost:1313/docs/reference/">
-<link rel="stylesheet" href="/book.min.407d69d0a45364c0178383056043dffb34da6b2423d90861313ca049cea737e1.css" integrity="sha256-QH1p0KRTZMAXg4MFYEPf&#43;zTaayQj2QhhMTygSc6nN&#43;E=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.424ed8219f008b963e0cffe62801bf2d6d26c7ff0080976d6d58c5a54a6b5f3f.css" integrity="sha256-Qk7YIZ8Ai5Y&#43;DP/mKAG/LW0mx/8AgJdtbVjFpUprXz8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.b726de4a7cd71eac112295f5b0dda153259418c24b72f8010adbac418098455f.js" integrity="sha256-tybeSnzXHqwRIpX1sN2hUyWUGMJLcvgBCtusQYCYRV8=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.95666a43b0819ed293aaaeae32ef63e32d40873b034c7c5de25619a08538090b.js" integrity="sha256-lWZqQ7CBntKTqq6uMu9j4y1AhzsDTHxd4lYZoIU4CQs=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/reference/index.xml" title="p5.fab" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -109,84 +111,6 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/resources/guides/dfab-intro/" class="">A Gentle Introduction to Digital Fabrication</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/resources/guides/cc-intro/" class="">A Gentle Introduction to Creative Coding with p5.js</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/resources/guides/p5fab-primer/" class="">p5.fab Primer</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/resources/tutorials/cube-tutorial/" class="">Cube Tutorial</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/resources/tutorials/non-planar-tutorial/" class="">Non-Planar Printing Tutorial</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/resources/tutorials/line-vase-tutorial/" class="">Line Vase Tutorial</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -201,6 +125,11 @@ https://github.com/alex-shpak/hugo-book
   
     <a href="/docs/reference/" class="active">Reference</a>
   
+
+          
+  <ul>
+    
+  </ul>
 
         </li>
       
@@ -257,106 +186,10 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#fab">Fab</a>
+    <li><a href="#a-hrefreference-pagesfabfaba"><a href="reference-pages/fab">Fab</a></a>
       <ul>
-        <li><a href="#syntax">Syntax</a></li>
-        <li><a href="#parameters">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#autohome">autoHome</a>
-      <ul>
-        <li><a href="#syntax-1">Syntax</a></li>
-        <li><a href="#parameters-1">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#setnozzlet">setNozzleT</a>
-      <ul>
-        <li><a href="#syntax-2">Syntax</a></li>
-        <li><a href="#parameters-2">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#setbedt">setBedT</a>
-      <ul>
-        <li><a href="#syntax-3">Syntax</a></li>
-        <li><a href="#parameters-3">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#settemps">setTemps</a>
-      <ul>
-        <li><a href="#syntax-4">Syntax</a></li>
-        <li><a href="#parameters-4">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#moveto">moveTo</a>
-      <ul>
-        <li><a href="#syntax-5">Syntax</a></li>
-        <li><a href="#parameters-5">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movetox">moveToX</a>
-      <ul>
-        <li><a href="#syntax-6">Syntax</a></li>
-        <li><a href="#parameters-6">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movetoy">moveToY</a>
-      <ul>
-        <li><a href="#syntax-7">Syntax</a></li>
-        <li><a href="#parameters-7">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movetoz">moveToZ</a>
-      <ul>
-        <li><a href="#syntax-8">Syntax</a></li>
-        <li><a href="#parameters-8">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movetoe">moveToE</a>
-      <ul>
-        <li><a href="#syntax-9">Syntax</a></li>
-        <li><a href="#parameters-9">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#move">move</a>
-      <ul>
-        <li><a href="#syntax-10">Syntax</a></li>
-        <li><a href="#parameters-10">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movex">moveX</a>
-      <ul>
-        <li><a href="#syntax-11">Syntax</a></li>
-        <li><a href="#parameters-11">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movey">moveY</a>
-      <ul>
-        <li><a href="#syntax-12">Syntax</a></li>
-        <li><a href="#parameters-12">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movez">moveZ</a>
-      <ul>
-        <li><a href="#syntax-13">Syntax</a></li>
-        <li><a href="#parameters-13">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movee">moveE</a>
-      <ul>
-        <li><a href="#syntax-14">Syntax</a></li>
-        <li><a href="#parameters-14">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#travelto">travelTo</a>
-      <ul>
-        <li><a href="#syntax-15">Syntax</a></li>
-        <li><a href="#parameters-15">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#moveextrude">moveExtrude</a>
-      <ul>
-        <li><a href="#syntax-16">Syntax</a></li>
-        <li><a href="#parameters-16">Parameters</a></li>
+        <li><a href="#path-commands">Path Commands</a></li>
+        <li><a href="#g--m-codes">G &amp; M Codes</a></li>
       </ul>
     </li>
   </ul>
@@ -375,353 +208,133 @@ https://github.com/alex-shpak/hugo-book
   Reference
   <a class="anchor" href="#reference">#</a>
 </h1>
-<h2 id="fab">
-  Fab
-  <a class="anchor" href="#fab">#</a>
+<h2 id="a-hrefreference-pagesfabfaba">
+  <a href="reference-pages/fab">Fab</a>
+  <a class="anchor" href="#a-hrefreference-pagesfabfaba">#</a>
 </h2>
-<p>A class to describe a fabrication machine.</p>
-<p>A <code>fab</code> object represents a 3D printer. It is comprised of the following information:</p>
-<ul>
-<li><code>workEnvelope</code>: maximum X, Y, and Z dimensions of the machine</li>
-<li><code>nozzleDiameter</code>: Diameter of the nozzle in mm</li>
-<li><code>filamentDiameter</code>: Diameter of filament in mm</li>
-<li><code>name</code>: a human readable string to identify this machine</li>
-</ul>
-<h3 id="syntax">
-  Syntax
-  <a class="anchor" href="#syntax">#</a>
+<!-- template for adding new doc items  -->
+<!--
+<tr>
+    <td>
+
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+</tr>
+-->
+<h3 id="path-commands">
+  Path Commands
+  <a class="anchor" href="#path-commands">#</a>
 </h3>
-<p><code>fab([config])</code></p>
-<h3 id="parameters">
-  Parameters
-  <a class="anchor" href="#parameters">#</a>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="reference-pages/moveTo" class="ref-item">moveTo()</a><br>
+        <span class="ref-info">Move to a point.</span>  
+      </td>
+      <td>
+        <a href="reference-pages/moveToX" class="ref-item">moveToX()</a><br>
+        <span class="ref-info">Move to an X position.</span>
+      </td>
+      <td>
+        <a href="reference-pages/moveToY" class="ref-item">moveToY()</a><br>
+        <span class="ref-info">Move to a Y position.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="reference-pages/moveToZ" class="ref-item">moveToZ()</a><br>
+        <span class="ref-info">Move to a Z position.</span>
+      </td>
+      <td>
+        <a href="reference-pages/moveToE" class="ref-item">moveToE()</a><br>
+        <span class="ref-info">Move to a E position.</span> 
+      </td>
+      <td>
+        <a href="reference-pages/move" class="ref-item">move()</a><br>
+        <span class="ref-info">Move relative to current position in x, y, and z.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="reference-pages/moveX" class="ref-item">moveX()</a><br>
+        <span class="ref-info">Move relative to current position in X.</span></td>
+      <td>
+        <a href="reference-pages/moveY" class="ref-item">moveY()</a><br>
+        <span class="ref-info">Move relative to current position in Y.</span>
+      </td>
+      <td>
+        <a href="reference-pages/moveZ" class="ref-item">moveZ()</a><br>
+        <span class="ref-info">Move relative to current position in Z.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="reference-pages/moveE" class="ref-item">moveE()</a><br>
+        <span class="ref-info">Move relative to current position in E.</span>
+      </td>
+      <td>
+        <a href="reference-pages/moveExtrude" class="ref-item">moveExtrude()</a><br>
+        <span class="ref-info">Move to an x,y,z position while extruding.</span>        
+      </td>
+      <td>
+        <a href="reference-pages/travelTo" class="ref-item">travelTo()</a><br>
+        <span class="ref-info">Move to an x,y,z position with a z-hop.</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="g--m-codes">
+  G &amp; M Codes
+  <a class="anchor" href="#g--m-codes">#</a>
 </h3>
-<ul>
-<li>config: a json object specifying requisite machine information</li>
-</ul>
-<hr>
-<h2 id="autohome">
-  autoHome
-  <a class="anchor" href="#autohome">#</a>
-</h2>
-<p>Autohome the machine (with a <code>G28</code> command) and zero the extruder position (with a <code>G92 E0</code> command).</p>
-<h3 id="syntax-1">
-  Syntax
-  <a class="anchor" href="#syntax-1">#</a>
-</h3>
-<p><code>fab.autoHome()</code></p>
-<h3 id="parameters-1">
-  Parameters
-  <a class="anchor" href="#parameters-1">#</a>
-</h3>
-<p>None</p>
-<hr>
-<h2 id="setnozzlet">
-  setNozzleT
-  <a class="anchor" href="#setnozzlet">#</a>
-</h2>
-<p>Set the printer&rsquo;s nozzle temperature. By default, this command will wait for the nozzle temperature to reach the target temperature.</p>
-<p>Most firmware won&rsquo;t wait for temperatures less than 40C since they will never be reached due to ambient temperature.</p>
-<h3 id="syntax-2">
-  Syntax
-  <a class="anchor" href="#syntax-2">#</a>
-</h3>
-<p><code>fab.setNozzleT(temperature, [wait])</code></p>
-<h3 id="parameters-2">
-  Parameters
-  <a class="anchor" href="#parameters-2">#</a>
-</h3>
-<ul>
-<li>temperature: Number, the temperature to heat the nozzle to in degrees Celcius</li>
-<li>wait: Boolean, optional parameter to wait for the target temperature to be reached before proceeding. True by default.</li>
-</ul>
-<hr>
-<h2 id="setbedt">
-  setBedT
-  <a class="anchor" href="#setbedt">#</a>
-</h2>
-<p>Set the printer&rsquo;s bed temperature. By default, this command will wait for the bed temperature to reach the target temperature.</p>
-<p>Most firmware won&rsquo;t wait for temperatures less than 40C since they will never be reached due to ambient temperature.</p>
-<h3 id="syntax-3">
-  Syntax
-  <a class="anchor" href="#syntax-3">#</a>
-</h3>
-<p><code>fab.setNozzleT(temperature, [wait])</code></p>
-<h3 id="parameters-3">
-  Parameters
-  <a class="anchor" href="#parameters-3">#</a>
-</h3>
-<ul>
-<li>temperature: Number, the temperature to heat the bed to in degrees Celcius</li>
-<li>wait: Boolean, optional parameter to wait for the target temperature to be reached before proceeding. True by default.</li>
-</ul>
-<hr>
-<h2 id="settemps">
-  setTemps
-  <a class="anchor" href="#settemps">#</a>
-</h2>
-<p>Set the printer nozzle and bed temperature at the same time. By default, this command will wait for the temperatures to reach the target temperature. This command is faster than setting the nozzle and bed temperatures independently, as both will heat simultaneously.</p>
-<p>Most firmware won&rsquo;t wait for temperatures less than 40C since they will never be reached due to ambient temperature.</p>
-<h3 id="syntax-4">
-  Syntax
-  <a class="anchor" href="#syntax-4">#</a>
-</h3>
-<p><code>fab.setTemps(nozzleTemperature, bedTemperature, [wait])</code></p>
-<h3 id="parameters-4">
-  Parameters
-  <a class="anchor" href="#parameters-4">#</a>
-</h3>
-<ul>
-<li>nozzleTemperature: Number, the temperature to heat the nozzle to in degrees Celcius</li>
-<li>bedTemperature: Number, the temperature to heat the bed to in degrees Celcius</li>
-<li>wait: Boolean, optional parameter to wait for the target temperature to be reached before proceeding. True by default.</li>
-</ul>
-<hr>
-<h2 id="moveto">
-  moveTo
-  <a class="anchor" href="#moveto">#</a>
-</h2>
-<p>Move directly to an absolute (x,y,z) position without extruding material.</p>
-<h3 id="syntax-5">
-  Syntax
-  <a class="anchor" href="#syntax-5">#</a>
-</h3>
-<p><code>fab.moveTo(x, y, z, [velocity])</code></p>
-<h3 id="parameters-5">
-  Parameters
-  <a class="anchor" href="#parameters-5">#</a>
-</h3>
-<ul>
-<li>x: Number, the x position to move to (in current units, mm by default)</li>
-<li>y: Number, the y position to move to (in current units, mm by default)</li>
-<li>z: Number, the z position to move to (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="movetox">
-  moveToX
-  <a class="anchor" href="#movetox">#</a>
-</h2>
-<p>Move directly to an absolute X position without extruding material.</p>
-<h3 id="syntax-6">
-  Syntax
-  <a class="anchor" href="#syntax-6">#</a>
-</h3>
-<p><code>fab.moveToX(x, [velocity])</code></p>
-<h3 id="parameters-6">
-  Parameters
-  <a class="anchor" href="#parameters-6">#</a>
-</h3>
-<ul>
-<li>x: Number, the x position to move to (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="movetoy">
-  moveToY
-  <a class="anchor" href="#movetoy">#</a>
-</h2>
-<p>Move directly to an absolute Y position without extruding material.</p>
-<h3 id="syntax-7">
-  Syntax
-  <a class="anchor" href="#syntax-7">#</a>
-</h3>
-<p><code>fab.moveToY(y, [velocity])</code></p>
-<h3 id="parameters-7">
-  Parameters
-  <a class="anchor" href="#parameters-7">#</a>
-</h3>
-<ul>
-<li>y: Number, the y position to move to (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="movetoz">
-  moveToZ
-  <a class="anchor" href="#movetoz">#</a>
-</h2>
-<p>Move directly to an absolute Z position without extruding material.</p>
-<h3 id="syntax-8">
-  Syntax
-  <a class="anchor" href="#syntax-8">#</a>
-</h3>
-<p><code>fab.moveToZ(z, [velocity])</code></p>
-<h3 id="parameters-8">
-  Parameters
-  <a class="anchor" href="#parameters-8">#</a>
-</h3>
-<ul>
-<li>z: Number, the z position to move to (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="movetoe">
-  moveToE
-  <a class="anchor" href="#movetoe">#</a>
-</h2>
-<p>Move directly to an absolute E position.</p>
-<h3 id="syntax-9">
-  Syntax
-  <a class="anchor" href="#syntax-9">#</a>
-</h3>
-<p><code>fab.moveToE(e, [velocity])</code></p>
-<h3 id="parameters-9">
-  Parameters
-  <a class="anchor" href="#parameters-9">#</a>
-</h3>
-<ul>
-<li>e: Number, the e position to move to (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="move">
-  move
-  <a class="anchor" href="#move">#</a>
-</h2>
-<p>Move relative to the current position without extruding material.</p>
-<h3 id="syntax-10">
-  Syntax
-  <a class="anchor" href="#syntax-10">#</a>
-</h3>
-<p><code>fab.move(dx, dy, dz, [velocity])</code></p>
-<h3 id="parameters-10">
-  Parameters
-  <a class="anchor" href="#parameters-10">#</a>
-</h3>
-<ul>
-<li>dx: Number, the relative x distance to move (in current units, mm by default)</li>
-<li>dy: Number, the relative y distance to move (in current units, mm by default)</li>
-<li>dz: Number, the relative z distance to move (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="movex">
-  moveX
-  <a class="anchor" href="#movex">#</a>
-</h2>
-<p>Move in X relative to the current position without extruding material.</p>
-<h3 id="syntax-11">
-  Syntax
-  <a class="anchor" href="#syntax-11">#</a>
-</h3>
-<p><code>fab.moveX(dx, [velocity])</code></p>
-<h3 id="parameters-11">
-  Parameters
-  <a class="anchor" href="#parameters-11">#</a>
-</h3>
-<ul>
-<li>
-<p>dx: Number, the relative x distance to move (in current units, mm by default)</p>
-</li>
-<li>
-<p>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</p>
-</li>
-<li>
-<p>dx: Number, the relative x distance to move (in current units, mm by default)</p>
-</li>
-</ul>
-<h2 id="movey">
-  moveY
-  <a class="anchor" href="#movey">#</a>
-</h2>
-<p>Move in Y relative to the current position without extruding material.</p>
-<h3 id="syntax-12">
-  Syntax
-  <a class="anchor" href="#syntax-12">#</a>
-</h3>
-<p><code>fab.moveY(dy, [velocity])</code></p>
-<h3 id="parameters-12">
-  Parameters
-  <a class="anchor" href="#parameters-12">#</a>
-</h3>
-<ul>
-<li>dy: Number, the relative y distance to move (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="movez">
-  moveZ
-  <a class="anchor" href="#movez">#</a>
-</h2>
-<p>Move in Z relative to the current position without extruding material.</p>
-<h3 id="syntax-13">
-  Syntax
-  <a class="anchor" href="#syntax-13">#</a>
-</h3>
-<p><code>fab.moveZ(dz, [velocity])</code></p>
-<h3 id="parameters-13">
-  Parameters
-  <a class="anchor" href="#parameters-13">#</a>
-</h3>
-<ul>
-<li>dz: Number, the relative z distance to move (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="movee">
-  moveE
-  <a class="anchor" href="#movee">#</a>
-</h2>
-<p>Move in E relative to the current position.</p>
-<h3 id="syntax-14">
-  Syntax
-  <a class="anchor" href="#syntax-14">#</a>
-</h3>
-<p><code>fab.moveE(de, [velocity])</code></p>
-<h3 id="parameters-14">
-  Parameters
-  <a class="anchor" href="#parameters-14">#</a>
-</h3>
-<ul>
-<li>de: Number, the relative e distance to move (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="travelto">
-  travelTo
-  <a class="anchor" href="#travelto">#</a>
-</h2>
-<p>Travel directly to an absolute (x,y,z) position with a z-hop (popping the nozzle away from the bed before moving, and restoring z position upon arrival), without extruding material.</p>
-<p>The hop distance is set in the current working units, and is 2mm by default. Edit this value in the printer configuration.</p>
-<h3 id="syntax-15">
-  Syntax
-  <a class="anchor" href="#syntax-15">#</a>
-</h3>
-<p><code>fab.travelTo(x, y, z, [velocity])</code></p>
-<h3 id="parameters-15">
-  Parameters
-  <a class="anchor" href="#parameters-15">#</a>
-</h3>
-<ul>
-<li>x: Number, the x position to move to (in current units, mm by default)</li>
-<li>y: Number, the y position to move to (in current units, mm by default)</li>
-<li>z: Number, the z position to move to (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-</ul>
-<hr>
-<h2 id="moveextrude">
-  moveExtrude
-  <a class="anchor" href="#moveextrude">#</a>
-</h2>
-<p>Move directly to an absolute (x,y,z) position while extruding material. Default extrusion amounts are calculated if not specified.</p>
-<h3 id="syntax-16">
-  Syntax
-  <a class="anchor" href="#syntax-16">#</a>
-</h3>
-<p><code>fab.moveExtrude(x, y, z, [velocity], [extrusion], [multiplication])</code></p>
-<h3 id="parameters-16">
-  Parameters
-  <a class="anchor" href="#parameters-16">#</a>
-</h3>
-<ul>
-<li>x: Number, the x position to move to (in current units, mm by default)</li>
-<li>y: Number, the y position to move to (in current units, mm by default)</li>
-<li>z: Number, the z position to move to (in current units, mm by default)</li>
-<li>v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)</li>
-<li>extrusion:  Number, optional. Interpreted as either (a) the total amount of filament to be deposited over the move, or (b) a multiplication value to modify default caluclations, depending on value of <code>[multiplication]</code> parameter</li>
-<li>multiplication: Boolean, optional. If true, <code>extrusion</code> value is used as a multiplication modifier to default extrusion calculation. If fase, <code>extrusion</code> value is used a total amount of filament to deposit in mm. False by default.</li>
-</ul>
-<hr>
+<table>
+  <tbody>
+    <tr>
+        <td>
+            <a href="reference-pages/autohome" class="ref-item">autoHome()</a><br>
+            <span class="ref-info">Autohome the machine.</span>
+        </td>
+        <td>
+            <a href="reference-pages/setBedT" class="ref-item">setBedT()</a><br>
+            <span class="ref-info">Set bed temperature.</span>
+        </td>
+        <td>
+            <a href="reference-pages/setNozzleT" class="ref-item">setNozzleT()</a><br>
+            <span class="ref-info">Set nozzle temperature.</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="reference-pages/setTemps" class="ref-item">setTemps()</a><br>
+            <span class="ref-info">Set nozzle & bed temperatures.</span>
+        </td>
+        <td>
+          <a href="reference-pages/setAbsolutePosition" class="ref-item">setAbsolutePosition()</a><br>
+          <span class="ref-info">Use absolute coordinates.</span>
+        </td>
+        <td>
+          <a href="reference-pages/setAbsolutePositionXYZ" class="ref-item">setAbsolutePositionXYZ()</a><br>
+          <span class="ref-info">Use absolute coordinates for dimensional axes.</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="reference-pages/setEAbsolute" class="ref-item">setEAbsolute()</a><br>
+            <span class="ref-info">Use absolute coordinates for extruder position.</span>
+        </td>
+        <td>
+          <a href="reference-pages/setERelative" class="ref-item">setERelative()</a><br>
+            <span class="ref-info">Use relative coordinates for extruder position.</span>
+        </td>
+    </tr>
+  </tbody>
+</table>
 </article>
  
       
@@ -763,106 +376,10 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#fab">Fab</a>
+    <li><a href="#a-hrefreference-pagesfabfaba"><a href="reference-pages/fab">Fab</a></a>
       <ul>
-        <li><a href="#syntax">Syntax</a></li>
-        <li><a href="#parameters">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#autohome">autoHome</a>
-      <ul>
-        <li><a href="#syntax-1">Syntax</a></li>
-        <li><a href="#parameters-1">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#setnozzlet">setNozzleT</a>
-      <ul>
-        <li><a href="#syntax-2">Syntax</a></li>
-        <li><a href="#parameters-2">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#setbedt">setBedT</a>
-      <ul>
-        <li><a href="#syntax-3">Syntax</a></li>
-        <li><a href="#parameters-3">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#settemps">setTemps</a>
-      <ul>
-        <li><a href="#syntax-4">Syntax</a></li>
-        <li><a href="#parameters-4">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#moveto">moveTo</a>
-      <ul>
-        <li><a href="#syntax-5">Syntax</a></li>
-        <li><a href="#parameters-5">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movetox">moveToX</a>
-      <ul>
-        <li><a href="#syntax-6">Syntax</a></li>
-        <li><a href="#parameters-6">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movetoy">moveToY</a>
-      <ul>
-        <li><a href="#syntax-7">Syntax</a></li>
-        <li><a href="#parameters-7">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movetoz">moveToZ</a>
-      <ul>
-        <li><a href="#syntax-8">Syntax</a></li>
-        <li><a href="#parameters-8">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movetoe">moveToE</a>
-      <ul>
-        <li><a href="#syntax-9">Syntax</a></li>
-        <li><a href="#parameters-9">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#move">move</a>
-      <ul>
-        <li><a href="#syntax-10">Syntax</a></li>
-        <li><a href="#parameters-10">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movex">moveX</a>
-      <ul>
-        <li><a href="#syntax-11">Syntax</a></li>
-        <li><a href="#parameters-11">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movey">moveY</a>
-      <ul>
-        <li><a href="#syntax-12">Syntax</a></li>
-        <li><a href="#parameters-12">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movez">moveZ</a>
-      <ul>
-        <li><a href="#syntax-13">Syntax</a></li>
-        <li><a href="#parameters-13">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#movee">moveE</a>
-      <ul>
-        <li><a href="#syntax-14">Syntax</a></li>
-        <li><a href="#parameters-14">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#travelto">travelTo</a>
-      <ul>
-        <li><a href="#syntax-15">Syntax</a></li>
-        <li><a href="#parameters-15">Parameters</a></li>
-      </ul>
-    </li>
-    <li><a href="#moveextrude">moveExtrude</a>
-      <ul>
-        <li><a href="#syntax-16">Syntax</a></li>
-        <li><a href="#parameters-16">Parameters</a></li>
+        <li><a href="#path-commands">Path Commands</a></li>
+        <li><a href="#g--m-codes">G &amp; M Codes</a></li>
       </ul>
     </li>
   </ul>

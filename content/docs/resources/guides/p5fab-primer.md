@@ -1,6 +1,6 @@
 ---
 title: "p5.fab Primer"
-weight: 2
+bookHidden: true
 ---
 
 ## <span class="fab">p5.fab</span> Primer

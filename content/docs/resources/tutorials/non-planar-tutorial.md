@@ -1,6 +1,6 @@
 ---
 title: "Non-Planar Printing Tutorial"
-weight: 3
+bookHidden: true
 ---
 
 ## Line Vase Tutorial

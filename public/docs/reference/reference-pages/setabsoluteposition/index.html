@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="setAbsolutePosition() Set coordinates to absolute positioning, relative to the origin of the machine (using a G90 command). Note that G90 behaviour differs depending on firmware. For example, Marlin will set the extruder to absolute position as well, whereas Duet does not. To set absolute/relative position of dimensional and extruder positions independently, see setAbsolutePositionXYZ(), setRelativePositionXYZ(), setEAbsolute(), &amp; setERelative().
+Syntax # fab.setAbsolutePosition() Parameters # None">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Set Absolute Position" />
+<meta property="og:description" content="setAbsolutePosition() Set coordinates to absolute positioning, relative to the origin of the machine (using a G90 command). Note that G90 behaviour differs depending on firmware. For example, Marlin will set the extruder to absolute position as well, whereas Duet does not. To set absolute/relative position of dimensional and extruder positions independently, see setAbsolutePositionXYZ(), setRelativePositionXYZ(), setEAbsolute(), &amp; setERelative().
+Syntax # fab.setAbsolutePosition() Parameters # None" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/docs/reference/reference-pages/setabsoluteposition/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Set Absolute Position | p5.fab</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/reference/reference-pages/setabsoluteposition/">
+<link rel="stylesheet" href="/book.min.424ed8219f008b963e0cffe62801bf2d6d26c7ff0080976d6d58c5a54a6b5f3f.css" integrity="sha256-Qk7YIZ8Ai5Y&#43;DP/mKAG/LW0mx/8AgJdtbVjFpUprXz8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.95666a43b0819ed293aaaeae32ef63e32d40873b034c7c5de25619a08538090b.js" integrity="sha256-lWZqQ7CBntKTqq6uMu9j4y1AhzsDTHxd4lYZoIU4CQs=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>p5.fab</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/quickstart/" class="">Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/machine-compatibility/" class="">Machine Compatibility</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/" class="">Resources</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/" class="">Reference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Set Absolute Position</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#syntax">Syntax</a></li>
+        <li><a href="#parameters">Parameters</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 class="ref-header">setAbsolutePosition()</h2>
+Set coordinates to absolute positioning, relative to the origin of the machine (using a <code>G90</code> command).
+<p>Note that <code>G90</code> behaviour differs depending on firmware. For example, Marlin will set the extruder to absolute position as well, whereas Duet does not. To set absolute/relative position of dimensional and extruder positions independently, see <a href="../setAbsolutePositionXYZ" class="ref-item">setAbsolutePositionXYZ()</a>, <a href="../setRelativePositionXYZ" class="ref-item">setRelativePositionXYZ()</a>, <a href="../reference-pages/setEAbsolute" class="ref-item">setEAbsolute()</a>, &amp; <a href="../reference-pages/setERelative" class="ref-item">setERelative()</a>.</p>
+<h3 id="syntax">
+  Syntax
+  <a class="anchor" href="#syntax">#</a>
+</h3>
+<pre tabindex="0"><code>fab.setAbsolutePosition()
+</code></pre><h3 id="parameters">
+  Parameters
+  <a class="anchor" href="#parameters">#</a>
+</h3>
+<p>None</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#syntax">Syntax</a></li>
+        <li><a href="#parameters">Parameters</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

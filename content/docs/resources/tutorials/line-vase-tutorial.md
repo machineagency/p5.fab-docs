@@ -1,6 +1,6 @@
 ---
 title: "Line Vase Tutorial"
-weight: 4
+bookHidden: true
 ---
 
 ## Line Vase Tutorial

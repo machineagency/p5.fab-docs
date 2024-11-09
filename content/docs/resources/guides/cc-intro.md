@@ -1,6 +1,6 @@
 ---
 title: "A Gentle Introduction to Creative Coding with p5.js"
-weight: 2
+bookHidden: true
 ---
 
 ## A Gentle Introduction to Creative Coding with p5.js

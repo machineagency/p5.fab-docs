@@ -1,6 +1,6 @@
 ---
 title: "Cube Tutorial"
-weight: 3
+bookHidden: true
 ---
 
 ## Printing a Cube

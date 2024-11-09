@@ -21,12 +21,5 @@
       <guid>http://localhost:1313/docs/machine-compatibility/</guid>
       <description>Machine Compatibility # p5.fab is intended to be used with physical machines! In general, it should work with any machine running Marlin firmware. This is the firmware that many companies (e.g. Creality, Prusa, Ultimaker) use, as well as various custom/open-source machines. For more background on machine firmwares, check out the digital fabrication intro. We&amp;rsquo;ve tested p5.fab on the following machines:&#xA;Machine Info Creality Ender3 3D Printer Prusa i3-mk3 3D Printer FLSUN Q9 Delta 3D Printer Potterbot 9 Ceramic 3D Printer Jubilee Toolchanging Machine While most of these are 3D printers, we are working on extending control to Plotters (like the AxiDraw) and CNC machines (like the Othermill).</description>
     </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/docs/reference/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/reference/</guid>
-      <description>Reference # Fab # A class to describe a fabrication machine.&#xA;A fab object represents a 3D printer. It is comprised of the following information:&#xA;workEnvelope: maximum X, Y, and Z dimensions of the machine nozzleDiameter: Diameter of the nozzle in mm filamentDiameter: Diameter of filament in mm name: a human readable string to identify this machine Syntax # fab([config])&#xA;Parameters # config: a json object specifying requisite machine information autoHome # Autohome the machine (with a G28 command) and zero the extruder position (with a G92 E0 command).</description>
-    </item>
   </channel>
 </rss>

@@ -1,6 +1,6 @@
 ---
 title: "A Gentle Introduction to Digital Fabrication"
-weight: 1
+bookHidden: true
 ---
 
 ## A Gentle Introduction to Digital Fabrication
