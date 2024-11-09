@@ -23,13 +23,6 @@
       <description>Machine Compatibility # p5.fab is intended to be used with physical machines! In general, it should work with any machine running Marlin firmware. This is the firmware that many companies (e.g. Creality, Prusa, Ultimaker) use, as well as various custom/open-source machines. For more background on machine firmwares, check out the digital fabrication intro. We&amp;rsquo;ve tested p5.fab on the following machines:&#xA;Machine Info Creality Ender3 3D Printer Prusa i3-mk3 3D Printer FLSUN Q9 Delta 3D Printer Potterbot 9 Ceramic 3D Printer Jubilee Toolchanging Machine While most of these are 3D printers, we are working on extending control to Plotters (like the AxiDraw) and CNC machines (like the Othermill).</description>
     </item>
     <item>
-      <title></title>
-      <link>http://localhost:1313/docs/reference/reference-pages/setabsolutepositionxyz/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/reference/reference-pages/setabsolutepositionxyz/</guid>
-      <description>to come</description>
-    </item>
-    <item>
       <title>A Gentle Introduction to Creative Coding with p5.js</title>
       <link>http://localhost:1313/docs/resources/guides/cc-intro/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -167,7 +160,14 @@
       <link>http://localhost:1313/docs/reference/reference-pages/setabsoluteposition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/reference/reference-pages/setabsoluteposition/</guid>
-      <description>setAbsolutePosition() Set coordinates to absolute positioning, relative to the origin of the machine (using a G90 command). Note that behaviour differs depending on firmware. For example, G90 on Marlin will set the extruder to absolute position as well, whereas Duet does not. To set absolute/relative position of dimensional and extruder positions seperately, see &amp;lt;ssetAbsolutePositionXYZ().&#xA;Syntax # fab.setBedT(temperature, [wait]) Parameters # temperature Number, the temperature to heat the bed to in degrees Celcius wait Boolean, optional, parameter to wait for the target temperature to be reached before proceeding.</description>
+      <description>setAbsolutePosition() Set coordinates to absolute positioning, relative to the origin of the machine (using a G90 command). Note that G90 behaviour differs depending on firmware. For example, Marlin will set the extruder to absolute position as well, whereas Duet does not. To set absolute/relative position of dimensional and extruder positions independently, see setAbsolutePositionXYZ(), setRelativePositionXYZ(), setEAbsolute(), &amp;amp; setERelative().&#xA;Syntax # fab.setAbsolutePosition() Parameters # None</description>
+    </item>
+    <item>
+      <title>Set Absolute Position XYZ</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/setabsolutepositionxyz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/setabsolutepositionxyz/</guid>
+      <description>setAbsolutePositionXYZ() Set X/Y/Z axes to absolute position, relative to the origin of the machine, without changing the extruder positioning mode. Syntax # fab.setAbsolutePositionXYZ() Parameters # None</description>
     </item>
     <item>
       <title>Set Bed Temp</title>
@@ -175,6 +175,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/reference/reference-pages/setbedt/</guid>
       <description>setBedT() Set the printer&#39;s bed temperature. By default, this command will wait for the nozzle temperature to reach the target temperature. Most firmware won&amp;rsquo;t wait for temperatures less than 40C since they will never be reached due to ambient temperature.&#xA;Syntax # fab.setBedT(temperature, [wait]) Parameters # temperature Number, the temperature to heat the bed to in degrees Celcius wait Boolean, optional, parameter to wait for the target temperature to be reached before proceeding.</description>
+    </item>
+    <item>
+      <title>Set E Absolute</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/seteabsolute/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/seteabsolute/</guid>
+      <description>setEAbsolute() Set extruder axis to use absolute position, relative to the origin, without changing the dimensional axes positioning mode. Syntax # fab.setEAbsolute() Parameters # None</description>
+    </item>
+    <item>
+      <title>Set E Relative</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/seterelative/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/seterelative/</guid>
+      <description>setERelative() Set extruder axis to use relative position without changing the dimensional axes positioning mode. Syntax # fab.setERelative() Parameters # None</description>
     </item>
     <item>
       <title>Set Nozzle Temp</title>

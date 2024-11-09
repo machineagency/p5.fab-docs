@@ -22,7 +22,7 @@
   <tbody>
     <tr>
       <td>
-        <a href="reference-pages/moveTo" class="ref-item">moveTo()</a><br>
+        <a href="./reference-pages/moveTo" class="ref-item">moveTo()</a><br>
         <span class="ref-info">Move to a point.</span>  
       </td>
       <td>

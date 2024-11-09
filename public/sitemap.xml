@@ -13,8 +13,6 @@
   </url><url>
     <loc>http://localhost:1313/docs/reference/</loc>
   </url><url>
-    <loc>http://localhost:1313/docs/reference/reference-pages/setabsolutepositionxyz/</loc>
-  </url><url>
     <loc>http://localhost:1313/docs/resources/guides/cc-intro/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/resources/guides/dfab-intro/</loc>
@@ -59,7 +57,13 @@
   </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/setabsoluteposition/</loc>
   </url><url>
+    <loc>http://localhost:1313/docs/reference/reference-pages/setabsolutepositionxyz/</loc>
+  </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/setbedt/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/reference/reference-pages/seteabsolute/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/reference/reference-pages/seterelative/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/setnozzlet/</loc>
   </url><url>
