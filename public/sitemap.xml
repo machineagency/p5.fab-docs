@@ -33,8 +33,6 @@
   </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/moveextrude/</loc>
   </url><url>
-    <loc>http://localhost:1313/docs/reference/reference-pages/moveto/</loc>
-  </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/movetoe/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/movetox/</loc>
@@ -46,6 +44,8 @@
     <loc>http://localhost:1313/docs/reference/reference-pages/movey/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/movee/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/reference/reference-pages/moveto/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/movetoz/</loc>
   </url><url>

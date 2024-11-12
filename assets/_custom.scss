@@ -51,6 +51,8 @@
     font-style: normal;
   }
 
+// My styles
+
 body {
     font-family: 'Inter', sans-serif;
 }
@@ -77,6 +79,7 @@ h2, h3 {
     color: black;
     font-size: 1em;
 }
+
 .ref-info {
     font-family: 'Inter', sans-serif;
     color: black;
@@ -86,6 +89,8 @@ h2, h3 {
 // Overwrite some of the Hugo Book theme styles
 .markdown a {
     color:black;
+    text-decoration: underline;
+    text-decoration-color: #FF6700;
 }
 
 .markdown a:visited{
@@ -96,17 +101,47 @@ h2, h3 {
     background-color: #FF6700;
 }
 
-td {
+.markdown a:visited{
+    color:black;
+}
+
+.markdown a:hover {
+    background-color: #FF6700;
+}
+
+a.footnote-ref {
+    text-decoration: none;
+}
+
+a.footnote-backref {
+    text-decoration: none;
+}
+
+// Style the reference table
+.reference-table a {
+    color: black;
+    text-decoration: none;
+}
+
+.reference-table a:visited{
+    color:black;
+}
+
+.reference-table a:hover {
+    background-color: #FF6700;
+}
+
+.reference-table td {
     width: 30%;
     vertical-align: top;
 }
 
-.markdown table tr td {
+.reference-table table tr td {
     padding: 1rem 4rem 4rem 0rem;
     border: none;
 }
 
-.markdown table tr:nth-child(2n) {
+.reference-table table tr:nth-child(2n) {
     background: white;
 }
 
@@ -119,4 +154,3 @@ td {
 .grid-item {
     height: auto;
 }
-
