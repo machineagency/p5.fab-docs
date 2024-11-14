@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Etch A Sketch # Instead of modifying toolpaths design asynchronously, we can try sending commands continuously to the machine. This tutorial will talk through a simple &rsquo;etch a sketch&rsquo; example using a MIDI controller.
+Step 0: Gather Materials # You&rsquo;ll need:
+A 3D printer &#43; filament a USB cable to connect your computer to your printer A MIDI controller &#43; USB cable Step 1: Define MIDI inputs # Go to the online editor and open the &rsquo;etch-a-sketch&rsquo; example.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Etch A Sketch" />
+<meta property="og:description" content="Etch A Sketch # Instead of modifying toolpaths design asynchronously, we can try sending commands continuously to the machine. This tutorial will talk through a simple &rsquo;etch a sketch&rsquo; example using a MIDI controller.
+Step 0: Gather Materials # You&rsquo;ll need:
+A 3D printer &#43; filament a USB cable to connect your computer to your printer A MIDI controller &#43; USB cable Step 1: Define MIDI inputs # Go to the online editor and open the &rsquo;etch-a-sketch&rsquo; example." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/docs/resources/tutorials/etch-a-sketch-tutorial/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Etch A Sketch | p5.fab</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/resources/tutorials/etch-a-sketch-tutorial/">
+<link rel="stylesheet" href="/book.min.58f1cb8a5f164a60e2fe794ee720850e12c90ce1075a71225158cf8cfce361af.css" integrity="sha256-WPHLil8WSmDi/nlO5yCFDhLJDOEHWnEiUVjPjPzjYa8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.f1ef7420b74038f0f2cd0666d58f138e7ce225eabc1d586bec7306d35846fff2.js" integrity="sha256-8e90ILdAOPDyzQZm1Y8TjnziJeq8HVhr7HMG01hG//I=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>p5.fab</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/" class="">Reference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/" class="">Resources</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/machine-compatibility/" class="">Machine Compatibility</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Etch A Sketch</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#step-0-gather-materials">Step 0: Gather Materials</a></li>
+    <li><a href="#step-1-define-midi-inputs">Step 1: Define MIDI inputs</a></li>
+    <li><a href="#step-2-toggling-extrusion">Step 2: Toggling Extrusion</a></li>
+    <li><a href="#step-3-print">Step 3: Print</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><script src="https://kit.fontawesome.com/c412915ffb.js" crossorigin="anonymous"></script>
+<h1 id="etch-a-sketch">
+  Etch A Sketch
+  <a class="anchor" href="#etch-a-sketch">#</a>
+</h1>
+<p>Instead of modifying toolpaths design asynchronously, we can try sending commands continuously to the machine. This tutorial will talk through a simple &rsquo;etch a sketch&rsquo; example using a MIDI controller.</p>
+<h2 id="step-0-gather-materials">
+  Step 0: Gather Materials
+  <a class="anchor" href="#step-0-gather-materials">#</a>
+</h2>
+<p>You&rsquo;ll need:</p>
+<ul>
+<li>A 3D printer + filament</li>
+<li>a USB cable to connect your computer to your printer</li>
+<li>A MIDI controller + USB cable</li>
+</ul>
+<h2 id="step-1-define-midi-inputs">
+  Step 1: Define MIDI inputs
+  <a class="anchor" href="#step-1-define-midi-inputs">#</a>
+</h2>
+<p>Go to the <a href="https://bsubbaraman.github.io/test-interface/" target="_blank"> online editor</a> and open the &rsquo;etch-a-sketch&rsquo; example. Connect to your MIDI device, but don&rsquo;t connect to your printer yet (unplug it if you have).</p>
+<p>In this example, we&rsquo;re going to use 4 continuous inputs (knobs/sliders) and one button. The continuous inputs will be used to control X/Y/Z postions and speed, the button will be used to toggle extrusion. Choose buttons and knobs on your MIDI controller to use, then edit the <code>midiData.note ==</code> lines in the example sketch accordingly and run the code (Shift+Enter).</p>
+<h2 id="step-2-toggling-extrusion">
+  Step 2: Toggling Extrusion
+  <a class="anchor" href="#step-2-toggling-extrusion">#</a>
+</h2>
+<p>For our etch a sketch, we&rsquo;ll toggle between extruding and just moving around with a button press. Confirm your button press functionality by pressing your button and monitoring the MIDI info pane. You might notice that the value changes from 127 to 0 on depression/release, or that the Type changes, or that there are only message sent on button presses. If necessary, edit the if statement on line 63 to match up with your button functionality so that you can toggle the value of <code>extrudeToggle</code>. You can open your console (Cmd+option+i or more tools&ndash;&gt;developer tools in your browser) to check the value.</p>
+<h2 id="step-3-print">
+  Step 3: Print
+  <a class="anchor" href="#step-3-print">#</a>
+</h2>
+<p>Connect to your print and start the print: the machine will home and set temperatures (as defined in <code>fabDraw</code>). Then, you can use your knobs to move the machine around. Press your button to start extruding; make sure you raise the z height up a little bit so filament can exit the nozzle.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#step-0-gather-materials">Step 0: Gather Materials</a></li>
+    <li><a href="#step-1-define-midi-inputs">Step 1: Define MIDI inputs</a></li>
+    <li><a href="#step-2-toggling-extrusion">Step 2: Toggling Extrusion</a></li>
+    <li><a href="#step-3-print">Step 3: Print</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Interactive Cube # We can use a MIDI controller to interactively edit commands as they&rsquo;re being sent to the machine. This tutorial will walk through and example to change the print speed, extrusion, and deposition height of a simple cube.
 Step 0: Gather Materials # You&rsquo;ll need:
-A 3D printer &#43; filament a USB cable to connect your computer to your printer A MIDI controller &#43; USB cable Step 1: Connect a MIDI controller # Go to the online editor and open the &lsquo;interactive cube&rsquo; example.">
+A 3D printer &#43; filament a USB cable to connect your computer to your printer A MIDI controller &#43; USB cable Step 1: Connect a MIDI controller # Go to the online editor and open the &lsquo;interactive cube&rsquo; tutorial.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="Interactive Cube" />
 <meta property="og:description" content="Interactive Cube # We can use a MIDI controller to interactively edit commands as they&rsquo;re being sent to the machine. This tutorial will walk through and example to change the print speed, extrusion, and deposition height of a simple cube.
 Step 0: Gather Materials # You&rsquo;ll need:
-A 3D printer &#43; filament a USB cable to connect your computer to your printer A MIDI controller &#43; USB cable Step 1: Connect a MIDI controller # Go to the online editor and open the &lsquo;interactive cube&rsquo; example." />
+A 3D printer &#43; filament a USB cable to connect your computer to your printer A MIDI controller &#43; USB cable Step 1: Connect a MIDI controller # Go to the online editor and open the &lsquo;interactive cube&rsquo; tutorial." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/docs/resources/tutorials/interactive-cube-tutorial/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://localhost:1313/docs/resources/tutorials/interactive-cube-tutorial-copy/" /><meta property="article:section" content="docs" />
 
 
 
 <title>Interactive Cube | p5.fab</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="canonical" href="http://localhost:1313/docs/resources/tutorials/interactive-cube-tutorial/">
+<link rel="canonical" href="http://localhost:1313/docs/resources/tutorials/interactive-cube-tutorial-copy/">
 <link rel="stylesheet" href="/book.min.58f1cb8a5f164a60e2fe794ee720850e12c90ce1075a71225158cf8cfce361af.css" integrity="sha256-WPHLil8WSmDi/nlO5yCFDhLJDOEHWnEiUVjPjPzjYa8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.f1ef7420b74038f0f2cd0666d58f138e7ce225eabc1d586bec7306d35846fff2.js" integrity="sha256-8e90ILdAOPDyzQZm1Y8TjnziJeq8HVhr7HMG01hG//I=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.4831c086f0e8a4f9f5155e5734fc1b9ba681224f9a8b9c985d45e5832bf201ad.js" integrity="sha256-SDHAhvDopPn1FV5XNPwbm6aBIk&#43;ai5yYXUXlgyvyAa0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -175,7 +175,6 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#step-3-mididraw">Step 3: midiDraw()</a></li>
     <li><a href="#step-4-print">Step 4: Print!</a></li>
     <li><a href="#step-5-troubleshooting">Step 5: Troubleshooting</a></li>
-    <li><a href="#next-steps">Next Steps</a></li>
   </ul>
 </nav>
 
@@ -208,7 +207,7 @@ https://github.com/alex-shpak/hugo-book
   Step 1: Connect a MIDI controller
   <a class="anchor" href="#step-1-connect-a-midi-controller">#</a>
 </h2>
-<p>Go to the <a href="https://bsubbaraman.github.io/test-interface/" target="_blank"> online editor</a> and open the &lsquo;interactive cube&rsquo; example. Connect to your printer as usual; then press the <i class="fa-solid fa-music"></i> icon to open the MIDI info pane. Connect your MIDI controller over USB and press &lsquo;connect&rsquo;. It should automatically connect to your MIDI controller, and the connection status should now read &lsquo;connected&rsquo;.</p>
+<p>Go to the <a href="https://bsubbaraman.github.io/test-interface/" target="_blank"> online editor</a> and open the &lsquo;interactive cube&rsquo; tutorial. Connect to your printer as usual; then press the <i class="fa-solid fa-music"></i> icon to open the MIDI info pane. Connect your MIDI controller over USB and press &lsquo;connect&rsquo;. It should automatically connect to your MIDI controller, and the connection status should now read &lsquo;connected&rsquo;.</p>
 <p>Try turning different knobs and pressing buttons on the MIDI controller. You should see some incoming data in the info pane:</p>
 <ul>
 <li>Note: A unique ID for the button/slider/knob</li>
@@ -253,13 +252,6 @@ https://github.com/alex-shpak/hugo-book
 <li>If your printer is slow to respond to input or is stalling:</li>
 </ul>
 <p>To modify commands interactively, and GCode commands are being subdivided into a bunch of smaller ones (e.g. sending 200 1mm commands instead of 1 200mm command). The default subdivision length is 1mm; if you&rsquo;re printing very slowly, you may want to decrease the subdivision length the get a more realtime response. To do so, change <code>fab.segmentationLength</code> to something &lt;1. On the other hand, if you&rsquo;re printing very fast, you might be noticing buffer underruns where the printer is executing commands faster than it recieves them. Try increasing the segmentation length to accommodate.</p>
-<h2 id="next-steps">
-  Next Steps
-  <a class="anchor" href="#next-steps">#</a>
-</h2>
-<ul>
-<li><a href="../etch-a-sketch-tutorial">Etch a sketch</a> tutorial</li>
-</ul>
 </article>
  
       
@@ -307,7 +299,6 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#step-3-mididraw">Step 3: midiDraw()</a></li>
     <li><a href="#step-4-print">Step 4: Print!</a></li>
     <li><a href="#step-5-troubleshooting">Step 5: Troubleshooting</a></li>
-    <li><a href="#next-steps">Next Steps</a></li>
   </ul>
 </nav>
 

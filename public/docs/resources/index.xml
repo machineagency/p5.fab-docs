@@ -29,6 +29,13 @@
       <description>Printing a Cube # Check out the cube example in the online editor. It shows how to stack extrusions up to make a simple, hollow cube. If you&amp;rsquo;re comfortable with this, check out the interactive cube tutorial to see how to use a MIDI controller to change printing parameters.</description>
     </item>
     <item>
+      <title>Etch A Sketch</title>
+      <link>http://localhost:1313/docs/resources/tutorials/etch-a-sketch-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/tutorials/etch-a-sketch-tutorial/</guid>
+      <description>Etch A Sketch # Instead of modifying toolpaths design asynchronously, we can try sending commands continuously to the machine. This tutorial will talk through a simple &amp;rsquo;etch a sketch&amp;rsquo; example using a MIDI controller.&#xA;Step 0: Gather Materials # You&amp;rsquo;ll need:&#xA;A 3D printer + filament a USB cable to connect your computer to your printer A MIDI controller + USB cable Step 1: Define MIDI inputs # Go to the online editor and open the &amp;rsquo;etch-a-sketch&amp;rsquo; example.</description>
+    </item>
+    <item>
       <title>Getting Started Tutorial</title>
       <link>http://localhost:1313/docs/resources/tutorials/getting-started-tutorial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -40,7 +47,7 @@
       <link>http://localhost:1313/docs/resources/tutorials/interactive-cube-tutorial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/resources/tutorials/interactive-cube-tutorial/</guid>
-      <description>Interactive Cube # Step 0: Gather Materials # You&amp;rsquo;ll need:&#xA;A 3D printer + filament a USB cable to connect your computer to your printer A MIDI controller + USB cable Step 1: Connect a MIDI controller # Go to the online editor and open the &amp;lsquo;interactive cube&amp;rsquo; tutorial.&#xA;Step 2: The midiSetup and midiDraw functions # The code in fabDraw is the same as the normal cube example, but now we&amp;rsquo;ve added midiSetup and midiDraw loops.</description>
+      <description>Interactive Cube # We can use a MIDI controller to interactively edit commands as they&amp;rsquo;re being sent to the machine. This tutorial will walk through and example to change the print speed, extrusion, and deposition height of a simple cube.&#xA;Step 0: Gather Materials # You&amp;rsquo;ll need:&#xA;A 3D printer + filament a USB cable to connect your computer to your printer A MIDI controller + USB cable Step 1: Connect a MIDI controller # Go to the online editor and open the &amp;lsquo;interactive cube&amp;rsquo; example.</description>
     </item>
     <item>
       <title>Line Vase Tutorial</title>
