@@ -5,7 +5,7 @@ weight: 1
 
 # Reference
 
-## <a href="reference-pages/fab">Fab</a>
+## Fab
 <!-- template for adding new doc items  -->
 <!--
 <tr>
@@ -128,4 +128,26 @@ weight: 1
       </tr>
     </tbody>
   </table>
+
+### Streaming
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="reference-pages/print" class="ref-item">print()</a><br>
+        <span class="ref-info">Start streaming commands to the printer</span>
+      </td>
+      <td>
+        <a href="reference-pages/continuous-mode" class="ref-item">continuousMode</a><br>
+        <span class="ref-info">Send commands continuously to the machine.</span>
+      </td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
 </div>
+
+
+## <a href="reference-pages/fab">MIDI</a>
+

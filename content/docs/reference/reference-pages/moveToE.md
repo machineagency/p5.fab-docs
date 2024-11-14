@@ -17,7 +17,5 @@ fab.moveToE(e, [velocity])
  <div class="grid-item">e: Number, the e position to move to (in current units, mm by default)</div>
 
  <div class="grid-item">v</div>
- <div class="grid-item">v: Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default)</div>
+ <div class="grid-item">Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default)</div>
 </div>
-- e: Number, the e position to move to (in current units, mm by default)
-- v: Number, optional, the speed to move at (in current units/sec, 25 mm/sec by default)

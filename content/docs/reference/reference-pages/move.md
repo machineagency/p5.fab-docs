@@ -23,5 +23,5 @@ fab.move(dx, dy, dz, [velocity])
  <div class="grid-item">Number, the relative z distance to move (in current units, mm by default)</div>
 
  <div class="grid-item">velocity</div>
- <div class="grid-item">v: Number, optional, the speed to move at (in current units/sec, inherited or 25 mm/sec by default)</div>
+ <div class="grid-item">Number, optional, the speed to move at (in current units/sec, inherited or 25 mm/sec by default)</div>
 </div>

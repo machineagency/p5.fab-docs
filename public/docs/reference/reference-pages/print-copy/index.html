@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="print() Start streaming commands to the printer. This is what e.g. the &#39;start print&#39; button in the online editor calls to start printing. All commands in fabDraw are added to a queue to be sent to the machine. print() will send commands until this queue is empty. By default, this queue will refresh with your fabDraw commands upon completion. To only run fabDraw once, see continuous mode.
+Syntax # fab.print() Parameters # None">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Print" />
+<meta property="og:description" content="print() Start streaming commands to the printer. This is what e.g. the &#39;start print&#39; button in the online editor calls to start printing. All commands in fabDraw are added to a queue to be sent to the machine. print() will send commands until this queue is empty. By default, this queue will refresh with your fabDraw commands upon completion. To only run fabDraw once, see continuous mode.
+Syntax # fab.print() Parameters # None" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/docs/reference/reference-pages/print-copy/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Print | p5.fab</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/reference/reference-pages/print-copy/">
+<link rel="stylesheet" href="/book.min.58f1cb8a5f164a60e2fe794ee720850e12c90ce1075a71225158cf8cfce361af.css" integrity="sha256-WPHLil8WSmDi/nlO5yCFDhLJDOEHWnEiUVjPjPzjYa8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.3995bbc8563c855891acf52b8c180ca95e5f107ba9ef1e3b5a865fe57e7ba535.js" integrity="sha256-OZW7yFY8hViRrPUrjBgMqV5fEHup7x47WoZf5X57pTU=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>p5.fab</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/" class="">Reference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/" class="">Resources</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/machine-compatibility/" class="">Machine Compatibility</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Print</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#syntax">Syntax</a></li>
+        <li><a href="#parameters">Parameters</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 class="ref-header">print()</h2>
+Start streaming commands to the printer. This is what e.g. the 'start print' button in the online editor calls to start printing. 
+<p>All commands in <code>fabDraw</code> are added to a queue to be sent to the machine. <code>print()</code> will send commands until this queue is empty. By default, this queue will refresh with your <code>fabDraw</code> commands upon completion. To only run <code>fabDraw</code> once, see <a href="../reference-pages/continuous-mode">continuous mode</a>.</p>
+<h3 id="syntax">
+  Syntax
+  <a class="anchor" href="#syntax">#</a>
+</h3>
+<pre tabindex="0"><code>fab.print()
+</code></pre><h3 id="parameters">
+  Parameters
+  <a class="anchor" href="#parameters">#</a>
+</h3>
+<p>None</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#syntax">Syntax</a></li>
+        <li><a href="#parameters">Parameters</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

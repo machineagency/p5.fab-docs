@@ -29,5 +29,5 @@ fab.moveExtrude(x, y, z, [velocity], [extrusion], [multiplication])
  <div class="grid-item">Number, optional. Interpreted as either (a) the total amount of filament to be deposited over the move, or (b) a multiplication value to modify default caluclations, depending on value of `[multiplication]` parameter</div>
 
 <div class="grid-item">multiplication</div>
- <div class="grid-item">Boolean, optional. If true, `extrusion` value is used as a multiplication modifier to default extrusion calculation. If fase, `extrusion` value is used a total amount of filament to deposit in mm. False by default.</div>
+ <div class="grid-item">Boolean, optional. If true, 'extrusion' value is used as a multiplication modifier to default extrusion calculation. If false, 'extrusion' value is used a total amount of filament to deposit in mm. False by default.</div>
 </div>

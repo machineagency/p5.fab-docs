@@ -21,6 +21,8 @@
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
+    <loc>http://localhost:1313/docs/reference/reference-pages/continuous-mode/</loc>
+  </url><url>
     <loc>http://localhost:1313/docs/resources/tutorials/cube-tutorial/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/</loc>
@@ -60,6 +62,8 @@
     <loc>http://localhost:1313/docs/resources/tutorials/non-planar-tutorial/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/resources/guides/p5fab-primer/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/reference/reference-pages/print/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/setabsoluteposition/</loc>
   </url><url>
