@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Getting Started # I recommend using the online editor to get started. It lets you to write code, start/stop prints, connect to MIDI devices, and connect to a camera in one place.
+Step 0: Gather materials # You&rsquo;ll need:
+A 3D printer &#43; filament Google Chrome browser a USB cable to connect your computer to your printer Step 1: The online editor # Using Chrome, open the online editor. (We have to use Chrome because it&rsquo;s the only browser that supports WebSerial).">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Getting Started Tutorial" />
+<meta property="og:description" content="Getting Started # I recommend using the online editor to get started. It lets you to write code, start/stop prints, connect to MIDI devices, and connect to a camera in one place.
+Step 0: Gather materials # You&rsquo;ll need:
+A 3D printer &#43; filament Google Chrome browser a USB cable to connect your computer to your printer Step 1: The online editor # Using Chrome, open the online editor. (We have to use Chrome because it&rsquo;s the only browser that supports WebSerial)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/docs/resources/tutorials/getting-started-tutorial/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Getting Started Tutorial | p5.fab</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/resources/tutorials/getting-started-tutorial/">
+<link rel="stylesheet" href="/book.min.58f1cb8a5f164a60e2fe794ee720850e12c90ce1075a71225158cf8cfce361af.css" integrity="sha256-WPHLil8WSmDi/nlO5yCFDhLJDOEHWnEiUVjPjPzjYa8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.9b9daa6be38325b4c64f9a9070db20ca775617b60faab36ee02071b8464c8257.js" integrity="sha256-m52qa&#43;ODJbTGT5qQcNsgyndWF7YPqrNu4CBxuEZMglc=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>p5.fab</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/" class="">Reference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/resources/" class="">Resources</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/machine-compatibility/" class="">Machine Compatibility</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Getting Started Tutorial</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#step-0-gather-materials">Step 0: Gather materials</a></li>
+    <li><a href="#step-1-the-online-editor">Step 1: The online editor</a></li>
+    <li><a href="#step-2-add-some-code">Step 2: Add some code</a></li>
+    <li><a href="#step-3-connect--run">Step 3: Connect + run</a></li>
+    <li><a href="#step-4-print-a-line">Step 4: Print a line</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><script src="https://kit.fontawesome.com/c412915ffb.js" crossorigin="anonymous"></script>
+<h1 id="getting-started">
+  Getting Started
+  <a class="anchor" href="#getting-started">#</a>
+</h1>
+<p>I recommend using the online editor to get started. It lets you to write code, start/stop prints, connect to MIDI devices, and connect to a camera in one place.</p>
+<h2 id="step-0-gather-materials">
+  Step 0: Gather materials
+  <a class="anchor" href="#step-0-gather-materials">#</a>
+</h2>
+<p>You&rsquo;ll need:</p>
+<ul>
+<li>A 3D printer + filament</li>
+<li>Google Chrome browser</li>
+<li>a USB cable to connect your computer to your printer</li>
+</ul>
+<h2 id="step-1-the-online-editor">
+  Step 1: The online editor
+  <a class="anchor" href="#step-1-the-online-editor">#</a>
+</h2>
+<p>Using Chrome, open the <a href="https://bsubbaraman.github.io/test-interface/" target="_blank"> online editor</a>. (We have to use Chrome because it&rsquo;s the only browser that supports WebSerial). It should look something like this:</p>
+<img src="../images/editor-thumbnail.png" width="100%">
+<p>The left side is a code editor, the right side shows a simple preview of your object. There are various menu items at the top:</p>
+<ul>
+<li><i class="fa-solid fa-file"></i>: Open a blank code template</li>
+<li><i class="fa-solid fa-download"></i>: Download the current code</li>
+<li><i class="fa-solid fa-upload"></i>: Upload a js file</li>
+<li><i class="fa-solid fa-book"></i>: Open an example</li>
+<li><i class="fa-solid fa-play"></i>: Run the current code; this will not interrupt your machine connection</li>
+<li><i class="fa-solid fa-rotate-right"></i>: Restart the sketch; this will interrupt the machine connection</li>
+<li><i class="fa-solid fa-gear"></i>: Toggle the machine info pane</li>
+<li><i class="fa-solid fa-music"></i>: Toggle the midi info pane</li>
+<li><i class="fa-solid fa-video"></i>: Toggle the video info pane</li>
+</ul>
+<p>Try changing the <code>sideLength</code> variable on line 11 to a new number, then press <i class="fa-solid fa-play"></i> (or Shift+Enter):</p>
+<video autoplay muted loop width="100%">
+  <source src="../images/cube-resize.mp4" type="video/mp4" />
+</video>
+<p>You&rsquo;ll see the code flash orange (indicating that you ran the code) and the preview update accordingly.</p>
+<h2 id="step-2-add-some-code">
+  Step 2: Add some code
+  <a class="anchor" href="#step-2-add-some-code">#</a>
+</h2>
+<p>Open a blank template with the <i class="fa-solid fa-file"></i> button. You&rsquo;ll see five default functions:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">setup</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#000">createCanvas</span>(<span style="color:#000">windowWidth</span>, <span style="color:#000">windowHeight</span>, <span style="color:#000">WEBGL</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">fabDraw</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">midiSetup</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">midiDraw</span>(<span style="color:#000">moveCommand</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">return</span> <span style="color:#000">moveCommand</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">draw</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#000">background</span>(<span style="color:#1c01ce">255</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#000">fab</span>.<span style="color:#000">render</span>();
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p>The <code>setup()</code> and <code>draw()</code> functions are from p5.js (see the <a href="https://p5js.org/" target="_blank">p5 reference</a> for more info). The <code>midiSetup()</code> and <code>midiDraw()</code> functions can be used to setup interactive modifications for prints. In the <code>fabDraw()</code> function, we&rsquo;ll write code to define our toolpaths.</p>
+<p>The <code>fab</code> object is created automatically and represents your machine. Add the following line to auto home:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">fabDraw</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#000">fab</span>.<span style="color:#000">autoHome</span>();
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p>Run the code (Shift+Enter); you won&rsquo;t see the preview change, since there&rsquo;s no filament being laid down. You can find other commands in the <a href="../../../reference" target="_blank">reference</a>.</p>
+<h2 id="step-3-connect--run">
+  Step 3: Connect + run
+  <a class="anchor" href="#step-3-connect--run">#</a>
+</h2>
+<p>Connect your computer to your printer using a USB cable. Open the machine pane <i class="fa-solid fa-gear"></i> and press connect. You&rsquo;ll be prompted to choose a device:</p>
+<img src="../images/connect-to-machine.png" width="100%">
+<p>Choose the USB serial device (if there are multiple and you&rsquo;re not sure which one is the printer, try unplugging/replugging the cable and see which one reappears). The connection status in the machine pane should now say &lsquo;connected&rsquo;.</p>
+<p>Press start print in the machine pane, and the machine should home. Hooray!</p>
+<h2 id="step-4-print-a-line">
+  Step 4: Print a line
+  <a class="anchor" href="#step-4-print-a-line">#</a>
+</h2>
+<p>To print, we need to heat up the nozzle. We can set the nozzle and bed temperatures with <code>setTemps(&lt;nozzleTemp&gt;, &lt;bedTemp&gt;)</code>. To get filament flowing, we can use <code>introLine()</code> to draw purge lines on the left side of the bed. Then you can make absolute or relative moves as we&rsquo;d like, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a90d91">function</span> <span style="color:#000">fabDraw</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#000">fab</span>.<span style="color:#000">autoHome</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#000">fab</span>.<span style="color:#000">setTemps</span>(<span style="color:#1c01ce">205</span>, <span style="color:#1c01ce">60</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#177500">// .2 mm is a reasonable first layer height for a .4mm nozzle
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#177500">// change this as needed!
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>  <span style="color:#a90d91">const</span> <span style="color:#000">printHeight</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0.2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">fab</span>.<span style="color:#000">introLine</span>(<span style="color:#000">printHeight</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#000">fab</span>.<span style="color:#000">moveRetract</span>(<span style="color:#1c01ce">50</span>, <span style="color:#1c01ce">50</span>, <span style="color:#000">printHeight</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#000">fab</span>.<span style="color:#000">extrudeX</span>(<span style="color:#1c01ce">100</span>);
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p>You can find other commands in the <a href="../../../reference" target="_blank">reference</a>. Run the code to preview (Shift+Enter), then press start print to print your line :).</p>
+<h2 id="next-steps">
+  Next Steps
+  <a class="anchor" href="#next-steps">#</a>
+</h2>
+<ul>
+<li><a href="../cube-tutorial">Printing a Cube</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#step-0-gather-materials">Step 0: Gather materials</a></li>
+    <li><a href="#step-1-the-online-editor">Step 1: The online editor</a></li>
+    <li><a href="#step-2-add-some-code">Step 2: Add some code</a></li>
+    <li><a href="#step-3-connect--run">Step 3: Connect + run</a></li>
+    <li><a href="#step-4-print-a-line">Step 4: Print a line</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

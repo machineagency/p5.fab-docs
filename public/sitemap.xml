@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/docs/quickstart/</loc>
-  </url><url>
-    <loc>http://localhost:1313/docs/machine-compatibility/</loc>
+    <loc>http://localhost:1313/docs/reference/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/resources/</loc>
   </url><url>
+    <loc>http://localhost:1313/docs/machine-compatibility/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/quickstart/</loc>
+  </url><url>
     <loc>http://localhost:1313/</loc>
     <lastmod>2024-03-04T15:58:36-08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/reference/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/resources/guides/cc-intro/</loc>
   </url><url>
@@ -26,6 +26,10 @@
     <loc>http://localhost:1313/docs/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/reference/reference-pages/fab/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/resources/tutorials/getting-started-tutorial/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/resources/tutorials/interactive-cube-tutorial/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/resources/tutorials/line-vase-tutorial/</loc>
   </url><url>

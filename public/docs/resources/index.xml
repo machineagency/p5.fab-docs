@@ -26,7 +26,21 @@
       <link>http://localhost:1313/docs/resources/tutorials/cube-tutorial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/resources/tutorials/cube-tutorial/</guid>
-      <description>Printing a Cube # Stay tuned! For now, check out the cube example on the online editor.</description>
+      <description>Printing a Cube # Check out the cube example in the online editor. It shows how to stack extrusions up to make a simple, hollow cube. If you&amp;rsquo;re comfortable with this, check out the interactive cube tutorial to see how to use a MIDI controller to change printing parameters.</description>
+    </item>
+    <item>
+      <title>Getting Started Tutorial</title>
+      <link>http://localhost:1313/docs/resources/tutorials/getting-started-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/tutorials/getting-started-tutorial/</guid>
+      <description>Getting Started # I recommend using the online editor to get started. It lets you to write code, start/stop prints, connect to MIDI devices, and connect to a camera in one place.&#xA;Step 0: Gather materials # You&amp;rsquo;ll need:&#xA;A 3D printer + filament Google Chrome browser a USB cable to connect your computer to your printer Step 1: The online editor # Using Chrome, open the online editor. (We have to use Chrome because it&amp;rsquo;s the only browser that supports WebSerial).</description>
+    </item>
+    <item>
+      <title>Interactive Cube</title>
+      <link>http://localhost:1313/docs/resources/tutorials/interactive-cube-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/resources/tutorials/interactive-cube-tutorial/</guid>
+      <description>Interactive Cube # Step 0: Gather Materials # You&amp;rsquo;ll need:&#xA;A 3D printer + filament a USB cable to connect your computer to your printer A MIDI controller + USB cable Step 1: Connect a MIDI controller # Go to the online editor and open the &amp;lsquo;interactive cube&amp;rsquo; tutorial.&#xA;Step 2: The midiSetup and midiDraw functions # The code in fabDraw is the same as the normal cube example, but now we&amp;rsquo;ve added midiSetup and midiDraw loops.</description>
     </item>
     <item>
       <title>Line Vase Tutorial</title>
@@ -40,7 +54,7 @@
       <link>http://localhost:1313/docs/resources/tutorials/non-planar-tutorial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/resources/tutorials/non-planar-tutorial/</guid>
-      <description>Line Vase Tutorial # Stay tuned! For now, check out the non-planar vase example on the online editor.</description>
+      <description>Non-Planar Printing # Check out the non-planar example in the online editor. It shows how to move out of the x-y plane while printing. If you&amp;rsquo;re comfortable with this, see the interactive cube tutorial to see how to use a MIDI controller to change printing parameters.</description>
     </item>
     <item>
       <title>p5.fab Primer</title>

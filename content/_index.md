@@ -19,13 +19,13 @@ draft = false
   - develop interactive fabrication workflows;
   - and whatever else you can think of!
 
-<span class='fab'>p5.fab</span> is developed as a library for <a href="https://p5js.org/">p5.js</a>. This site provides resources to use <span class='fab'>p5.fab</span>, including a gentle introduction to both creative coding and digital fabrication.
+<span class='fab'>p5.fab</span> is developed as a library for <a href="https://p5js.org/">p5.js</a>. This site provides resources to use <span class='fab'>p5.fab</span>.
 
 ## Required Materials
-While you _can_ get started with <span class='fab'>p5.fab</span> without a machine, it is designed to be used to explore material behaviour. Currently, the library supports 3D printers running Marlin firmware and has been tested on the following machines: Ender3 v2, Prusa i3-mk3, Potterbot 9, and FLSUN Q9. Development for other machines including CNCs and plotters are ongoing. If this doesn't mean much to you--or you want more information--see the <a href="docs/machine-compatibility"> machine compatibility page</a>. 
+While you _can_ use <span class='fab'>p5.fab</span> without a machine, it is designed to be used to explore material behaviour. Currently, the library supports 3D printers running Marlin firmware and has been tested on the following machines: Ender3 v2, Prusa i3-mk3, Potterbot 9, and FLSUN Q9. Development for other machines including CNCs and plotters are ongoing. If this doesn't mean much to you--or you want more information--see the <a href="docs/machine-compatibility"> machine compatibility page</a>. 
 
 ## Getting Started
-- To set up <span class='fab'>p5.fab</span> in a matter of minutes, check out <a href="docs/quickstart">Quickstart Guide</a> to learn how to use the <a href="https://machineagency.github.io/p5.fab/editor/index.html">online editor</a>.
-- Head to the <a href="docs/resources">resources</a> section for more in-depth guides to <span class='fab'>p5.fab</span> including examples and introductions to creative coding and digital fabrication.
+- To set up <span class='fab'>p5.fab</span> in a matter of minutes, check out <a href="docs/quickstart">Quickstart Guide</a>.
+- Head to the <a href="docs/resources">resources</a> section for more in-depth guides.
 - A list of  <span class='fab'>p5.fab</span> functions can be found in the <a href="docs/reference">reference</a>.
 - The source code can be found on <a href="https://github.com/machineagency/p5.fab">github</a>; feel free to ask questions and make suggestions/contributions there!

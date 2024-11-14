@@ -1,13 +1,15 @@
 ---
 title: "Quickstart"
-weight: 1
+weight: 4
+bookHidden: true
 ---
 
 ## <span class="fab">p5.fab</span> Quickstart
-Here are a couple of ways to get started with <span class="fab">p5.fab</span>.
+I recommend using the online editor to get started. It allows you to write code, start/stop prints, connect to MIDI devices, and connect to a camera in one place. If you want to edit, extend, or otherwise make changes to the codebase, you can install locally. 
+
 ### Online Editor
 1. Using Chrome[^1], open the [online editor](https://machineagency.github.io/p5.fab/editor/index.html).
-2. Design your artifact! You can start from one of the examples; try changing some of the values in the sketch to see what happens to the resulting object.
+2. Design your artifact. You can start from one of the examples; try changing some of the values in the sketch to see what happens to the resulting object.
 3. Physically connect your computer to your fabrication machine[^2] with a USB cable and click 'Connect'.
 4. Start making! Press 'Print' to start streaming commands to your machine. Be sure to keep an eye out for anything that goes wrong; there's no guarantee that your code will 'work' in any conventional sense, but that's part of the fun!
 
@@ -26,5 +28,5 @@ If you'd like to use your preferred code editor while using <span class='fab'>p5
        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
        <script src="https://unpkg.com/p5-webserial@0.1.1/build/p5.webserial.js"></script>
 
-2. Run a local server; this is required for communicating between the machine and your computer. See <a href="https://github.com/processing/p5.js/wiki/Local-server">this guide</a> for details on how to do this!
-3. Open your sketch in Chrome[^1] and start making!
+2. Run a local server; this is required for communicating between the machine and your computer. See <a href="https://github.com/processing/p5.js/wiki/Local-server">this guide</a> for details on how to do this.
+3. Open your sketch in Chrome and start making stuff.

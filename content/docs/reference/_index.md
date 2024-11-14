@@ -1,3 +1,8 @@
+---
+title: "Reference"
+weight: 1
+---
+
 # Reference
 
 ## <a href="reference-pages/fab">Fab</a>
@@ -77,9 +82,10 @@
       </tr>
     </tbody>
   </table>
+<!-- </div> -->
 
 ### G & M Codes
-
+<!-- <div class="reference-table"> -->
   <table>
     <tbody>
       <tr>

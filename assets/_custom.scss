@@ -86,6 +86,24 @@ h2, h3 {
     font-size: 0.9em;
 }
 
+.tutorial-item {
+    padding-bottom: 1rem;
+}
+.tutorial-item a:link {
+    text-decoration: none;
+}
+
+.tutorial-item:hover .tutorial-title  {
+    background-color: #FF6700;
+}
+
+.tutorial-title {
+    text-decoration: underline;
+    text-decoration-color: #FF6700;
+    font-size: 1.25rem;
+    display: inline-block;
+}
+
 // Overwrite some of the Hugo Book theme styles
 .markdown a {
     color:black;
@@ -131,15 +149,22 @@ a.footnote-backref {
     background-color: #FF6700;
 }
 
-.reference-table td {
-    width: 30%;
-    vertical-align: top;
-}
-
-.reference-table table tr td {
-    padding: 1rem 4rem 4rem 0rem;
+.reference-table table tr td{
     border: none;
+    vertical-align: top;
+    height: 6rem;
+    // padding: 1rem 4rem 4rem 0rem;
 }
+// .reference-table td {
+//     width: 30%;
+//     vertical-align: top;
+//     text-align: left;
+// }
+
+// .reference-table table tr td {
+//     padding: 1rem 4rem 4rem 0rem;
+//     border: none;
+// }
 
 .reference-table table tr:nth-child(2n) {
     background: white;
@@ -153,4 +178,8 @@ a.footnote-backref {
 
 .grid-item {
     height: auto;
+}
+
+.book-toc {
+    flex: 0 0 8rem;
 }
