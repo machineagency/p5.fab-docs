@@ -28,25 +28,25 @@ weight: 1
       <tr>
         <td>
           <a href="./reference-pages/moveto" class="ref-item">moveTo()</a><br>
-          <span class="ref-info">Move to a point.</span>  
+          <span class="ref-info">Absolute move to a point.</span>  
         </td>
         <td>
           <a href="reference-pages/movetox" class="ref-item">moveToX()</a><br>
-          <span class="ref-info">Move to an X position.</span>
+          <span class="ref-info">Absolute move to an X position.</span>
         </td>
         <td>
           <a href="reference-pages/movetoy" class="ref-item">moveToY()</a><br>
-          <span class="ref-info">Move to a Y position.</span>
+          <span class="ref-info">Absolute move to a Y position.</span>
         </td>
       </tr>
       <tr>
         <td>
           <a href="reference-pages/movetoz" class="ref-item">moveToZ()</a><br>
-          <span class="ref-info">Move to a Z position.</span>
+          <span class="ref-info">Absolute move to a Z position.</span>
         </td>
         <td>
           <a href="reference-pages/movetoe" class="ref-item">moveToE()</a><br>
-          <span class="ref-info">Move to a E position.</span> 
+          <span class="ref-info">Absolute move to a E position.</span> 
         </td>
         <td>
           <a href="reference-pages/move" class="ref-item">move()</a><br>
@@ -73,11 +73,11 @@ weight: 1
         </td>
         <td>
           <a href="reference-pages/moveextrude" class="ref-item">moveExtrude()</a><br>
-          <span class="ref-info">Move to an x,y,z position while extruding.</span>        
+          <span class="ref-info">Absolute move to an x,y,z position while extruding.</span>        
         </td>
         <td>
           <a href="reference-pages/travelto" class="ref-item">travelTo()</a><br>
-          <span class="ref-info">Move to an x,y,z position with a z-hop.</span>
+          <span class="ref-info">Absolute move to an x,y,z position with a z-hop.</span>
         </td>
       </tr>
     </tbody>

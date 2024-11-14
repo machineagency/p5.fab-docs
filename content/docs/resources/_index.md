@@ -32,6 +32,17 @@ The resources here are growing; if there's something you'd like to see added or 
     </a>
 </div>
 
+<div class="tutorial-item">
+    <a href="./tutorials/etch-a-sketch-tutorial">
+    <div class="tutorial-title">Etch A Sketch</div>
+        <figure>
+            <figcaption>
+                Use the printer as an Etch A Sketch, controlled by a MIDI controller.
+            </figcaption>
+        </figure>
+    </a>
+</div>
+
 
 <!-- ## [Line Vase 3D Print](tutorials/line-vase-tutorial)
 Tuning printing parameters to create delicate structures. -->
