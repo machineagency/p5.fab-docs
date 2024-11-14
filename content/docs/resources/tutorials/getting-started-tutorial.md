@@ -88,7 +88,7 @@ Choose the USB serial device (if there are multiple and you're not sure which on
 Note! If you are running ubuntu/kubuntu/linux, and your USB serial device is not showing up, you may need to uninstall the brltty package, which interferes with some printers.
 We used: <pre>sudo apt autoremove brltty</pre> and restarted, and then it showed up. [Thanks to people on reddit!](https://www.reddit.com/r/octoprint/comments/usccvr/solved_ender_3_usb_connection_issue_on_ubuntu_2204/)
 
-Press start print in the machine pane, and the machine should home. Hooray!
+Press start print in the machine pane, and the machine should home, heat up, and then start printing. Hooray!
 
 ## Step 4: Print a line
 To print, we need to heat up the nozzle. We can set the nozzle and bed temperatures with `setTemps(<nozzleTemp>, <bedTemp>)`. To get filament flowing, we can use `introLine()` to draw purge lines on the left side of the bed. Then you can make absolute or relative moves as we'd like, e.g.:
