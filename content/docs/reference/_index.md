@@ -146,8 +146,25 @@ weight: 1
     </tr>
   </tbody>
 </table>
-</div>
+
 
 
 ## <a href="reference-pages/fab">MIDI</a>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="reference-pages/mididata" class="ref-item">midiData</a><br>
+        <span class="ref-info">Message data sent from a MIDI device</span>
+      </td>
+      <td>
+        <a href="reference-pages/mapvalue" class="ref-item">mapValue()</a><br>
+        <span class="ref-info">Map MIDI value data to a new range.</span>
+      </td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
+</div>

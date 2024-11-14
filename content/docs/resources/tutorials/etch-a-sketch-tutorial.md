@@ -23,4 +23,4 @@ For our etch a sketch, we'll toggle between extruding and just moving around wit
 
 
 ## Step 3: Print
-Connect to your print and start the print: the machine will home and set temperatures (as defined in `fabDraw`). Then, you can use your knobs to move the machine around. Press your button to start extruding; make sure you raise the z height up a little bit so filament can exit the nozzle.
+Connect to your printer and start the print: the machine will home and set temperatures (as defined in `fabDraw`). Then, you can use your knobs to move the machine around. Press your button to start extruding; make sure you raise the z height up a little bit so filament can exit the nozzle.

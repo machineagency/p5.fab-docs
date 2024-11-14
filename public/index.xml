@@ -93,6 +93,20 @@
       <description>Line Vase Tutorial # Stay tuned! For now, check out the line vase example on the online editor.</description>
     </item>
     <item>
+      <title>mapValue</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/mapvalue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/mapvalue/</guid>
+      <description>mapValue() Remap the incoming value of MIDI message data from 0-127 to a new range Syntax # midiData.mapValue(startRange, endRange) Parameters # startRange Number, the lower bound of the value&#39;s target range. endRange Number, the upper bound of the value&#39;s target range. </description>
+    </item>
+    <item>
+      <title>midiData</title>
+      <link>http://localhost:1313/docs/reference/reference-pages/mididata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/reference/reference-pages/mididata/</guid>
+      <description>midiData Object carrying MIDI message data. Use it in the `midiSetup` loop. Fields # Note Number, the unique ID for the MIDI input Value Number, a value between 0-127. Type Number, different MIDI devices might assign different types to various inputs/interactions. </description>
+    </item>
+    <item>
       <title>Move</title>
       <link>http://localhost:1313/docs/reference/reference-pages/move/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

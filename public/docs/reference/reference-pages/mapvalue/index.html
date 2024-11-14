@@ -3,20 +3,20 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="moveToY() Move directly to an absolute Y position without extruding material. Syntax # fab.moveToY(y, [velocity]) Parameters # y Number, the y position to move to (in current units, mm by default) v Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) ">
+<meta name="description" content="mapValue() Remap the incoming value of MIDI message data from 0-127 to a new range Syntax # midiData.mapValue(startRange, endRange) Parameters # startRange Number, the lower bound of the value&#39;s target range. endRange Number, the upper bound of the value&#39;s target range. ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Move To Y" />
-<meta property="og:description" content="moveToY() Move directly to an absolute Y position without extruding material. Syntax # fab.moveToY(y, [velocity]) Parameters # y Number, the y position to move to (in current units, mm by default) v Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default) " />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="mapValue" />
+<meta property="og:description" content="mapValue() Remap the incoming value of MIDI message data from 0-127 to a new range Syntax # midiData.mapValue(startRange, endRange) Parameters # startRange Number, the lower bound of the value&#39;s target range. endRange Number, the upper bound of the value&#39;s target range. " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/docs/reference/reference-pages/movetoy/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://localhost:1313/docs/reference/reference-pages/mapvalue/" /><meta property="article:section" content="docs" />
 
 
 
-<title>Move To Y | p5.fab</title>
+<title>mapValue | p5.fab</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="canonical" href="http://localhost:1313/docs/reference/reference-pages/movetoy/">
+<link rel="canonical" href="http://localhost:1313/docs/reference/reference-pages/mapvalue/">
 <link rel="stylesheet" href="/book.min.58f1cb8a5f164a60e2fe794ee720850e12c90ce1075a71225158cf8cfce361af.css" integrity="sha256-WPHLil8WSmDi/nlO5yCFDhLJDOEHWnEiUVjPjPzjYa8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.61894a67e4e6e3125c0e85491dcf148e52158d8a96aac0de1c93292436805139.js" integrity="sha256-YYlKZ&#43;Tm4xJcDoVJHc8UjlIVjYqWqsDeHJMpJDaAUTk=" crossorigin="anonymous"></script>
@@ -149,7 +149,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Move To Y</strong>
+  <strong>mapValue</strong>
 
   <label for="toc-control">
     
@@ -183,22 +183,22 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h2 class="ref-header">moveToY()</h2>
-Move directly to an absolute Y position without extruding material.
+  <article class="markdown book-article"><h2 class="ref-header">mapValue()</h2>
+Remap the incoming value of MIDI message data from 0-127 to a new range
 <h3 id="syntax">
   Syntax
   <a class="anchor" href="#syntax">#</a>
 </h3>
-<pre tabindex="0"><code>fab.moveToY(y, [velocity])
+<pre tabindex="0"><code>midiData.mapValue(startRange, endRange)
 </code></pre><h3 id="parameters">
   Parameters
   <a class="anchor" href="#parameters">#</a>
 </h3>
 <div class="grid-container">
- <div class="grid-item">y</div>
- <div class="grid-item">Number, the y position to move to (in current units, mm by default)</div>
- <div class="grid-item">v</div>
- <div class="grid-item">Number, optional. The speed to move at (in current units/sec, inherited or 25 mm/sec by default)</div>
+ <div class="grid-item">startRange</div>
+ <div class="grid-item">Number, the lower bound of the value's target range.</div>
+ <div class="grid-item">endRange</div>
+ <div class="grid-item">Number, the upper bound of the value's target range.</div>
 </div></article>
  
       
