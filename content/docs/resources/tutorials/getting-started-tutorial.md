@@ -85,6 +85,9 @@ Connect your computer to your printer using a USB cable. Open the machine pane <
 
 Choose the USB serial device (if there are multiple and you're not sure which one is the printer, try unplugging/replugging the cable and see which one reappears). The connection status in the machine pane should now say 'connected'.
 
+Note! If you are running ubuntu/kubuntu/linux, and your USB serial device is not showing up, you may need to uninstall the brltty package, which interferes with some printers.
+We used: <pre>sudo apt autoremove brltty</pre> and restarted, and then it showed up. [Thanks to people on reddit!](https://www.reddit.com/r/octoprint/comments/usccvr/solved_ender_3_usb_connection_issue_on_ubuntu_2204/)
+
 Press start print in the machine pane, and the machine should home. Hooray!
 
 ## Step 4: Print a line
