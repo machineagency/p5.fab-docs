@@ -1,0 +1,372 @@
+---
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+
+const referenceGroups = [
+  { label: 'Setup',         methods: ['createFab', 'setPrinter'] },
+  { label: 'Motion',        methods: ['moveTo', 'move', 'travelTo', 'moveRetract', 'moveToX', 'moveToY', 'moveToZ', 'moveToE', 'moveX', 'moveY', 'moveZ', 'moveE'] },
+  { label: 'Extrusion',     methods: ['moveExtrude', 'extrudeX', 'extrudeY', 'extrudeZ', 'extrudeXY', 'extrudeToX', 'extrudeToY', 'extrudeToZ', 'extrudeToXY'] },
+  { label: 'Temperature',   methods: ['setTemps', 'setNozzleTemp', 'setBedTemp'] },
+  { label: 'Print control', methods: ['autoHome', 'introLine', 'fanOn', 'fanOff', 'pausePrint', 'stopPrint'] },
+  { label: 'Configuration', methods: ['setSpeed', 'setMaxAcceleration', 'setStartAcceleration'] },
+  { label: 'Utilities',     methods: ['makeE', 'prime', 'addComment', 'render', 'pickupTool', 'circle'] },
+];
+
+const resourceGroups = [
+  {
+    label: 'Guides',
+    items: [
+      { title: 'p5.fab Primer',                  slug: 'guides/p5fab-primer' },
+      { title: 'Working in the Editor',           slug: 'guides/editor-guide' },
+      { title: 'Intro to Creative Coding',        slug: 'guides/cc-intro' },
+      { title: 'Intro to Digital Fabrication',    slug: 'guides/dfab-intro' },
+    ],
+  },
+  {
+    label: 'Tutorials',
+    items: [
+      { title: 'Getting Started',       slug: 'tutorials/getting-started-tutorial' },
+      { title: 'Cube',                  slug: 'tutorials/cube-tutorial' },
+      { title: 'Interactive Cube',      slug: 'tutorials/interactive-cube-tutorial' },
+      { title: 'Non-Planar',            slug: 'tutorials/non-planar-tutorial' },
+      { title: 'Line Vase',             slug: 'tutorials/line-vase-tutorial' },
+      { title: 'Etch-a-Sketch',         slug: 'tutorials/etch-a-sketch-tutorial' },
+    ],
+  },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style is:global>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --orange: #FF6700;
+        --black: #1a1a1a;
+        --border: 1px solid black;
+        --font-body: 'Inter', system-ui, sans-serif;
+        --font-mono: 'Roboto Mono', monospace;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: 16px;
+        color: var(--black);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: white;
+        overflow-x: hidden;
+      }
+
+      /* ── Header ── */
+      header {
+        height: 10vh;
+        min-height: 1.75em;
+        border-bottom: var(--border);
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem;
+        gap: 1.5rem;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 10;
+      }
+
+      .logo {
+        font-style: italic;
+        font-size: 1.5rem;
+        background: var(--orange);
+        color: black;
+        text-decoration: none;
+        padding: 3px 5px;
+        font-family: var(--font-mono);
+        margin-left: 20px;
+      }
+
+      header nav a {
+        text-decoration: none;
+        color: var(--black);
+        font-size: 1.25em;
+      }
+
+      header nav a:hover,
+      header nav a.active {
+        text-decoration: underline;
+        text-decoration-color: var(--orange);
+        text-decoration-thickness: 3px;
+      }
+
+      /* ── Page layout ── */
+      .page {
+        display: flex;
+        flex: 1;
+      }
+
+      /* ── Sidebar ── */
+      aside {
+        width: 220px;
+        flex-shrink: 0;
+        border-right: var(--border);
+        padding: 1.5rem 0;
+        overflow-y: auto;
+        position: sticky;
+        top: 10vh;
+        height: calc(100vh - 10vh);
+      }
+
+      .sidebar-group {
+        margin-bottom: 1.25rem;
+      }
+
+      .sidebar-group-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #888;
+        padding: 0 1rem;
+        margin-top: 1rem;
+        margin-bottom: 0.25rem;
+        display: block;
+      }
+
+      .sidebar-section-label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        padding: 0.15rem 1rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        color: var(--black);
+      }
+
+      aside a {
+        display: block;
+        padding: 0.2rem 1rem;
+        text-decoration: none;
+        color: var(--black);
+        font-size: 0.875rem;
+        font-family: var(--font-mono);
+        border-left: 3px solid transparent;
+        line-height: 1.6;
+      }
+
+      aside a:hover {
+        background: #f5f5f5;
+      }
+
+      aside a.active {
+        border-left: 3px solid var(--orange);
+        background: #fff5ef;
+      }
+
+      aside .plain-link {
+        font-family: var(--font-body);
+      }
+
+      /* ── Main content ── */
+      main {
+        flex: 1;
+        padding: 2.5rem 3rem;
+        max-width: 800px;
+      }
+
+      main h1 {
+        font-family: var(--font-mono);
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+      }
+
+      main h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 2rem 0 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.8rem;
+        color: #555;
+      }
+
+      main p {
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      main ul {
+        padding-left: 1.25rem;
+        line-height: 1.8;
+      }
+
+      main a {
+        color: var(--black);
+        text-decoration: underline;
+        text-decoration-color: var(--orange);
+        text-decoration-thickness: 2px;
+      }
+
+      /* ── Parameter table ── */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: var(--border);
+        box-shadow: 5px 5px var(--orange);
+        margin-bottom: 1rem;
+        table-layout: fixed;
+      }
+
+      th:nth-child(1), td:nth-child(1) { width: 18%; }
+      th:nth-child(2), td:nth-child(2) { width: 22%; }
+      th:nth-child(3), td:nth-child(3) { width: 60%; }
+
+      th {
+        text-align: left;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+        font-family: var(--font-body);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        border-bottom: var(--border);
+        background: #fafafa;
+      }
+
+      td {
+        text-align: left;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        border-bottom: 1px solid #eee;
+        vertical-align: top;
+        line-height: 1.5;
+        overflow-wrap: break-word;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* ── Code ── */
+      code {
+        font-family: var(--font-mono);
+        font-size: 0.875em;
+        background: #f5f5f5;
+        padding: 0.1em 0.35em;
+        border-radius: 3px;
+      }
+
+      pre {
+        background: #f5f5f5;
+        border: var(--border);
+        padding: 1.25rem;
+        overflow-x: auto;
+        margin: 0.5rem 0 1rem;
+        box-shadow: 5px 5px var(--orange);
+      }
+
+      pre code {
+        background: none;
+        padding: 0;
+        font-size: 0.875rem;
+        line-height: 1.6;
+      }
+
+      .embed-frame {
+        display: block;
+        width: calc(150% + 8px);
+        margin-right: calc(-50% - 8px);
+        height: 308px;
+        border: 0;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+    <ClientRouter />
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="/">p5.fab</a>
+      <nav>
+        <a href="/reference" class={currentPath.startsWith('/reference') ? 'active' : ''}>Reference</a>
+      </nav>
+      <nav>
+        <a href="/resources/guides/p5fab-primer" class={currentPath.startsWith('/resources') ? 'active' : ''}>Resources</a>
+      </nav>
+    </header>
+
+    <div class="page">
+      <aside transition:persist>
+        <div class="sidebar-group">
+          <span class="sidebar-section-label">Reference</span>
+          {referenceGroups.map(group => (
+            <div>
+              <span class="sidebar-group-label">{group.label}</span>
+              {[...group.methods].sort().map(name => (
+                <a href={`/reference/${name}`}>{name}()</a>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <div class="sidebar-group">
+          <span class="sidebar-section-label">Resources</span>
+          {resourceGroups.map(group => (
+            <div>
+              <span class="sidebar-group-label">{group.label}</span>
+              {group.items.map(item => (
+                <a href={`/resources/${item.slug}`} class="plain-link">{item.title}</a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      <main>
+        <slot />
+      </main>
+    </div>
+
+    <script>
+      function updateActive() {
+        const path = window.location.pathname.replace(/\/$/, '');
+        document.querySelectorAll('aside a').forEach(a => {
+          const href = a.getAttribute('href')?.replace(/\/$/, '');
+          a.classList.toggle('active', href === path);
+        });
+      }
+
+      function resizeEmbedFrames() {
+        const main = document.querySelector('main');
+        if (!main) return;
+        const style = getComputedStyle(main);
+        const w = main.clientWidth
+          - parseFloat(style.paddingLeft)
+          - parseFloat(style.paddingRight);
+        if (!w) return;
+        document.querySelectorAll('.embed-frame').forEach(iframe => {
+          iframe.style.width = `${w * 1.5 + 8}px`;
+          iframe.style.marginRight = `${-(w * 0.5 + 8)}px`;
+        });
+      }
+
+      updateActive();
+      resizeEmbedFrames();
+      document.addEventListener('astro:page-load', () => {
+        updateActive();
+        resizeEmbedFrames();
+      });
+      window.addEventListener('resize', resizeEmbedFrames);
+    </script>
+  </body>
+</html>

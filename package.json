@@ -1,0 +1,23 @@
+{
+  "name": "p5.fab-docs",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "extract": "node scripts/extract-jsdoc.mjs",
+    "build": "npm run extract && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^8.1.0",
+    "astro": "^6.2.1",
+    "jsdoc": "^4.0.5",
+    "jsdoc-api": "^9.3.6",
+    "svelte": "^5.55.5",
+    "typescript": "^5.9.3"
+  }
+}

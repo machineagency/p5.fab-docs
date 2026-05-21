@@ -1,0 +1,65 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import reference from '../../content/reference.json';
+
+const EDITOR_URL = import.meta.env.PUBLIC_EDITOR_URL ?? 'http://localhost:5173';
+
+export function getStaticPaths() {
+  return reference.map(method => ({
+    params: { method: method.name },
+    props: { method },
+  }));
+}
+
+const { method } = Astro.props;
+---
+
+<DocsLayout title={`${method.name}() — p5.fab reference`}>
+  <h1>{method.name}()</h1>
+  <p>{method.description}</p>
+
+  {method.params.length > 0 && (
+    <section>
+      <h2>Parameters</h2>
+      <table>
+<thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {method.params.map(p => (
+            <tr>
+              <td><code>{p.name}{p.optional ? '?' : ''}</code></td>
+              <td><code>{p.type}</code></td>
+              <td>{p.description}{p.defaultvalue !== null ? ` Default: ${p.defaultvalue}.` : ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  )}
+
+  {method.returns && (
+    <section>
+      <h2>Returns</h2>
+      <p><code>{method.returns.type}</code> — {method.returns.description}</p>
+    </section>
+  )}
+
+  {method.examples.length > 0 && (
+    <section>
+      <h2>Example</h2>
+      {method.examples.map(ex => (
+        <iframe
+          src={`${EDITOR_URL}/embed?code=${encodeURIComponent(ex)}`}
+          title={`${method.name}() example`}
+          class="embed-frame"
+          sandbox="allow-scripts allow-downloads allow-same-origin"
+        ></iframe>
+      ))}
+    </section>
+  )}
+</DocsLayout>
