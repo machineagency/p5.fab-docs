@@ -2,15 +2,14 @@
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import reference from '../../content/reference.json';
 
-const groups = [
-  { label: 'Setup',         methods: ['createFab', 'setPrinter'] },
-  { label: 'Motion',        methods: ['moveTo', 'move', 'travelTo', 'moveRetract', 'moveToX', 'moveToY', 'moveToZ', 'moveToE', 'moveX', 'moveY', 'moveZ', 'moveE'] },
-  { label: 'Extrusion',     methods: ['moveExtrude', 'extrudeX', 'extrudeY', 'extrudeZ', 'extrudeXY', 'extrudeToX', 'extrudeToY', 'extrudeToZ', 'extrudeToXY'] },
-  { label: 'Temperature',   methods: ['setTemps', 'setNozzleTemp', 'setBedTemp'] },
-  { label: 'Print control', methods: ['autoHome', 'introLine', 'fanOn', 'fanOff', 'pausePrint', 'stopPrint'] },
-  { label: 'Configuration', methods: ['setSpeed', 'setMaxAcceleration', 'setStartAcceleration'] },
-  { label: 'Utilities',     methods: ['makeE', 'prime', 'addComment', 'render', 'pickupTool', 'circle'] },
-];
+const groupOrder = ['Structure', 'Setup', 'Motion', 'Extrusion', 'Temperature', 'Print control', 'Configuration', 'Utilities'];
+
+const groups = groupOrder
+  .map(label => ({
+    label,
+    methods: reference.filter(m => m.group === label).map(m => m.name).sort(),
+  }))
+  .filter(g => g.methods.length > 0);
 
 const byName = Object.fromEntries(reference.map(m => [m.name, m]));
 ---
@@ -23,7 +22,7 @@ const byName = Object.fromEntries(reference.map(m => [m.name, m]));
     <section class="ref-group">
       <h2>{group.label}</h2>
       <div class="ref-grid">
-        {[...group.methods].sort().map(name => {
+        {group.methods.map(name => {
           const m = byName[name];
           return (
             <a href={`/reference/${name}`} class="ref-card">

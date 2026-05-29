@@ -1,19 +1,312 @@
 [
   {
     "name": "createFab",
-    "description": "Creates and returns the global `fab` object. Call this once in `setup()`.\n\nCalling it multiple times returns the same\ninstance, preserving any open serial connection across hot-reloads.\n\n**Hot-reload behavior:** In the copypastes.xyz editor, `setup()` re-runs\nevery time you run your sketch. This means changes to `setup()` (e.g.\n`setPrinter()`, canvas size) take effect immediately. However, avoid\ncreating p5.js DOM elements (`createButton()`, `createSlider()`, etc.) in\n`setup()`: they will be duplicated on each run.",
+    "kind": "function",
+    "description": "Explicitly initializes the global `fab` object and returns it.\n\n`createFab()` is optional: `fab` is created automatically before `setup()` runs.\nCalling it multiple times returns the same instance, preserving any open\nserial connection across reloads.",
+    "group": "Setup",
+    "readonly": false,
     "params": [],
     "returns": {
       "type": "Fab",
       "description": "The global fab instance."
     },
     "examples": [
-      "function setup() {\n  fab = createFab();\n  fab.setPrinter('ender3');\n}"
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  fab = createFab();\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const diameter = 50;\n  fab.circle(fab.centerX, fab.centerY, 0, diameter);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}",
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  // You can omit createFab()\n  // The fab object will be created automatically before setup() runs\n  fab.setPrinter('ender3');\n}\n\nfunction fabDraw() {\n\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}",
+      "// You can name your fab object something else, if you want!\nlet myMachine;\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  myMachine = createFab();\n}\n\nfunction fabDraw() {\n  myMachine.autoHome();\n  myMachine.setTemps(200, 60);\n  const diameter = 50;\n  myMachine.circle(fab.centerX, fab.centerY, 0, 50);\n}\n\nfunction draw() {\n  background(255);\n  myMachine.render();\n}"
+    ]
+  },
+  {
+    "name": "nozzleDiameter",
+    "kind": "property",
+    "description": "The printer's nozzle diameter in mm. Used to calculate extrusion amounts automatically.\n\nYou can configure the nozzle diameter via `setPrinter()`\nor directly to override the preset.",
+    "group": "Configuration",
+    "readonly": false,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  fab.setPrinter('ender3', { nozzleDiameter: 0.5 });\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(205, 60);\n  const lineLength = 100;\n\n  fab.retractTo(50, 50, 0);\n  fab.extrudeX(lineLength);\n  let lastCmd = fab.commands.at(-1);\n  console.log(`Extruding ${lastCmd.e}mm with a ${fab.nozzleDiameter}mm nozzle`);\n\n  // Change nozzle diameter and extrude another line\n  fab.nozzleDiameter = 1.0;\n  fab.retractTo(50, 100, 0);\n  fab.extrudeX(lineLength);\n  lastCmd = fab.commands.at(-1);\n  console.log(`Extruding ${lastCmd.e}mm with a ${fab.nozzleDiameter}mm nozzle`);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "filamentDiameter",
+    "kind": "property",
+    "description": "The filament diameter in mm. Used to calculate extrusion amounts automatically.\nSet via `setPrinter()` or assign directly to override the preset.",
+    "group": "Configuration",
+    "readonly": false,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "maxX",
+    "kind": "property",
+    "description": "The maximum X travel distance of the printer in mm.\nSet by the printer profile; assign directly to override.",
+    "group": "Utilities",
+    "readonly": false,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "maxY",
+    "kind": "property",
+    "description": "The maximum Y travel distance of the printer in mm.\nSet by the printer profile; assign directly to override.",
+    "group": "Utilities",
+    "readonly": false,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "maxZ",
+    "kind": "property",
+    "description": "The maximum Z travel distance of the printer in mm.\nSet by the printer profile; assign directly to override.",
+    "group": "Utilities",
+    "readonly": false,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "centerX",
+    "kind": "property",
+    "description": "The X center of the build plate in mm (`maxX / 2`). Useful for centering prints.",
+    "group": "Utilities",
+    "readonly": true,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "centerY",
+    "kind": "property",
+    "description": "The Y center of the build plate in mm (`maxY / 2`). Useful for centering prints.",
+    "group": "Utilities",
+    "readonly": true,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "x",
+    "kind": "property",
+    "description": "Current planned X position in mm (local coordinates, before any `translate` offset).",
+    "group": "Utilities",
+    "readonly": true,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "y",
+    "kind": "property",
+    "description": "Current planned Y position in mm (local coordinates, before any `translate` offset).",
+    "group": "Utilities",
+    "readonly": true,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "z",
+    "kind": "property",
+    "description": "Current planned Z position in mm (local coordinates, before any `translate` offset).",
+    "group": "Utilities",
+    "readonly": true,
+    "params": [],
+    "returns": {
+      "type": "number",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "isPrinting",
+    "kind": "property",
+    "description": "Whether a print is currently in progress.\nUseful inside `draw()` to update a visualization or UI while printing.",
+    "group": "Utilities",
+    "readonly": true,
+    "params": [],
+    "returns": {
+      "type": "boolean",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "commands",
+    "kind": "property",
+    "description": "The GCode commands generated by the most recent fabDraw() call, as structured objects. Each entry has `.command` (e.g. 'G1', 'M104'), `.fields` (all parameters as a map), and direct lowercase field access (`.x`, `.s`, `.f`, etc.). Cleared and rebuilt each time fabDraw() runs.\n\nA line of GCode consists of fields that are separated by spaces.\nA field can be interpreted as a command, a parameter, or some custom purpose. It typically consists of a letter directly followed by a number. For example, `G1` is a linear move command. For a comprehensive overview of GCode commands, see {@link https://marlinfw.org/meta/gcode/ Marlin's GCode dictionary}.",
+    "group": "Utilities",
+    "readonly": true,
+    "params": [],
+    "returns": {
+      "type": "Array.<GCodeCommand>",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "gcode",
+    "kind": "property",
+    "description": "All generated G-code as a single newline-separated string.\nUseful for downloading or logging the full output of `fabDraw()`.",
+    "group": "Utilities",
+    "readonly": true,
+    "params": [],
+    "returns": {
+      "type": "string",
+      "description": ""
+    },
+    "examples": []
+  },
+  {
+    "name": "extrusionMultiplier",
+    "kind": "function",
+    "description": "Set the extrusion multiplier applied to all subsequent auto-calculated extrusion amounts.\nWorks like `strokeWeight` in p5.js — set once and it applies to all moves until changed.\nAutomatically resets to the printer's default value at the start of each `fabDraw()` call.\nUse `push()` / `pop()` to scope a temporary change.",
+    "group": "Configuration",
+    "readonly": false,
+    "params": [
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Multiplier value (e.g. `1.2` for 20% over-extrusion, `0.8` for bridging).",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function fabDraw() {\n  fab.moveTo(0, 0, 0.2, 1500);\n  fab.extrusionMultiplier(1.2);  // over-extrude first layer\n  fab.extrudeTo(100, 0, 0.2, 1500);\n  fab.extrusionMultiplier(1);    // reset to normal\n  fab.extrudeTo(100, 100, 0.2, 1500);\n}"
+    ]
+  },
+  {
+    "name": "retractAmount",
+    "kind": "function",
+    "description": "Set the filament retraction distance for `retractTo()` and `retractBy()`.\nResets to the printer profile default at the start of each `fabDraw()` call.\nUse `push()` / `pop()` to scope a temporary change.",
+    "group": "Configuration",
+    "readonly": false,
+    "params": [
+      {
+        "name": "mm",
+        "type": "number",
+        "description": "Retraction distance in mm.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": []
+  },
+  {
+    "name": "zHopHeight",
+    "kind": "function",
+    "description": "Set the z-hop height for `retractTo()` and `retractBy()`.\nResets to the printer profile default at the start of each `fabDraw()` call.\nUse `push()` / `pop()` to scope a temporary change.",
+    "group": "Configuration",
+    "readonly": false,
+    "params": [
+      {
+        "name": "mm",
+        "type": "number",
+        "description": "Z-hop height in mm.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": []
+  },
+  {
+    "name": "push",
+    "kind": "function",
+    "description": "Begins a command group that contains its own printing state.\n\nBy default, printing parameters (e.g., `extrusionMultiplier()`, `speed()`) and\ntransformations (e.g., `translate()`) apply to all subsequent commands. `push()` and `pop()`\ncan be used to constrain the effect of print parameters and transformations to a specific group\nof commands. The functionality follows `push()` and `pop()` in p5.js.\n\n`push()` and `pop()` contain the effects of the following functions:\n\n<ul>\n<li>`extrusionMultiplier()`</li>\n<li>`speed()`</li>\n<li>`translate()`</li>\n<li>`retractAmount()`</li>\n<li>`zHopHeight()`</li>\n</ul>",
+    "group": "Structure",
+    "readonly": false,
+    "params": [],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  fab.speed(50);\n  const firstLayerHeight = 0.2;\n  const diameter = 50;\n\n  // Draw a circle on the left side of the bed\n  fab.circle(fab.maxX/3, fab.centerY, firstLayerHeight, diameter);\n\n  // Begin a group of commands with different parameters\n  fab.push();\n\n  // Translate to the center of the bed\n  fab.translate(fab.centerX, fab.centerY);\n\n  // Set new printing parameters\n  fab.speed(20);\n  fab.extrusionMultiplier(2);\n\n  // Draw a circle using the slower speed and higher extrusion\n  fab.circle(0, 0, firstLayerHeight, diameter);\n\n  // Restore parameters\n  fab.pop();\n\n  // Print a circle on the right side of the bed\n  fab.circle(2*fab.maxX/3, fab.centerY, firstLayerHeight, diameter);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "pop",
+    "kind": "function",
+    "description": "Ends a command group that contains its own printing state.\n\nBy default, printing parameters (e.g., `extrusionMultiplier()`, `speed()`) and\ntransformations (e.g., `translate()`) apply to all subsequent commands. `push()` and `pop()`\ncan be used to constrain the effect of print parameters and transformations to a specific group\nof commands. The functionality follows `push()` and `pop()` in p5.js.\n\n`push()` and `pop()` contain the effects of the following functions:\n\n<ul>\n<li>`extrusionMultiplier()`</li>\n<li>`speed()`</li>\n<li>`translate()`</li>\n<li>`retractAmount()`</li>\n<li>`zHopHeight()`</li>\n</ul>",
+    "group": "Structure",
+    "readonly": false,
+    "params": [],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  fab.speed(50);\n  const firstLayerHeight = 0.2;\n  const diameter = 50;\n\n  // Draw a circle on the left side of the bed\n  fab.circle(fab.maxX/3, fab.centerY, firstLayerHeight, diameter);\n\n  // Begin a group of commands with different parameters\n  fab.push();\n\n  // Translate to the center of the bed\n  fab.translate(fab.centerX, fab.centerY);\n\n  // Set new printing parameters\n  fab.speed(20);\n  fab.extrusionMultiplier(2);\n\n  // Draw a circle using the slower speed and higher extrusion\n  fab.circle(0, 0, firstLayerHeight, diameter);\n\n  // Restore parameters\n  fab.pop();\n\n  // Print a circle on the right side of the bed\n  fab.circle(2*fab.maxX/3, fab.centerY, firstLayerHeight, diameter);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "translate",
+    "kind": "function",
+    "description": "Offset the coordinate origin for all subsequent moves by `(dx, dy, dz)`.\nOffsets accumulate — a second `translate` adds to the first.\nUse `push()` / `pop()` to scope a translation to a specific region.",
+    "group": "Motion",
+    "readonly": false,
+    "params": [
+      {
+        "name": "dx",
+        "type": "number",
+        "description": "X offset in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "dy",
+        "type": "number",
+        "description": "Y offset in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "dz",
+        "type": "number",
+        "description": "Z offset in mm.",
+        "optional": true,
+        "defaultvalue": 0
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function fabDraw() {\n  for (let i = 0; i < 3; i++) {\n    fab.push();\n    fab.translate(i * 60, 0);\n    fab.moveTo(0, 0, 0.2, 3000);\n    fab.extrudeTo(50, 0, 0.2, 1500);\n    fab.extrudeTo(50, 50, 0.2, 1500);\n    fab.extrudeTo(0, 50, 0.2, 1500);\n    fab.extrudeTo(0, 0, 0.2, 1500);\n    fab.pop();\n  }\n}"
     ]
   },
   {
     "name": "setPrinter",
+    "kind": "function",
     "description": "Configure the fab instance for a specific printer preset, with optional overrides.",
+    "group": "Setup",
+    "readonly": false,
     "params": [
       {
         "name": "name",
@@ -37,7 +330,10 @@
   },
   {
     "name": "render",
+    "kind": "function",
     "description": "Render a 3D preview of the planned toolpath. Call this inside a WEBGL p5.js `draw()` loop.",
+    "group": "Utilities",
+    "readonly": false,
     "params": [],
     "returns": null,
     "examples": [
@@ -46,7 +342,10 @@
   },
   {
     "name": "setCameraView",
+    "kind": "function",
     "description": "Snap the camera to an axis-aligned view.",
+    "group": null,
+    "readonly": false,
     "params": [
       {
         "name": "view",
@@ -61,7 +360,10 @@
   },
   {
     "name": "autoHome",
+    "kind": "function",
     "description": "Home all axes and reset the extruder position.",
+    "group": "Print control",
+    "readonly": false,
     "params": [],
     "returns": null,
     "examples": [
@@ -70,7 +372,10 @@
   },
   {
     "name": "setTemps",
+    "kind": "function",
     "description": "Set nozzle and bed temperatures and wait for both to be reached before continuing.",
+    "group": "Temperature",
+    "readonly": false,
     "params": [
       {
         "name": "tNozzle",
@@ -94,7 +399,10 @@
   },
   {
     "name": "setNozzleTemp",
+    "kind": "function",
     "description": "Set the nozzle temperature and wait for it to be reached before continuing.",
+    "group": "Temperature",
+    "readonly": false,
     "params": [
       {
         "name": "t",
@@ -109,7 +417,10 @@
   },
   {
     "name": "setBedTemp",
+    "kind": "function",
     "description": "Set the bed temperature and wait for it to be reached before continuing.",
+    "group": "Temperature",
+    "readonly": false,
     "params": [
       {
         "name": "t",
@@ -124,21 +435,30 @@
   },
   {
     "name": "fanOn",
+    "kind": "function",
     "description": "Turn the part cooling fan on at full speed.",
+    "group": "Print control",
+    "readonly": false,
     "params": [],
     "returns": null,
     "examples": []
   },
   {
     "name": "fanOff",
+    "kind": "function",
     "description": "Turn the part cooling fan off.",
+    "group": "Print control",
+    "readonly": false,
     "params": [],
     "returns": null,
     "examples": []
   },
   {
     "name": "pausePrint",
+    "kind": "function",
     "description": "Pause the print for a given duration.",
+    "group": "Print control",
+    "readonly": false,
     "params": [
       {
         "name": "t",
@@ -153,14 +473,20 @@
   },
   {
     "name": "stopPrint",
+    "kind": "function",
     "description": "Immediately stop the print and clear the command queue.",
+    "group": "Print control",
+    "readonly": false,
     "params": [],
     "returns": null,
     "examples": []
   },
   {
     "name": "introLine",
+    "kind": "function",
     "description": "Print a priming line along the left edge of the bed to prepare the extruder.",
+    "group": "Print control",
+    "readonly": false,
     "params": [
       {
         "name": "z",
@@ -175,7 +501,10 @@
   },
   {
     "name": "moveTo",
+    "kind": "function",
     "description": "Move to an absolute XYZ position without extruding.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -220,7 +549,10 @@
   },
   {
     "name": "move",
+    "kind": "function",
     "description": "Move relative to the current position without extruding.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "dx",
@@ -257,8 +589,11 @@
     ]
   },
   {
-    "name": "moveExtrude",
-    "description": "Move to an absolute XYZ position while extruding filament.\nExtrusion amount is calculated automatically from the move distance if not provided.",
+    "name": "extrudeTo",
+    "kind": "function",
+    "description": "Move to an absolute XYZ position while extruding filament.\nExtrusion amount is calculated automatically from the move distance, scaled by `extrusionMultiplier`.\nPass an explicit `e` value in mm to override the auto-calculation entirely.",
+    "group": "Extrusion",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -294,23 +629,77 @@
         "description": "Extrusion amount in mm. Calculated automatically if null.",
         "optional": true,
         "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on the auto-calculated extrusion.",
-        "optional": true,
-        "defaultvalue": false
       }
     ],
     "returns": null,
     "examples": [
-      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.moveExtrude(100, 100, 0);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  fab = createFab();\n  fab.setPrinter('ender3');\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  fab.moveTo(0, 0, 0.2, 1500);\n  fab.extrudeTo(100, 0, 0.2, 1500);\n  fab.extrudeTo(100, 100, 0.2, 1500);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
     ]
   },
   {
-    "name": "moveRetract",
-    "description": "Move to an absolute position with a filament retraction, z-hop, and re-prime.\nUse this to travel between disconnected extrusion paths without stringing.",
+    "name": "extrude",
+    "kind": "function",
+    "description": "Move a relative distance in XYZ while extruding filament.\nExtrusion amount is calculated automatically from the move distance, scaled by `extrusionMultiplier`.\nPass an explicit `e` value in mm to override the auto-calculation entirely.",
+    "group": "Extrusion",
+    "readonly": false,
+    "params": [
+      {
+        "name": "dx",
+        "type": "number",
+        "description": "Distance to move in X in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "dy",
+        "type": "number",
+        "description": "Distance to move in Y in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "dz",
+        "type": "number",
+        "description": "Distance to move in Z in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "v",
+        "type": "number",
+        "description": "Feedrate in mm/min.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "e",
+        "type": "number | null",
+        "description": "Extrusion amount in mm. Calculated automatically if null.",
+        "optional": true,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function fabDraw() {\n  fab.moveTo(0, 0, 0.2, 1500);\n  fab.extrude(100, 0, 0, 1500); // extrude 100mm in X\n  fab.extrude(0, 100, 0, 1500); // extrude 100mm in Y\n}"
+    ]
+  },
+  {
+    "name": "moveExtrude",
+    "kind": "function",
+    "description": "",
+    "group": null,
+    "readonly": false,
+    "params": [],
+    "returns": null,
+    "examples": []
+  },
+  {
+    "name": "retractTo",
+    "kind": "function",
+    "description": "Travel to an absolute XYZ position with a filament retraction, z-hop, and re-prime.\nUse this to travel between disconnected extrusion paths without stringing.\nRetract distance and z-hop height are set by `retractAmount()` and `zHopHeight()`.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -339,23 +728,70 @@
         "description": "Feedrate in mm/min.",
         "optional": false,
         "defaultvalue": null
-      },
-      {
-        "name": "e",
-        "type": "number",
-        "description": "Amount to retract/re-prime in mm.",
-        "optional": true,
-        "defaultvalue": 8
       }
     ],
     "returns": null,
     "examples": [
-      "function fabDraw() {\n  fab.moveExtrude(50, 50, 0.2, 1500);\n  fab.moveRetract(100, 100, 0.2, 3000); // travel without stringing\n  fab.moveExtrude(150, 50, 0.2, 1500);\n}"
+      "function fabDraw() {\n  fab.extrudeTo(50, 50, 0.2, 1500);\n  fab.retractTo(100, 100, 0.2, 3000); // travel without stringing\n  fab.extrudeTo(150, 50, 0.2, 1500);\n}"
     ]
   },
   {
+    "name": "retractBy",
+    "kind": "function",
+    "description": "Travel a relative XYZ distance with a filament retraction, z-hop, and re-prime.\nUse this to travel between disconnected extrusion paths without stringing.\nRetract distance and z-hop height are set by `retractAmount()` and `zHopHeight()`.",
+    "group": "Motion",
+    "readonly": false,
+    "params": [
+      {
+        "name": "dx",
+        "type": "number",
+        "description": "Distance to move in X in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "dy",
+        "type": "number",
+        "description": "Distance to move in Y in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "dz",
+        "type": "number",
+        "description": "Distance to move in Z in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "v",
+        "type": "number",
+        "description": "Feedrate in mm/min.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function fabDraw() {\n  fab.extrudeTo(50, 50, 0.2, 1500);\n  fab.retractBy(50, 50, 0, 3000); // travel 50mm in X and Y without stringing\n  fab.extrudeTo(150, 50, 0.2, 1500);\n}"
+    ]
+  },
+  {
+    "name": "moveRetract",
+    "kind": "function",
+    "description": "",
+    "group": null,
+    "readonly": false,
+    "params": [],
+    "returns": null,
+    "examples": []
+  },
+  {
     "name": "travelTo",
+    "kind": "function",
     "description": "Move to an absolute position with a 2mm z-hop over the travel path.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -393,7 +829,10 @@
   },
   {
     "name": "moveToX",
+    "kind": "function",
     "description": "Move to an absolute X position without extruding.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -415,7 +854,10 @@
   },
   {
     "name": "moveToY",
+    "kind": "function",
     "description": "Move to an absolute Y position without extruding.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "y",
@@ -437,7 +879,10 @@
   },
   {
     "name": "moveToZ",
+    "kind": "function",
     "description": "Move to an absolute Z position without extruding.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "z",
@@ -459,7 +904,10 @@
   },
   {
     "name": "moveToE",
+    "kind": "function",
     "description": "Move the extruder to an absolute E position.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "e",
@@ -481,7 +929,10 @@
   },
   {
     "name": "moveX",
+    "kind": "function",
     "description": "Move a relative distance in X without extruding.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "dx",
@@ -503,7 +954,10 @@
   },
   {
     "name": "moveY",
+    "kind": "function",
     "description": "Move a relative distance in Y without extruding.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "dy",
@@ -525,7 +979,10 @@
   },
   {
     "name": "moveZ",
+    "kind": "function",
     "description": "Move a relative distance in Z without extruding.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "dz",
@@ -547,7 +1004,10 @@
   },
   {
     "name": "moveE",
+    "kind": "function",
     "description": "Move the extruder a relative distance in E.",
+    "group": "Motion",
+    "readonly": false,
     "params": [
       {
         "name": "de",
@@ -569,7 +1029,10 @@
   },
   {
     "name": "extrudeX",
+    "kind": "function",
     "description": "Move a relative distance in X while extruding.",
+    "group": "Extrusion",
+    "readonly": false,
     "params": [
       {
         "name": "dx",
@@ -589,15 +1052,8 @@
         "name": "e",
         "type": "number | null",
         "description": "Extrusion amount in mm. Calculated automatically if null.",
-        "optional": false,
-        "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on the auto-calculated extrusion.",
         "optional": true,
-        "defaultvalue": false
+        "defaultvalue": null
       },
       {
         "name": "comment",
@@ -614,7 +1070,10 @@
   },
   {
     "name": "extrudeXY",
+    "kind": "function",
     "description": "Move a relative distance in X and Y while extruding.",
+    "group": "Extrusion",
+    "readonly": false,
     "params": [
       {
         "name": "dx",
@@ -641,15 +1100,8 @@
         "name": "e",
         "type": "number | null",
         "description": "Extrusion amount in mm. Calculated automatically if null.",
-        "optional": false,
-        "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on the auto-calculated extrusion.",
         "optional": true,
-        "defaultvalue": false
+        "defaultvalue": null
       },
       {
         "name": "comment",
@@ -666,7 +1118,10 @@
   },
   {
     "name": "extrudeY",
+    "kind": "function",
     "description": "Move a relative distance in Y while extruding.",
+    "group": "Extrusion",
+    "readonly": false,
     "params": [
       {
         "name": "dy",
@@ -686,15 +1141,8 @@
         "name": "e",
         "type": "number | null",
         "description": "Extrusion amount in mm. Calculated automatically if null.",
-        "optional": false,
-        "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on the auto-calculated extrusion.",
         "optional": true,
-        "defaultvalue": false
+        "defaultvalue": null
       }
     ],
     "returns": null,
@@ -702,7 +1150,10 @@
   },
   {
     "name": "extrudeZ",
+    "kind": "function",
     "description": "Move a relative distance in Z while extruding.",
+    "group": "Extrusion",
+    "readonly": false,
     "params": [
       {
         "name": "dz",
@@ -722,15 +1173,8 @@
         "name": "e",
         "type": "number | null",
         "description": "Extrusion amount in mm. Calculated automatically if null.",
-        "optional": false,
-        "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on the auto-calculated extrusion.",
         "optional": true,
-        "defaultvalue": false
+        "defaultvalue": null
       }
     ],
     "returns": null,
@@ -738,7 +1182,10 @@
   },
   {
     "name": "extrudeToX",
+    "kind": "function",
     "description": "Move to an absolute X position while extruding.",
+    "group": "Extrusion",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -758,15 +1205,8 @@
         "name": "e",
         "type": "number | null",
         "description": "Extrusion amount in mm. Calculated automatically if null.",
-        "optional": false,
-        "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on the auto-calculated extrusion.",
         "optional": true,
-        "defaultvalue": false
+        "defaultvalue": null
       },
       {
         "name": "comment",
@@ -781,7 +1221,10 @@
   },
   {
     "name": "extrudeToY",
+    "kind": "function",
     "description": "Move to an absolute Y position while extruding.",
+    "group": "Extrusion",
+    "readonly": false,
     "params": [
       {
         "name": "y",
@@ -801,15 +1244,8 @@
         "name": "e",
         "type": "number | null",
         "description": "Extrusion amount in mm. Calculated automatically if null.",
-        "optional": false,
-        "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on the auto-calculated extrusion.",
         "optional": true,
-        "defaultvalue": false
+        "defaultvalue": null
       },
       {
         "name": "comment",
@@ -824,7 +1260,10 @@
   },
   {
     "name": "extrudeToXY",
+    "kind": "function",
     "description": "Move to an absolute XY position while extruding.",
+    "group": "Extrusion",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -851,15 +1290,8 @@
         "name": "e",
         "type": "number | null",
         "description": "Extrusion amount in mm. Calculated automatically if null.",
-        "optional": false,
-        "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on the auto-calculated extrusion.",
         "optional": true,
-        "defaultvalue": false
+        "defaultvalue": null
       },
       {
         "name": "comment",
@@ -876,7 +1308,10 @@
   },
   {
     "name": "extrudeToZ",
+    "kind": "function",
     "description": "Move to an absolute Z position while extruding.",
+    "group": "Extrusion",
+    "readonly": false,
     "params": [
       {
         "name": "z",
@@ -896,15 +1331,8 @@
         "name": "e",
         "type": "number | null",
         "description": "Extrusion amount in mm. Calculated automatically if null.",
-        "optional": false,
-        "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on the auto-calculated extrusion.",
         "optional": true,
-        "defaultvalue": false
+        "defaultvalue": null
       },
       {
         "name": "comment",
@@ -919,7 +1347,10 @@
   },
   {
     "name": "circle",
+    "kind": "function",
     "description": "Extrude a circle centered at (x, y) at the given Z height.",
+    "group": "Utilities",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -962,13 +1393,6 @@
         "description": "Extrusion amount per segment. Calculated automatically if null.",
         "optional": true,
         "defaultvalue": null
-      },
-      {
-        "name": "multiplier",
-        "type": "boolean",
-        "description": "If true, treat `e` as a multiplier on auto-calculated extrusion.",
-        "optional": true,
-        "defaultvalue": false
       }
     ],
     "returns": null,
@@ -977,13 +1401,16 @@
     ]
   },
   {
-    "name": "setSpeed",
-    "description": "Set the feedrate for subsequent moves.",
+    "name": "speed",
+    "kind": "function",
+    "description": "Set the feedrate for subsequent moves. Persistent — applies to all moves until changed, like `strokeWeight()` in p5.js.",
+    "group": "Configuration",
+    "readonly": false,
     "params": [
       {
         "name": "v",
         "type": "number",
-        "description": "Feedrate in mm/min.",
+        "description": "Feedrate in mm/sec.",
         "optional": false,
         "defaultvalue": null
       }
@@ -992,8 +1419,21 @@
     "examples": []
   },
   {
+    "name": "setSpeed",
+    "kind": "function",
+    "description": "",
+    "group": null,
+    "readonly": false,
+    "params": [],
+    "returns": null,
+    "examples": []
+  },
+  {
     "name": "prime",
+    "kind": "function",
     "description": "Prime the extruder by pushing filament forward. Used after a retraction.",
+    "group": "Utilities",
+    "readonly": false,
     "params": [
       {
         "name": "de",
@@ -1015,7 +1455,10 @@
   },
   {
     "name": "setMaxAcceleration",
+    "kind": "function",
     "description": "Set the maximum acceleration for each axis.",
+    "group": "Configuration",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -1044,7 +1487,10 @@
   },
   {
     "name": "setStartAcceleration",
+    "kind": "function",
     "description": "Set the starting acceleration for print moves.",
+    "group": "Configuration",
+    "readonly": false,
     "params": [
       {
         "name": "a",
@@ -1059,7 +1505,10 @@
   },
   {
     "name": "makeE",
+    "kind": "function",
     "description": "Calculate the extrusion amount needed to move to an absolute XYZ position\nbased on the current nozzle and filament diameters.",
+    "group": "Utilities",
+    "readonly": false,
     "params": [
       {
         "name": "x",
@@ -1091,7 +1540,10 @@
   },
   {
     "name": "pickupTool",
+    "kind": "function",
     "description": "Select a tool by index (for multi-tool machines like Jubilee).",
+    "group": "Utilities",
+    "readonly": false,
     "params": [
       {
         "name": "tool_idx",
@@ -1106,7 +1558,10 @@
   },
   {
     "name": "addComment",
+    "kind": "function",
     "description": "Append a comment to the last command in the queue.",
+    "group": "Utilities",
+    "readonly": false,
     "params": [
       {
         "name": "c",
@@ -1118,5 +1573,43 @@
     ],
     "returns": null,
     "examples": []
+  },
+  {
+    "name": "fabDraw",
+    "kind": "function",
+    "readonly": false,
+    "description": "A function called once to generate G-code commands.\n\np5.fab calls `fabDraw()` automatically once after `setup()` completes and before `draw()` runs, and again whenever `stopPrint()` is called to regenerate the command queue.\n\n",
+    "group": "Structure",
+    "params": [],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  fab.setPrinter('ender3');\n}\n\nfunction fabDraw() {\n  // Author your object here!\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const firstLayerHeight = 0.2;\n  const diameter = 100;\n  fab.circle(fab.centerX, fab.centerY, firstLayerHeight, diameter);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "setup",
+    "kind": "function",
+    "readonly": false,
+    "description": "A p5.js function that's called once when the sketch begins running. See <a href=\"https://p5js.org/reference/p5/setup/\">the p5.js reference</a> for more information.\n\nIn the copypastes.xyz editor, `setup()` re-runs every time you run your sketch. This means changes to `setup()` (e.g. `setPrinter()`, canvas size) take effect immediately.",
+    "group": "Structure",
+    "params": [],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  fab.setPrinter('ender3');\n}\n\nfunction fabDraw() {\n  // Author your object here!\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const firstLayerHeight = 0.2;\n  const diameter = 100;\n  fab.circle(fab.centerX, fab.centerY, firstLayerHeight, diameter);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "draw",
+    "kind": "function",
+    "readonly": false,
+    "description": "A p5.js function that's repeatedly called while the sketch runs. See <a href=\"https://p5js.org/reference/p5/draw/\">the p5.js reference</a> for more information.\n\np5.fab uses the `draw()` loop to `render()` a visualization of the machine and toolpaths written in the `fabDraw()` function. Additional elements can be drawn as desired.",
+    "group": "Structure",
+    "params": [],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  // Author your object here!\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const firstLayerHeight = 0.2;\n  const diameter = 100;\n  fab.circle(fab.centerX, fab.centerY, firstLayerHeight, diameter);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}",
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  fab.setPrinter('ender3');\n}\n\nfunction fabDraw() {\n  // Author your object here!\n}\n\nfunction draw() {\n  // background() sets the canvas color — try other values!\n  background(0, 255, 0, 127); // (r, g, b, a)\n  fab.render();\n}",
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  fab.setPrinter('ender3');\n}\n\nfunction fabDraw() {\n  // Author your object here!\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const firstLayerHeight = 0.2;\n  const diameter = 100;\n  fab.circle(fab.centerX, fab.centerY, firstLayerHeight, diameter);\n}\n\nfunction draw() {\n  background(255);\n\n  // Omit render() to hide the visualization.\n  // G-code commands are still generated!\n  // fab.render();\n}"
+    ]
   }
 ]

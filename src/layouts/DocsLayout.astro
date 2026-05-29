@@ -1,20 +1,24 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import reference from '../content/reference.json';
 
 interface Props {
   title: string;
 }
 const { title } = Astro.props;
 
-const referenceGroups = [
-  { label: 'Setup',         methods: ['createFab', 'setPrinter'] },
-  { label: 'Motion',        methods: ['moveTo', 'move', 'travelTo', 'moveRetract', 'moveToX', 'moveToY', 'moveToZ', 'moveToE', 'moveX', 'moveY', 'moveZ', 'moveE'] },
-  { label: 'Extrusion',     methods: ['moveExtrude', 'extrudeX', 'extrudeY', 'extrudeZ', 'extrudeXY', 'extrudeToX', 'extrudeToY', 'extrudeToZ', 'extrudeToXY'] },
-  { label: 'Temperature',   methods: ['setTemps', 'setNozzleTemp', 'setBedTemp'] },
-  { label: 'Print control', methods: ['autoHome', 'introLine', 'fanOn', 'fanOff', 'pausePrint', 'stopPrint'] },
-  { label: 'Configuration', methods: ['setSpeed', 'setMaxAcceleration', 'setStartAcceleration'] },
-  { label: 'Utilities',     methods: ['makeE', 'prime', 'addComment', 'render', 'pickupTool', 'circle'] },
-];
+// Order in which groups appear in the sidebar.
+// Methods inside each group are sorted alphabetically.
+// A method without @group in its JSDoc will not appear here.
+const groupOrder = ['Structure', 'Setup', 'Motion', 'Extrusion', 'Temperature', 'Print control', 'Configuration', 'Utilities'];
+
+const referenceGroups = groupOrder.map(label => ({
+  label,
+  methods: reference
+    .filter(m => m.group === label)
+    .map(m => ({ name: m.name, kind: m.kind }))
+    .sort((a, b) => a.name.localeCompare(b.name)),
+})).filter(g => g.methods.length > 0);
 
 const resourceGroups = [
   {
@@ -312,8 +316,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
           {referenceGroups.map(group => (
             <div>
               <span class="sidebar-group-label">{group.label}</span>
-              {[...group.methods].sort().map(name => (
-                <a href={`/reference/${name}`}>{name}()</a>
+              {group.methods.map(({ name, kind }) => (
+                <a href={`/reference/${name}`}>{name}{kind === 'property' ? '' : '()'}</a>
               ))}
             </div>
           ))}

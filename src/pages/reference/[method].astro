@@ -12,17 +12,23 @@ export function getStaticPaths() {
 }
 
 const { method } = Astro.props;
+const isProperty = method.kind === 'property';
+
+const md = (text) => (text ?? '').replace(/`([^`]+)`/g, '<code>$1</code>');
 ---
 
-<DocsLayout title={`${method.name}() — p5.fab reference`}>
-  <h1>{method.name}()</h1>
-  <p>{method.description}</p>
+<DocsLayout title={`${method.name}${isProperty ? '' : '()'} — p5.fab reference`}>
+  <h1>{method.name}{isProperty ? '' : '()'}</h1>
 
-  {method.params.length > 0 && (
+  {method.readonly && <p class="property-badge">Read-only</p>}
+
+  {method.description.split('\n\n').map(para => <p set:html={md(para)} />)}
+
+  {!isProperty && method.params.length > 0 && (
     <section>
       <h2>Parameters</h2>
       <table>
-<thead>
+        <thead>
           <tr>
             <th>Name</th>
             <th>Type</th>
@@ -34,7 +40,7 @@ const { method } = Astro.props;
             <tr>
               <td><code>{p.name}{p.optional ? '?' : ''}</code></td>
               <td><code>{p.type}</code></td>
-              <td>{p.description}{p.defaultvalue !== null ? ` Default: ${p.defaultvalue}.` : ''}</td>
+              <td set:html={md(p.description) + (p.defaultvalue !== null ? ` Default: <code>${p.defaultvalue}</code>.` : '')} />
             </tr>
           ))}
         </tbody>
@@ -42,24 +48,46 @@ const { method } = Astro.props;
     </section>
   )}
 
-  {method.returns && (
+  {isProperty && method.returns && (
+    <section>
+      <h2>Type</h2>
+      <p><code>{method.returns.type}</code></p>
+    </section>
+  )}
+
+  {!isProperty && method.returns && (
     <section>
       <h2>Returns</h2>
-      <p><code>{method.returns.type}</code> — {method.returns.description}</p>
+      <p><code>{method.returns.type}</code> — <span set:html={md(method.returns.description)} /></p>
     </section>
   )}
 
   {method.examples.length > 0 && (
     <section>
-      <h2>Example</h2>
+      <h2>Examples</h2>
       {method.examples.map(ex => (
         <iframe
           src={`${EDITOR_URL}/embed?code=${encodeURIComponent(ex)}`}
-          title={`${method.name}() example`}
+          title={`${method.name}${isProperty ? '' : '()'} example`}
           class="embed-frame"
           sandbox="allow-scripts allow-downloads allow-same-origin"
+          allow="clipboard-write"
         ></iframe>
       ))}
     </section>
   )}
 </DocsLayout>
+
+<style>
+  .property-badge {
+    display: inline-block;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 1px 8px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    color: #555;
+    margin-bottom: 0.75rem;
+  }
+</style>
