@@ -53,7 +53,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
     <style is:global>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -77,42 +77,69 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
       }
 
       /* ── Header ── */
+      :root {
+        --header-nav-height: 10vh;
+        --wave-height: 20px;
+        --header-height: calc(var(--header-nav-height) + var(--wave-height));
+      }
+
       header {
-        height: 10vh;
-        min-height: 1.75em;
-        border-bottom: var(--border);
-        display: flex;
-        align-items: center;
-        padding: 0 1.5rem;
-        gap: 1.5rem;
         position: sticky;
         top: 0;
         background: white;
         z-index: 10;
       }
 
+      .nav-bar {
+        display: flex;
+        justify-content: space-between;
+        height: var(--header-nav-height);
+        min-height: 1.75em;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+      }
+
       .logo {
-        font-style: italic;
         font-size: 1.5rem;
         background: var(--orange);
         color: black;
         text-decoration: none;
-        padding: 3px 5px;
+        padding: 3px;
         font-family: var(--font-mono);
         margin-left: 20px;
       }
 
-      header nav a {
-        text-decoration: none;
-        color: var(--black);
+      .menu-item {
+        padding: 3px 10px;
+        display: inline;
         font-size: 1.25em;
       }
 
-      header nav a:hover,
-      header nav a.active {
+      .menu-item a {
+        text-decoration: none;
+        color: var(--black);
+      }
+
+      .menu-item a:hover,
+      .menu-item a.active {
         text-decoration: underline;
         text-decoration-color: var(--orange);
         text-decoration-thickness: 3px;
+      }
+
+      .wave-divider {
+        width: 100%;
+        line-height: 0;
       }
 
       /* ── Page layout ── */
@@ -129,8 +156,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
         padding: 1.5rem 0;
         overflow-y: auto;
         position: sticky;
-        top: 10vh;
-        height: calc(100vh - 10vh);
+        top: var(--header-height);
+        height: calc(100vh - var(--header-height));
       }
 
       .sidebar-group {
@@ -299,14 +326,23 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
     <ClientRouter />
   </head>
   <body>
-    <header>
-      <a class="logo" href="/">p5.fab</a>
-      <nav>
-        <a href="/reference" class={currentPath.startsWith('/reference') ? 'active' : ''}>Reference</a>
-      </nav>
-      <nav>
-        <a href="/resources/guides/p5fab-primer" class={currentPath.startsWith('/resources') ? 'active' : ''}>Resources</a>
-      </nav>
+    <header transition:persist>
+      <div class="nav-bar">
+        <div class="nav-left">
+          <a class="logo" href="https://copypastes.xyz"><i>p5.fab</i></a>
+        </div>
+        <div class="nav-right">
+          <div class="menu-item"><a href="https://copypastes.xyz/explore">Explore</a></div>
+          <div class="menu-item"><a href="https://copypastes.xyz/sketch/new">Create</a></div>
+          <div class="menu-item"><a href="/reference" class="active">Docs</a></div>
+          <div class="menu-item"><a href="https://copypastes.xyz/about">About</a></div>
+        </div>
+      </div>
+      <div class="wave-divider" id="wave-divider">
+        <svg width="100%" height="20" aria-hidden="true" style="overflow: visible">
+          <path id="wave-path" stroke="black" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
     </header>
 
     <div class="page">
@@ -342,6 +378,43 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
     </div>
 
     <script>
+      // Wave animation — runs once; header has transition:persist so this survives navigation.
+      (function () {
+        const margin = 32, periods = 40, amplitude = 6, centerY = 8;
+        const steps = 1000, sigma = 40, extraFactor = 2.5;
+        const divider = document.getElementById('wave-divider');
+        const wavePath = document.getElementById('wave-path');
+        let pointerX = 0, intensity = 0, targetIntensity = 0, lastTs = 0;
+
+        function buildPath() {
+          const width = divider.clientWidth - 2 * margin;
+          const pts = [];
+          for (let i = 0; i <= steps; i++) {
+            const x = margin + (i / steps) * width;
+            const env = 1 + extraFactor * intensity * Math.exp(-((x - pointerX) ** 2) / (2 * sigma * sigma));
+            const y = centerY + amplitude * env * Math.sin((i / steps) * periods * 2 * Math.PI);
+            pts.push(`${i === 0 ? 'M' : 'L'} ${x.toFixed(1)},${y.toFixed(1)}`);
+          }
+          return pts.join(' ');
+        }
+
+        function frame(ts) {
+          const dt = lastTs ? (ts - lastTs) / 1000 : 0;
+          lastTs = ts;
+          intensity += (targetIntensity - intensity) * Math.min(1, 8 * dt);
+          wavePath.setAttribute('d', buildPath());
+          requestAnimationFrame(frame);
+        }
+
+        divider.addEventListener('pointermove', (e) => {
+          pointerX = e.clientX - divider.getBoundingClientRect().left;
+          targetIntensity = 1;
+        });
+        divider.addEventListener('pointerleave', () => { targetIntensity = 0; });
+
+        requestAnimationFrame(frame);
+      })();
+
       function updateActive() {
         const path = window.location.pathname.replace(/\/$/, '');
         document.querySelectorAll('aside a').forEach(a => {
