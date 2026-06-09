@@ -1,3 +1,94 @@
 ---
-return Astro.redirect('/reference');
+import DocsLayout from '../layouts/DocsLayout.astro';
+import reference from '../content/reference.json';
+import groupOrder from '../content/groups.json';
+
+const groups = groupOrder
+  .map(label => ({
+    label,
+    methods: reference.filter(m => m.group === label).map(m => m.name).sort(),
+  }))
+  .filter(g => g.methods.length > 0);
+
+const byName = Object.fromEntries(reference.map(m => [m.name, m]));
 ---
+
+<DocsLayout title="Reference — p5.fab docs">
+  <h1>Reference</h1>
+  <p>All methods available on the <code>fab</code> object.</p>
+
+  {groups.map(group => (
+    <section class="ref-group">
+      <h2>{group.label}</h2>
+      <div class="ref-grid">
+        {group.methods.map(name => {
+          const m = byName[name];
+          return (
+            <a href={`/reference/${name}`} class="ref-card">
+              <span class="ref-name">{name}()</span>
+              {m?.description && <span class="ref-desc">{m.description.split(/\.\s|\n/)[0].replace(/\.$/, '')}.</span>}
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  ))}
+</DocsLayout>
+
+<style>
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  h1 + p {
+    margin-bottom: 2.5rem;
+  }
+
+  .ref-group {
+    margin-bottom: 2.5rem;
+  }
+
+  .ref-group h2 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .ref-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    transition: box-shadow 0.15s;
+  }
+
+  .ref-card:hover {
+    box-shadow: 4px 4px var(--orange);
+  }
+
+  .ref-name {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .ref-desc {
+    font-family: var(--font-body);
+    font-size: 0.775rem;
+    color: #555;
+    line-height: 1.4;
+  }
+</style>
