@@ -28,7 +28,11 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const LIB_PATH = resolve(__dirname, '../../p5.fab-website-before-chi-personal-repo-live/p5.fab-website/static/p5.fab.js');
+if (!process.env.P5FAB_LIB_PATH) {
+  console.error('Error: P5FAB_LIB_PATH env var is not set. Point it at the p5.fab.js file to extract docs from.');
+  process.exit(1);
+}
+const LIB_PATH = process.env.P5FAB_LIB_PATH;
 const OUT_PATH = resolve(__dirname, '../src/content/reference.json');
 const VIRTUAL_PATH = resolve(__dirname, '../src/content/virtual-methods.json');
 const GROUPS_PATH = resolve(__dirname, '../src/content/groups.json');
