@@ -1,9 +1,9 @@
 ---
-title: "A Gentle Introduction to Digital Fabrication"
+title: "A Brief Introduction to Digital Fabrication"
 ---
 
-## A Gentle Introduction to Digital Fabrication
-This page provides a brief introduction to some key concepts in digital fabrication. It is by no means exhaustive, but provides helpful background information for newcomers to digital fabrication machines. If you’re already familiar with computer-controlled machines but want to learn a bit about creative coding, check out the <a href="../cc-intro">creative coding intro</a>, or if you want to learn how to make things with <span class="fab">p5.fab</span>, jump ahead to the <a href="../p5fab-primer">primer</a>.
+# A Brief Introduction to Digital Fabrication
+This page provides a brief introduction to some key concepts in digital fabrication. It is by no means exhaustive, but looks to provide helpful background information for newcomers to digital fabrication machines. If you’re already familiar with computer-controlled machines but want to learn a bit about creative coding, check out the <a href="../cc-intro">creative coding intro</a>, or if you want to learn how to make things with <span class="fab">p5.fab</span>, jump ahead to the <a href="../p5fab-primer">primer</a>.
 
 <!-- ### Historical Context -->
 <!-- Maybe I'll add this later -->
@@ -31,7 +31,7 @@ G1 X100 Y50 Z200 F6000 ; move the the position (100, 50, 200)
 
 The `F` parameter sets the feedrate, or speed, to move. Of course, these settings are subject to the physical realities. If your machine is only 300mm tall, then sending a `G1 Z500` will only move to a height of 300. Similarly, the machine might not be able to move as fast as you tell it to. G-Code is used in tandem with M-Codes (or ‘miscellaneous codes’) which control non-movement related functions. For example, the command `M203` will set the maximum speed which each axis can move.
 
-Different machines might use slightly different sets (or 'flavors') of GCode. This depends on the control board which the machine uses (which turns G-Code commands into machine movements) and the firmware which the control board uses. <span class="fab">p5.fab</span> works with any machine running <a href="https://marlinfw.org">Marlin firmware</a>. This is the firmware that many companies (e.g. Creality, Prusa, Ultimaker) use on their machines, as well as various custom/open-source machines. For a complete list of G and M Codes supported on Marline, check out the <a href="https://marlinfw.org/meta/gcode/">G-Code Dictionary</a>.  
+Different machines might use slightly different sets (or 'flavors') of GCode. This depends on the control board which the machine uses (which turns G-Code commands into machine movements) and the firmware which the control board uses. <span class="fab">p5.fab</span> works with any machine running <a href="https://marlinfw.org">Marlin firmware</a>. This is the firmware that many companies (e.g. Creality, Prusa, Ultimaker) use on their machines, as well as various custom/open-source machines. For a complete list of G and M Codes supported on Marline, check out the <a href="https://marlinfw.org/meta/gcode/">G-Code Dictionary</a>.
 
 Already, you might see how tedious it would be to plan movements using GCode directly. <span class="fab">p5.fab</span> lets you use Javascript code to build up many commands.
 

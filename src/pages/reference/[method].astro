@@ -14,7 +14,10 @@ export function getStaticPaths() {
 const { method } = Astro.props;
 const isProperty = method.kind === 'property';
 
-const md = (text) => (text ?? '').replace(/`([^`]+)`/g, '<code>$1</code>');
+const md = (text) => (text ?? '')
+  .replace(/`([^`]+)`/g, '<code>$1</code>')
+  .replace(/\{@link\s+(\S+)(?:\s+([^}]*))?\}/g, (_, url, label) =>
+    `<a href="${url}">${(label ?? url).trim()}</a>`);
 ---
 
 <DocsLayout title={`${method.name}${isProperty ? '' : '()'} — p5.fab reference`}>
@@ -22,7 +25,14 @@ const md = (text) => (text ?? '').replace(/`([^`]+)`/g, '<code>$1</code>');
 
   {method.readonly && <p class="property-badge">Read-only</p>}
 
-  {method.description.split('\n\n').map(para => <p set:html={md(para)} />)}
+  {method.description.split('\n\n').map(para => {
+    const t = para.trim();
+    if (t.startsWith('```')) {
+      const code = t.replace(/^```[^\n]*\n?/, '').replace(/\n?```$/, '');
+      return <pre><code>{code}</code></pre>;
+    }
+    return <p set:html={md(t)} />;
+  })}
 
   {!isProperty && method.params.length > 0 && (
     <section>

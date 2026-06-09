@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import reference from '../content/reference.json';
+import groupOrder from '../content/groups.json';
 
 interface Props {
   title: string;
@@ -10,7 +11,7 @@ const { title } = Astro.props;
 // Order in which groups appear in the sidebar.
 // Methods inside each group are sorted alphabetically.
 // A method without @group in its JSDoc will not appear here.
-const groupOrder = ['Structure', 'Setup', 'Motion', 'Extrusion', 'Temperature', 'Print control', 'Configuration', 'Utilities'];
+// groupOrder is sourced from src/content/groups.json — edit that file to add/reorder groups.
 
 const referenceGroups = groupOrder.map(label => ({
   label,
@@ -30,17 +31,7 @@ const resourceGroups = [
       { title: 'Intro to Digital Fabrication',    slug: 'guides/dfab-intro' },
     ],
   },
-  {
-    label: 'Tutorials',
-    items: [
-      { title: 'Getting Started',       slug: 'tutorials/getting-started-tutorial' },
-      { title: 'Cube',                  slug: 'tutorials/cube-tutorial' },
-      { title: 'Interactive Cube',      slug: 'tutorials/interactive-cube-tutorial' },
-      { title: 'Non-Planar',            slug: 'tutorials/non-planar-tutorial' },
-      { title: 'Line Vase',             slug: 'tutorials/line-vase-tutorial' },
-      { title: 'Etch-a-Sketch',         slug: 'tutorials/etch-a-sketch-tutorial' },
-    ],
-  },
+  // Tutorials hidden for now — files kept in src/content/tutorials/
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
@@ -249,6 +240,14 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
         text-decoration-thickness: 2px;
       }
 
+      main sup a {
+        text-decoration: none;
+      }
+
+      main sup a:hover {
+        color: var(--orange);
+      }
+
       /* ── Parameter table ── */
       table {
         width: 100%;
@@ -439,10 +438,20 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
 
       updateActive();
       resizeEmbedFrames();
+
+      document.addEventListener('astro:before-preparation', () => {
+        const aside = document.querySelector('aside');
+        if (aside) sessionStorage.setItem('sidebar-scroll', aside.scrollTop);
+      });
+
       document.addEventListener('astro:page-load', () => {
         updateActive();
         resizeEmbedFrames();
+        const aside = document.querySelector('aside');
+        const saved = sessionStorage.getItem('sidebar-scroll');
+        if (aside && saved !== null) aside.scrollTop = parseInt(saved, 10);
       });
+
       window.addEventListener('resize', resizeEmbedFrames);
     </script>
   </body>

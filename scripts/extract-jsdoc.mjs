@@ -31,6 +31,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const LIB_PATH = resolve(__dirname, '../../p5.fab-website-before-chi-personal-repo-live/p5.fab-website/static/p5.fab.js');
 const OUT_PATH = resolve(__dirname, '../src/content/reference.json');
 const VIRTUAL_PATH = resolve(__dirname, '../src/content/virtual-methods.json');
+const GROUPS_PATH = resolve(__dirname, '../src/content/groups.json');
 
 const docs = await jsdoc.explain({ files: LIB_PATH });
 
@@ -91,11 +92,35 @@ const merged = [
   ...virtualMethods.filter(v => !extractedNames.has(v.name)),
 ];
 
+const VALID_GROUPS = new Set(JSON.parse(readFileSync(GROUPS_PATH, 'utf8')));
+
 const ungrouped = merged.filter(m => !m.group).map(m => m.name);
 if (ungrouped.length > 0) {
   process.stderr.write(
     `\nWARNING: ${ungrouped.length} method(s) missing @group tag — they will not appear in the sidebar:\n` +
     ungrouped.map(n => `  - ${n}`).join('\n') + '\n\n'
+  );
+}
+
+const unknownGroup = merged.filter(m => m.group && !VALID_GROUPS.has(m.group));
+if (unknownGroup.length > 0) {
+  process.stderr.write(
+    `\nWARNING: ${unknownGroup.length} method(s) have an unrecognized @group — they will not appear in the sidebar:\n` +
+    unknownGroup.map(m => `  - ${m.name} (@group ${m.group})`).join('\n') + '\n\n'
+  );
+}
+
+// Warn about documented functions missing from FAB_PARAM_NAMES (no friendly validation errors for callers).
+const libSource = readFileSync(LIB_PATH, 'utf8');
+const fabParamBlock = libSource.match(/const FAB_PARAM_NAMES\s*=\s*Object\.freeze\(\{([\s\S]*?)\}\)/)?.[1] ?? '';
+const fabParamNames = new Set(
+  [...fabParamBlock.matchAll(/^\s*(\w+)\s*:/gm)].map(m => m[1])
+);
+const missingFromParams = merged.filter(m => m.kind === 'function' && !fabParamNames.has(m.name)).map(m => m.name);
+if (missingFromParams.length > 0) {
+  process.stderr.write(
+    `\nWARNING: ${missingFromParams.length} documented function(s) missing from FAB_PARAM_NAMES:\n` +
+    missingFromParams.map(n => `  - ${n}`).join('\n') + '\n\n'
   );
 }
 

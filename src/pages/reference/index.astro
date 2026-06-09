@@ -1,8 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import reference from '../../content/reference.json';
-
-const groupOrder = ['Structure', 'Setup', 'Motion', 'Extrusion', 'Temperature', 'Print control', 'Configuration', 'Utilities'];
+import groupOrder from '../../content/groups.json';
 
 const groups = groupOrder
   .map(label => ({
