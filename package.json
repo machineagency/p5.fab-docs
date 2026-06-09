@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "npm run extract && astro dev",
-    "extract": "node scripts/extract-jsdoc.mjs",
+    "extract": "node --env-file-if-exists=.env scripts/extract-jsdoc.mjs",
     "build": "npm run extract && astro build",
     "preview": "astro preview",
     "astro": "astro"
