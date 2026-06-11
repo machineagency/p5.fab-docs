@@ -11,6 +11,7 @@ const groups = groupOrder
   .filter(g => g.methods.length > 0);
 
 const byName = Object.fromEntries(reference.map(m => [m.name, m]));
+const inlineCode = (text) => (text ?? '').replace(/`([^`]+)`/g, '<code>$1</code>');
 ---
 
 <DocsLayout title="Reference — p5.fab docs">
@@ -26,7 +27,7 @@ const byName = Object.fromEntries(reference.map(m => [m.name, m]));
           return (
             <a href={`/reference/${name}`} class="ref-card">
               <span class="ref-name">{name}()</span>
-              {m?.description && <span class="ref-desc">{m.description.split(/\.\s|\n/)[0].replace(/\.$/, '')}.</span>}
+              {m?.description && <span class="ref-desc" set:html={inlineCode(m.description.split(/\.\s|\n/)[0].replace(/\.$/, '')) + '.'} />}
             </a>
           );
         })}
