@@ -466,6 +466,26 @@
     ]
   },
   {
+    "name": "allowHighTemp",
+    "kind": "function",
+    "description": "Allow nozzle/bed temperatures above the default safety ceiling (280°C / 130°C),\ne.g. for nylon or PC. Like other settings this resets at the start of every\nfabDraw() (and on stopPrint()), so call it in fabDraw() before your high setTemps().",
+    "group": "Print control",
+    "readonly": false,
+    "params": [],
+    "returns": null,
+    "examples": []
+  },
+  {
+    "name": "disallowHighTemp",
+    "kind": "function",
+    "description": "Re-arm the temperature safety ceiling after allowHighTemp(). (It also resets\nautomatically at the start of each fabDraw().)",
+    "group": "Print control",
+    "readonly": false,
+    "params": [],
+    "returns": null,
+    "examples": []
+  },
+  {
     "name": "fanOn",
     "kind": "function",
     "description": "Turn the part cooling fan on.\n\nThe fan speed can vary from 0 (off) to 255 (fully on).",
@@ -519,6 +539,16 @@
     "name": "stopPrint",
     "kind": "function",
     "description": "Stop the print and clear the command queue.\n\nNote that any buffered commands will still be executed,\nresulting in a delay before actually stopping.",
+    "group": "Print control",
+    "readonly": false,
+    "params": [],
+    "returns": null,
+    "examples": []
+  },
+  {
+    "name": "emergencyStop",
+    "kind": "function",
+    "description": "Emergency stop: immediately send M112 to the printer, halting all motion and\nheating at the firmware level. Unlike stopPrint() (which only clears the queued\ncommands), this halts a print already in progress — but afterward the firmware\nneeds a reset/reconnect before it will accept new commands.",
     "group": "Print control",
     "readonly": false,
     "params": [],
