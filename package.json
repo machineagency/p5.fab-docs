@@ -2,6 +2,12 @@
   "name": "p5.fab-docs",
   "type": "module",
   "version": "0.0.1",
+  "description": "Documentation and interactive tutorials for p5.fab.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/machineagency/p5.fab-docs.git"
+  },
   "engines": {
     "node": ">=22.12.0"
   },
