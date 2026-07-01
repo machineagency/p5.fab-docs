@@ -1872,7 +1872,7 @@
   {
     "name": "beginShape",
     "kind": "function",
-    "description": "Begin an extruded path built from `vertex()` points.\n\nThe first `vertex()` after `beginShape()` positions the nozzle at the start of the\npath; every following `vertex()` extrudes to the next point. `mode` chooses how that\nfirst move is made i.e. how the nozzle reaches the path start:\n\n<ul>\n<li>`TRAVEL`: retract, z-hop, and re-prime (the default; like `travelTo()`)</li>\n<li>`RETRACT`: retract and re-prime, no z-hop (like `retractTo()`)</li>\n<li>`MOVE`: a plain move with no retraction or z-hop (like `moveTo()`)</li>\n<li>`EXTRUDE`: extrude from the current position to the first point (like `extrudeTo()`)</li>\n</ul>\n\nCall `endShape()` to finish, or `endShape(CLOSE)` to extrude back to the first vertex.\nThe functionality follows `beginShape()` / `vertex()` / `endShape()` in p5.js.",
+    "description": "Begin an extruded path built from `vertex()` points.\n\nThe first `vertex()` after `beginShape()` positions the nozzle at the start of the\npath; every following `vertex()` extrudes to the next point. `mode` chooses how the\nfirst move is made i.e. how the nozzle reaches the path start:\n\n<ul>\n<li>`TRAVEL`: retract, z-hop, and re-prime (the default; like `travelTo()`)</li>\n<li>`RETRACT`: retract and re-prime, no z-hop (like `retractTo()`)</li>\n<li>`MOVE`: a plain move with no retraction or z-hop (like `moveTo()`)</li>\n<li>`EXTRUDE`: extrude from the current position to the first point (like `extrudeTo()`)</li>\n</ul>\n\nCall `endShape()` to finish, or `endShape(CLOSE)` to extrude back to the first vertex.\nThe functionality follows `beginShape()` / `vertex()` / `endShape()` in p5.js.",
     "group": "Structure",
     "readonly": false,
     "params": [

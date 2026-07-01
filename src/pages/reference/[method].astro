@@ -1,6 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
 import reference from '../../content/reference.json';
+import virtualMethods from '../../content/virtual-methods.json';
 
 const EDITOR_URL = import.meta.env.PUBLIC_EDITOR_URL ?? 'http://localhost:5173';
 
@@ -13,6 +14,15 @@ export function getStaticPaths() {
 
 const { method } = Astro.props;
 const isProperty = method.kind === 'property';
+
+// Entries are fab instance methods (fab.circle(...)) except user-defined lifecycle
+// globals (setup/draw/fabDraw, from virtual-methods.json) and the createFab() constructor,
+// which are called globally and so render without the fab. prefix.
+const globalFns = new Set([...virtualMethods.map(v => v.name), 'createFab']);
+const receiver = globalFns.has(method.name) ? '' : 'fab.';
+const signature = `${receiver}${method.name}(${method.params
+  .map(p => (p.optional ? `[${p.name}]` : p.name))
+  .join(', ')})`;
 
 const md = (text) => (text ?? '')
   .replace(/`([^`]+)`/g, '<code>$1</code>')
@@ -86,7 +96,39 @@ const md = (text) => (text ?? '')
       ))}
     </section>
   )}
+
+  {!isProperty && (
+    <section>
+      <h2>Syntax</h2>
+      <div class="syntax-block">
+        <pre><code>{signature}</code></pre>
+        <button
+          class="copy-btn"
+          type="button"
+          data-copy={signature}
+          aria-label="Copy syntax to clipboard"
+        >Copy</button>
+      </div>
+    </section>
+  )}
 </DocsLayout>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy ?? '');
+        const prev = btn.textContent;
+        btn.textContent = '✓ Copied';
+        setTimeout(() => {
+          btn.textContent = prev;
+        }, 1200);
+      } catch {
+        /* clipboard unavailable (e.g. insecure context) */
+      }
+    });
+  });
+</script>
 
 <style>
   .property-badge {
@@ -99,5 +141,41 @@ const md = (text) => (text ?? '')
     font-size: 0.75rem;
     color: #555;
     margin-bottom: 0.75rem;
+  }
+
+  .syntax-block {
+    position: relative;
+  }
+  .syntax-block pre {
+    margin: 0;
+    padding-right: 4.5rem; /* keep the signature clear of the button */
+  }
+  /* Matches the embed editor's Copy button exactly. That button is <button class="icon-btn">
+     inside .toolbar, so its computed style is dominated by `.toolbar button` (font-size 0.8rem,
+     padding 0.2rem 0.6rem, 1px solid black) overriding `.icon-btn`, plus the global button rule
+     (border-radius 4px, letter-spacing 1.1px, font-weight 400) and the orange :hover — all in
+     the p5.fab-website repo (src/routes/embed/+page.svelte + src/app.css). font-family is
+     hard-set to monospace: the website has no --font-mono (falls back to monospace) while the
+     docs --font-mono is Roboto Mono. Only the positioning is docs-specific. Kept in sync by hand
+     (separate repos + cross-origin iframe). */
+  .copy-btn {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 1.1px;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid black;
+    border-radius: 4px;
+    background: white;
+    color: #555;
+    cursor: pointer;
+  }
+  .copy-btn:hover {
+    background: #ff6700;
+    color: white;
   }
 </style>
