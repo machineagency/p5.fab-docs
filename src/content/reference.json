@@ -49,7 +49,7 @@
   {
     "name": "maxX",
     "kind": "property",
-    "description": "The maximum X dimension of the printer in mm.\nThe default value is set by the printer profile.\nYou can configure the max dimentaion via `setPrinter()`\nor directly to override the preset.",
+    "description": "The maximum X dimension of the printer in mm.\nThe default value is set by the printer profile.\nYou can configure the max dimension via `setPrinter()`\nor directly to override the preset.",
     "group": "Configuration",
     "readonly": false,
     "params": [],
@@ -64,7 +64,7 @@
   {
     "name": "maxY",
     "kind": "property",
-    "description": "The maximum Y dimension of the printer in mm.\nThe default value is set by the printer profile.\nYou can configure the max dimentaion via `setPrinter()`\nor directly to override the preset.",
+    "description": "The maximum Y dimension of the printer in mm.\nThe default value is set by the printer profile.\nYou can configure the max dimension via `setPrinter()`\nor directly to override the preset.",
     "group": "Configuration",
     "readonly": false,
     "params": [],
@@ -79,7 +79,7 @@
   {
     "name": "maxZ",
     "kind": "property",
-    "description": "The maximum Z dimension of the printer in mm.\nThe default value is set by the printer profile.\nYou can configure the max dimentaion via `setPrinter()`\nor directly to override the preset.",
+    "description": "The maximum Z dimension of the printer in mm.\nThe default value is set by the printer profile.\nYou can configure the max dimension via `setPrinter()`\nor directly to override the preset.",
     "group": "Configuration",
     "readonly": false,
     "params": [],
@@ -272,6 +272,26 @@
     ]
   },
   {
+    "name": "minSegmentTime",
+    "kind": "function",
+    "description": "Set the minimum time (in milliseconds) any single move is allowed to take.\n\nShort, fast moves can finish faster than the serial link can send the next command,\nstarving the printer's planner buffer and causing stuttering. This clamps the feedrate\nso each move lasts at least `ms`, keeping motion smooth. It only ever lowers the\nfeedrate, and only for moves shorter than `feedrate * ms`; longer moves are unaffected.\nSet to `0` to disable. Mirrors Marlin's `DEFAULT_MINSEGMENTTIME` (default 20ms).\nResets to the printer profile default at the start of each `fabDraw()` call.\nUse `push()` / `pop()` to scope a temporary change.",
+    "group": "Print control",
+    "readonly": false,
+    "params": [
+      {
+        "name": "ms",
+        "type": "number",
+        "description": "Minimum move duration in milliseconds. `0` disables the clamp.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n\n  // Loosen the clamp for a fast machine (or pass 0 to disable it)\n  fab.minSegmentTime(10);\n  fab.circle(fab.centerX, fab.centerY, 0.2, 10); // small circle stays smooth\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
     "name": "push",
     "kind": "function",
     "description": "Begins a command group that contains its own printing state.\n\nBy default, printing parameters (e.g., `extrusionMultiplier()`, `printSpeed())`) and\ntransformations (e.g., `translate()`) apply to all subsequent commands. `push()` and `pop()`\ncan be used to constrain the effect of print parameters and transformations to a specific group\nof commands. The functionality follows `push()` and `pop()` in p5.js.\n\n`push()` and `pop()` contain the effects of the following functions:\n\n<ul>\n<li>`extrusionMultiplier()`</li>\n<li>`printSpeed()`, `travelSpeed()`</li>\n<li>`translate()`</li>\n<li>`retractAmount()`</li>\n<li>`zHopHeight()`</li>\n<li>`maxSpeedX()`, `maxSpeedY()`, `maxSpeedZ()`, `maxSpeedE()`</li>\n<li>`maxAccelerationX()`, `maxAccelerationY()`, `maxAccelerationZ()`, `maxAccelerationE()`</li>\n<li>`printAcceleration()`, `travelAcceleration()`</li>\n</ul>",
@@ -359,7 +379,7 @@
   {
     "name": "render",
     "kind": "function",
-    "description": "Render a 3D preview of the planned toolpaths.\n\nCall this inside the `draw()` loop, using WEBGL mode. Note that rendering isn't necessary; removing\nor commenting out the `render()` call with still generate GCode.",
+    "description": "Render a 3D preview of the planned toolpaths.\n\nCall this inside the `draw()` loop, using WEBGL mode. Note that rendering isn't necessary; removing\nor commenting out the `render()` call will still generate GCode.",
     "group": "Utilities",
     "readonly": false,
     "params": [],
@@ -1439,16 +1459,194 @@
     ]
   },
   {
-    "name": "circle",
+    "name": "ellipse",
     "kind": "function",
-    "description": "Extrude a circle with diameter `d` centered at (x, y) at the given Z height.",
-    "group": "Extrusion",
+    "description": "Extrude an ellipse outline at layer height `z`.\n\nThe `(x, y)` anchor is interpreted per `ellipseMode()` (default `CENTER`). Draws an\noutline only — there is no infill. Speed and extrusion come from the current\n`printSpeed()` / `extrusionMultiplier()`; scope changes with `push()` / `pop()`, or use\n`beginShape()` / `vertex()` to vary them along the path.",
+    "group": "Shapes",
     "readonly": false,
     "params": [
       {
         "name": "x",
         "type": "number",
-        "description": "Center X position in mm.",
+        "description": "X position of the anchor in mm (interpreted per `ellipseMode`).",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "description": "Y position of the anchor in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "z",
+        "type": "number",
+        "description": "Layer height in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "w",
+        "type": "number",
+        "description": "Width in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "h",
+        "type": "number",
+        "description": "Height in mm. Defaults to `w` (a circle).",
+        "optional": true,
+        "defaultvalue": "w"
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  fab.introLine(layerHeight);\n\n  fab.ellipse(fab.centerX, fab.centerY, layerHeight, 60, 40);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "circle",
+    "kind": "function",
+    "description": "Extrude a circle outline of diameter `d` at layer height `z`.\n\nA convenience wrapper for `ellipse(x, y, z, d, d)`; the `(x, y)` anchor follows\n`ellipseMode()` (default `CENTER`). Outline only — no infill.",
+    "group": "Shapes",
+    "readonly": false,
+    "params": [
+      {
+        "name": "x",
+        "type": "number",
+        "description": "X position of the anchor in mm (interpreted per `ellipseMode`).",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "description": "Y position of the anchor in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "z",
+        "type": "number",
+        "description": "Layer height in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "d",
+        "type": "number",
+        "description": "Diameter in mm.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  const height = 50;\n  const diameter = 50;\n\n  fab.introLine(layerHeight);\n  for (let z = 0; z < height; z += layerHeight) {\n    fab.circle(fab.centerX, fab.centerY, z, diameter);\n  }\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "rect",
+    "kind": "function",
+    "description": "Extrude a rectangle outline at layer height `z`.\n\nThe `(x, y)` anchor is interpreted per `rectMode()` (default `CORNER`, i.e. top-left).\nOutline only — no infill.",
+    "group": "Shapes",
+    "readonly": false,
+    "params": [
+      {
+        "name": "x",
+        "type": "number",
+        "description": "X position of the anchor in mm (interpreted per `rectMode`).",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "description": "Y position of the anchor in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "z",
+        "type": "number",
+        "description": "Layer height in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "w",
+        "type": "number",
+        "description": "Width in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "h",
+        "type": "number",
+        "description": "Height in mm. Defaults to `w` (a square).",
+        "optional": true,
+        "defaultvalue": "w"
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  fab.introLine(layerHeight);\n\n  fab.rect(50, 50, layerHeight, 80, 40);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "square",
+    "kind": "function",
+    "description": "Extrude a square outline with side `s` at layer height `z`.\n\nA convenience wrapper for `rect(x, y, z, s, s)`; the `(x, y)` anchor follows\n`rectMode()` (default `CORNER`). Outline only — no infill.",
+    "group": "Shapes",
+    "readonly": false,
+    "params": [
+      {
+        "name": "x",
+        "type": "number",
+        "description": "X position of the anchor in mm (interpreted per `rectMode`).",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "description": "Y position of the anchor in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "z",
+        "type": "number",
+        "description": "Layer height in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "s",
+        "type": "number",
+        "description": "Side length in mm.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  fab.introLine(layerHeight);\n\n  fab.square(50, 50, layerHeight, 60);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "ngon",
+    "kind": "function",
+    "description": "Extrude a regular polygon with `n` sides, inscribed in a circle of diameter `d`.\n\nThe `(x, y)` center follows `ellipseMode()` (default `CENTER`; `RADIUS` treats `d` as a\nradius). `rotation` (radians) turns the polygon; at 0 the first vertex points along +X.\nOutline only — no infill.",
+    "group": "Shapes",
+    "readonly": false,
+    "params": [
+      {
+        "name": "x",
+        "type": "number",
+        "description": "Center X position in mm (interpreted per `ellipseMode`).",
         "optional": false,
         "defaultvalue": null
       },
@@ -1462,35 +1660,287 @@
       {
         "name": "z",
         "type": "number",
-        "description": "Z height in mm.",
+        "description": "Layer height in mm.",
         "optional": false,
         "defaultvalue": null
       },
       {
         "name": "d",
         "type": "number",
-        "description": "Diameter in mm.",
+        "description": "Diameter of the circumscribing circle in mm.",
         "optional": false,
         "defaultvalue": null
       },
       {
-        "name": "v",
+        "name": "n",
         "type": "number",
-        "description": "Feedrate in mm/min.",
-        "optional": true,
+        "description": "Number of sides (e.g. 6 for a hexagon).",
+        "optional": false,
         "defaultvalue": null
       },
       {
-        "name": "e",
-        "type": "number | null",
-        "description": "Extrusion amount per segment. Calculated automatically if null.",
+        "name": "rotation",
+        "type": "number",
+        "description": "Rotation in radians.",
+        "optional": true,
+        "defaultvalue": 0
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  fab.introLine(layerHeight);\n\n  fab.ngon(fab.centerX, fab.centerY, layerHeight, 60, 6); // hexagon\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "triangle",
+    "kind": "function",
+    "description": "Extrude a triangle outline through three corners, coplanar at layer height `z`.\nOutline only — no infill.",
+    "group": "Shapes",
+    "readonly": false,
+    "params": [
+      {
+        "name": "x1",
+        "type": "number",
+        "description": "First corner X in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y1",
+        "type": "number",
+        "description": "First corner Y in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "x2",
+        "type": "number",
+        "description": "Second corner X in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y2",
+        "type": "number",
+        "description": "Second corner Y in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "x3",
+        "type": "number",
+        "description": "Third corner X in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y3",
+        "type": "number",
+        "description": "Third corner Y in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "z",
+        "type": "number",
+        "description": "Layer height in mm.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  fab.introLine(layerHeight);\n\n  fab.triangle(40, 40, 100, 40, 70, 100, layerHeight);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "quad",
+    "kind": "function",
+    "description": "Extrude a quadrilateral outline through four corners, coplanar at layer height `z`.\nOutline only — no infill.",
+    "group": "Shapes",
+    "readonly": false,
+    "params": [
+      {
+        "name": "x1",
+        "type": "number",
+        "description": "First corner X in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y1",
+        "type": "number",
+        "description": "First corner Y in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "x2",
+        "type": "number",
+        "description": "Second corner X in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y2",
+        "type": "number",
+        "description": "Second corner Y in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "x3",
+        "type": "number",
+        "description": "Third corner X in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y3",
+        "type": "number",
+        "description": "Third corner Y in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "x4",
+        "type": "number",
+        "description": "Fourth corner X in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y4",
+        "type": "number",
+        "description": "Fourth corner Y in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "z",
+        "type": "number",
+        "description": "Layer height in mm.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  fab.introLine(layerHeight);\n\n  fab.quad(40, 40, 110, 50, 100, 110, 30, 90, layerHeight);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "rectMode",
+    "kind": "function",
+    "description": "Set how the `(x, y)` and size arguments of `rect()` / `square()` are interpreted.\n\n<ul>\n<li>`CORNER` (default): `(x, y)` is the top-left corner; `w`/`h` are the width/height.</li>\n<li>`CORNERS`: `(x, y)` and `(w, h)` are two opposite corners of the rectangle.</li>\n<li>`CENTER`: `(x, y)` is the center; `w`/`h` are the width/height.</li>\n<li>`RADIUS`: `(x, y)` is the center; `w`/`h` are half the width/height.</li>\n</ul>\n\nFollows `rectMode()` in p5.js. Resets to `CORNER` at the start of each `fabDraw()`;\nscope a change with `push()` / `pop()`.",
+    "group": "Shapes",
+    "readonly": false,
+    "params": [
+      {
+        "name": "mode",
+        "type": "string",
+        "description": "`CORNER`, `CORNERS`, `CENTER`, or `RADIUS`.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const z = 0.2;\n\n  // Default CORNER: (x, y) is the top-left corner\n  fab.rect(40, 40, z, 40, 30);\n\n  // CENTER: (x, y) is the middle of the rectangle\n  fab.rectMode(CENTER);\n  fab.rect(130, 60, z, 40, 30);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "ellipseMode",
+    "kind": "function",
+    "description": "Set how the `(x, y)` and size arguments of `ellipse()` / `circle()` / `ngon()` are interpreted.\n\n<ul>\n<li>`CENTER` (default): `(x, y)` is the center; `w`/`h` (or `d`) are the full width/height (diameters).</li>\n<li>`RADIUS`: `(x, y)` is the center; `w`/`h` (or `d`) are radii, so the shape is twice as large as in `CENTER`.</li>\n<li>`CORNER`: `(x, y)` is the top-left of the bounding box; `w`/`h` are its width/height.</li>\n<li>`CORNERS`: `(x, y)` and `(w, h)` are two opposite corners of the bounding box.</li>\n</ul>\n\nFollows `ellipseMode()` in p5.js. Resets to `CENTER` at the start of each `fabDraw()`;\nscope a change with `push()` / `pop()`.",
+    "group": "Shapes",
+    "readonly": false,
+    "params": [
+      {
+        "name": "mode",
+        "type": "string",
+        "description": "`CENTER`, `RADIUS`, `CORNER`, or `CORNERS`.",
+        "optional": false,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const z = 0.2;\n\n  // Default CENTER: d is a diameter -> 20mm-wide circle\n  fab.circle(60, 60, z, 20);\n\n  // RADIUS: d is a radius -> 40mm-wide circle (twice as big)\n  fab.ellipseMode(RADIUS);\n  fab.circle(130, 60, z, 20);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "beginShape",
+    "kind": "function",
+    "description": "Begin an extruded path built from `vertex()` points.\n\nThe first `vertex()` after `beginShape()` positions the nozzle at the start of the\npath; every following `vertex()` extrudes to the next point. `mode` chooses how that\nfirst move is made i.e. how the nozzle reaches the path start:\n\n<ul>\n<li>`TRAVEL`: retract, z-hop, and re-prime (the default; like `travelTo()`)</li>\n<li>`RETRACT`: retract and re-prime, no z-hop (like `retractTo()`)</li>\n<li>`MOVE`: a plain move with no retraction or z-hop (like `moveTo()`)</li>\n<li>`EXTRUDE`: extrude from the current position to the first point (like `extrudeTo()`)</li>\n</ul>\n\nCall `endShape()` to finish, or `endShape(CLOSE)` to extrude back to the first vertex.\nThe functionality follows `beginShape()` / `vertex()` / `endShape()` in p5.js.",
+    "group": "Structure",
+    "readonly": false,
+    "params": [
+      {
+        "name": "mode",
+        "type": "string",
+        "description": "Lead-in for the first vertex: `TRAVEL`, `RETRACT`, `MOVE`, or `EXTRUDE`.",
+        "optional": true,
+        "defaultvalue": "TRAVEL"
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  fab.introLine(layerHeight);\n\n  // Travel to the first point, then extrude a triangle and close it\n  fab.beginShape();\n  fab.vertex(60, 60, layerHeight);\n  fab.vertex(140, 60);\n  fab.vertex(100, 130);\n  fab.endShape(CLOSE);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "vertex",
+    "kind": "function",
+    "description": "Add a point to the current path (between `beginShape()` and `endShape()`).\n\nThe first `vertex()` moves to the point using the lead-in chosen by `beginShape()`;\neach later `vertex()` extrudes to the point. `z` is optional: supply it to change\nlayer height, or omit it to stay in the current z-plane (like `extrudeToXY()`).\n\n`vertex()` takes only coordinates. To vary speed or extrusion along a path, set\n`printSpeed()` / `speed()` or `extrusionMultiplier()` between vertices. For a one-off\nexplicit extrusion amount, use e.g., `extrudeTo()`.",
+    "group": "Structure",
+    "readonly": false,
+    "params": [
+      {
+        "name": "x",
+        "type": "number",
+        "description": "Target X position in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "description": "Target Y position in mm.",
+        "optional": false,
+        "defaultvalue": null
+      },
+      {
+        "name": "z",
+        "type": "number",
+        "description": "Target Z position in mm. Defaults to the current Z if omitted.",
         "optional": true,
         "defaultvalue": null
       }
     ],
     "returns": null,
     "examples": [
-      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  const height = 50;\n  const diameter = 50;\n\n  fab.introLine(layerHeight);\n  for (let z = 0; z < height; z += layerHeight) {\n    fab.circle(fab.centerX, fab.centerY, z, diameter);\n  }\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  fab.introLine(layerHeight);\n\n  // Extrude a stacked square, climbing one layer per loop\n  fab.beginShape();\n  for (let z = layerHeight; z < 20; z += layerHeight) {\n    fab.vertex(60, 60, z);\n    fab.vertex(140, 60);\n    fab.vertex(140, 140);\n    fab.vertex(60, 140);\n  }\n  fab.endShape(CLOSE);\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
+    ]
+  },
+  {
+    "name": "endShape",
+    "kind": "function",
+    "description": "Finish the current path started with `beginShape()`.\n\nPass `CLOSE` to extrude a final segment back to the first vertex, closing the loop.\nThe functionality follows `endShape()` in p5.js.",
+    "group": "Structure",
+    "readonly": false,
+    "params": [
+      {
+        "name": "mode",
+        "type": "string",
+        "description": "Pass `CLOSE` to close the path back to the first vertex.",
+        "optional": true,
+        "defaultvalue": null
+      }
+    ],
+    "returns": null,
+    "examples": [
+      "function setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n}\n\nfunction fabDraw() {\n  fab.autoHome();\n  fab.setTemps(200, 60);\n  const layerHeight = 0.2;\n  fab.introLine(layerHeight);\n\n  fab.beginShape();\n  fab.vertex(60, 60, layerHeight);\n  fab.vertex(140, 60);\n  fab.vertex(100, 130);\n  fab.endShape(CLOSE); // extrude back to (60, 60)\n}\n\nfunction draw() {\n  background(255);\n  fab.render();\n}"
     ]
   },
   {
